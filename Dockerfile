@@ -12,10 +12,10 @@ RUN --mount=type=cache,target=/root/.m2 \
     mvn --batch-mode --no-transfer-progress package -DskipTests \
     && cp target/minsearch-*.jar /workspace/application.jar
 
-FROM eclipse-temurin:17-jre-alpine AS runtime
+FROM eclipse-temurin:17-jre AS runtime
 
-RUN addgroup --system minsearch \
-    && adduser --system --ingroup minsearch minsearch \
+RUN groupadd --system minsearch \
+    && useradd --system --gid minsearch minsearch \
     && mkdir -p /opt/minsearch /var/lib/minsearch/documents /var/lib/minsearch/index \
     && chown -R minsearch:minsearch /opt/minsearch /var/lib/minsearch
 

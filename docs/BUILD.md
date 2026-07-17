@@ -13,6 +13,8 @@ Use the checked-in wrapper rather than a machine-specific Maven installation:
 ./mvnw verify
 ```
 
+For a shorter local workflow, start with the repository root [README](../README.md), which lists the clean-clone Docker and Maven commands.
+
 ## Version-management policy
 
 1. Dependencies managed by Spring Boot must omit an explicit version.
@@ -22,6 +24,7 @@ Use the checked-in wrapper rather than a machine-specific Maven installation:
 5. Framework version upgrades must be isolated changes with the full test suite and dependency-tree review.
 
 The Maven Enforcer plugin rejects unsupported Java/Maven versions, duplicate dependency declarations, and dependency convergence conflicts during every build.
+The build also runs formatting checks, Checkstyle static analysis, unit tests, and Failsafe integration tests during `verify`.
 
 ## Common commands
 
@@ -32,6 +35,12 @@ The Maven Enforcer plugin rejects unsupported Java/Maven versions, duplicate dep
 # Run all verification checks and create the executable JAR
 ./mvnw verify
 
+# Run formatter and static-analysis checks explicitly
+./mvnw spotless:check checkstyle:check
+
+# Run integration tests only
+./mvnw failsafe:integration-test failsafe:verify
+
 # Inspect the selected dependency graph
 ./mvnw dependency:tree
 
@@ -39,4 +48,12 @@ The Maven Enforcer plugin rejects unsupported Java/Maven versions, duplicate dep
 ./mvnw help:effective-pom
 ```
 
-Integration and performance test commands will be added when those test suites are introduced.
+PostgreSQL repository integration tests use Testcontainers and run as part of the
+standard test lifecycle when Docker is available. The dedicated integration-test
+phase also exercises the application startup path:
+
+```shell
+./mvnw verify
+```
+
+Performance test commands will be added when that test suite is introduced.
