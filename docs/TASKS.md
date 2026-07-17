@@ -15,10 +15,10 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 3 |
+| Done | 14 |
 | In progress | 0 |
-| Pending | 71 |
-| Blocked | 1 |
+| Pending | 61 |
+| Blocked | 0 |
 
 ## Phase 0: Specification
 
@@ -29,26 +29,46 @@ Exit gate: [Specification](./SPECIFICATION.md) is implementation-ready and inter
 
 ## Phase 1: Foundation
 
-- [!] **FOUND-000** Provision the complete local Docker environment and verify healthy startup.
+- [x] **FOUND-000** Provision the complete local Docker environment and verify healthy startup. Verified on July 18, 2026.
   - Setup complete: application image, PostgreSQL, Redis, Kafka KRaft broker, topic initialization, volumes, health checks, environment template, and operating guide.
-  - Verified: Compose model, Maven tests/package, and Docker-profile readiness endpoint.
-  - Blocker: the local Docker daemon is not running, so full container startup and topic creation cannot yet be exercised.
+  - Verified: Compose model, Maven tests/package, full service health, Docker-profile readiness endpoint, and creation of all four Kafka topics.
 - [x] **FOUND-001** Correct Maven project metadata and establish dependency/version management.
-- [ ] **FOUND-002** Create package-by-feature module boundaries: `auth`, `document`, `index`, `search`, `autocomplete`, `cache`, `analytics`, and `shared`.
-- [ ] **FOUND-003** Add architecture tests that enforce module boundaries.
-- [ ] **FOUND-004** Define typed, validated application configuration and local/test profiles.
-- [ ] **FOUND-005** Add PostgreSQL, migrations, and repository test infrastructure.
-- [ ] **FOUND-006** Add local filesystem storage and in-process event/cache adapters behind ports.
-- [ ] **FOUND-007** Add the RFC 9457 error model, validation handling, and stable error codes.
-- [ ] **FOUND-008** Add correlation IDs, structured logging, health endpoints, and baseline metrics.
-- [ ] **FOUND-009** Add formatting, static analysis, unit-test, and integration-test build checks.
-- [ ] **FOUND-010** Document reproducible local development and test commands.
+- [x] **FOUND-002** Create package-by-feature module boundaries: `auth`, `document`, `index`, `search`, `autocomplete`, `cache`, `analytics`, and `shared`. Verified on July 15, 2026.
+- [x] **FOUND-003** Add architecture tests that enforce module boundaries. Verified on July 15, 2026.
+- [x] **FOUND-004** Define typed, validated application configuration and local/test profiles. Verified on July 15, 2026.
+- [x] **FOUND-005** Add PostgreSQL, migrations, and repository test infrastructure. Verified against PostgreSQL 17.10 on July 18, 2026.
+- [x] **FOUND-006** Add local filesystem storage and in-process event/cache adapters behind ports. Verified on July 17, 2026.
+  - Added a safe local filesystem document storage adapter behind a domain port.
+  - Added an in-process domain event bus for local adapter workflows.
+  - Added a Caffeine-backed cache store with TTL-aware lookups and eviction.
+  - Verified with targeted adapter tests and the full Maven test suite.
+- [x] **FOUND-007** Add the RFC 9457 error model, validation handling, and stable error codes. Verified on July 17, 2026.
+  - Added shared RFC 9457 problem-detail helpers and stable machine-readable error codes.
+  - Added a global REST exception handler for validation failures and unexpected errors.
+  - Verified the response shape with MVC tests covering validation and generic failures.
+- [x] **FOUND-008** Add correlation IDs, structured logging, health endpoints, and baseline metrics. Verified on July 17, 2026.
+  - Added a request correlation-ID filter that propagates IDs through MDC and response headers.
+  - Added a shared request-metrics filter plus a baseline application gauge.
+  - Exposed health, metrics, and Prometheus actuator endpoints and added correlation-aware console logging.
+  - Verified with unit tests and a Spring Boot actuator integration test.
+- [x] **FOUND-009** Add formatting, static analysis, unit-test, and integration-test build checks. Verified on July 17, 2026.
+  - Added Spotless formatting checks and a Google Java Format configuration.
+  - Added Checkstyle static analysis to the verify lifecycle.
+  - Added a dedicated Failsafe integration-test phase with a bootstrapping IT.
+  - Verified the full `verify` lifecycle passes.
+- [x] **FOUND-010** Document reproducible local development and test commands. Verified on July 17, 2026.
+  - Added a root README with the clean-clone workflow, app readiness check, and Maven command set.
+  - Tightened the build documentation to point at the README as the quick-start entry point.
+  - Documented Docker, unit-test, verify, formatting, static-analysis, and integration-test commands in one place.
 
 Exit gate: application starts from a clean environment, migrations pass, build checks pass, and architecture tests enforce boundaries.
 
 ## Phase 2: Authentication and authorization
 
-- [ ] **AUTH-001** Create user and refresh-token migrations and persistence adapters.
+- [x] **AUTH-001** Create user and refresh-token migrations and persistence adapters. Verified on July 17, 2026.
+  - Added ordered migrations for `users` and `refresh_tokens`.
+  - Added auth domain types plus JPA-backed repository adapters.
+  - Verified persistence against PostgreSQL with round-trip repository tests.
 - [ ] **AUTH-002** Implement registration with normalized unique email and adaptive password hashing.
 - [ ] **AUTH-003** Implement login and short-lived signed access JWTs.
 - [ ] **AUTH-004** Implement refresh-token families, hashing, atomic rotation, and reuse detection.
@@ -175,3 +195,15 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-07-14 | Created ordered implementation ledger from specification version 1.0.0. |
 | 2026-07-14 | Added FOUND-000 for Docker infrastructure; setup is complete but runtime validation is blocked until the Docker daemon is running. |
 | 2026-07-14 | Completed FOUND-001 with project metadata, explicit build requirements, dependency policy, and enforced convergence/version checks. |
+| 2026-07-15 | Verified FOUND-002 with package-by-feature module boundaries creation. |
+| 2026-07-15 | Verified FOUND-003 with architecture tests enforcement of module boundaries. |
+| 2026-07-15 | Marked FOUND-004 as completed and verified after implementing and validating application configuration. |
+| 2026-07-18 | Completed FOUND-005 with environment-backed PostgreSQL configuration, ordered Flyway migrations, reusable Testcontainers repository-test support, and a passing PostgreSQL 17.10 integration test. |
+| 2026-07-18 | Cleared the FOUND-000 Docker-daemon blocker; full Compose startup verification proceeded after Docker became available. |
+| 2026-07-18 | Completed FOUND-000 after rebuilding the compatible Java runtime image and verifying healthy PostgreSQL, Redis, Kafka, app readiness, and Kafka topic initialization. |
+| 2026-07-17 | Completed FOUND-006 with safe local filesystem storage, in-process event delivery, and Caffeine-backed cache adapters verified by unit and integration tests. |
+| 2026-07-17 | Completed FOUND-007 with RFC 9457 problem-details handling, validation mapping, and stable error codes verified by MVC and unit tests. |
+| 2026-07-17 | Completed FOUND-008 with correlation IDs, request metrics, actuator exposure, and correlation-aware logging verified by unit and integration tests. |
+| 2026-07-17 | Completed FOUND-009 with Spotless formatting, Checkstyle static analysis, unit tests, and Failsafe integration tests wired into `verify`. |
+| 2026-07-17 | Completed FOUND-010 with a root README and build documentation covering reproducible local development and test commands. |
+| 2026-07-17 | Completed AUTH-001 with auth schema migrations and JPA persistence adapters verified against PostgreSQL. |
