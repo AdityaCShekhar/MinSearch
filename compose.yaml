@@ -1,29 +1,6 @@
 name: minsearch
 
 services:
-  postgres:
-    image: postgres:17.10-alpine3.23
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-minsearch}
-      POSTGRES_USER: ${POSTGRES_USER:-minsearch}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
-      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --data-checksums
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    healthcheck:
-      test:
-        - CMD-SHELL
-        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
-    restart: unless-stopped
-    networks:
-      - minsearch-network
-
   redis:
     image: redis:7.4.9-alpine
     command:
@@ -113,9 +90,9 @@ services:
       dockerfile: Dockerfile
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-minsearch}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${POSTGRES_HOST:-host.docker.internal}:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-minsearch}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
@@ -129,8 +106,6 @@ services:
       - document-data:/var/lib/minsearch/documents
       - index-data:/var/lib/minsearch/index
     depends_on:
-      postgres:
-        condition: service_healthy
       redis:
         condition: service_healthy
       kafka-init:
@@ -153,7 +128,6 @@ services:
       - minsearch-network
 
 volumes:
-  postgres-data:
   redis-data:
   kafka-data:
   document-data:

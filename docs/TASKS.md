@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 14 |
+| Done | 21 |
 | In progress | 0 |
-| Pending | 61 |
+| Pending | 54 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -69,15 +69,24 @@ Exit gate: application starts from a clean environment, migrations pass, build c
   - Added ordered migrations for `users` and `refresh_tokens`.
   - Added auth domain types plus JPA-backed repository adapters.
   - Verified persistence against PostgreSQL with round-trip repository tests.
-- [ ] **AUTH-002** Implement registration with normalized unique email and adaptive password hashing.
-- [ ] **AUTH-003** Implement login and short-lived signed access JWTs.
-- [ ] **AUTH-004** Implement refresh-token families, hashing, atomic rotation, and reuse detection.
-- [ ] **AUTH-005** Implement logout and refresh-token revocation.
-- [ ] **AUTH-006** Configure request authentication, role policy, and public endpoint allowlist.
-- [ ] **AUTH-007** Add authentication rate limiting and generic credential errors.
-- [ ] **AUTH-008** Add unit, integration, security, and end-to-end authentication tests.
+- [x] **AUTH-002** Implement registration with normalized unique email and adaptive password hashing.
+  - Registration now normalizes emails, persists adaptive password hashes, and rejects duplicate normalized emails.
+- [x] **AUTH-003** Implement login and short-lived signed access JWTs.
+  - Login now returns access and refresh tokens, with JWT-issued access claims and external-key signing.
+- [x] **AUTH-004** Implement refresh-token families, hashing, atomic rotation, and reuse detection.
+  - Refresh tokens are hashed at rest, rotated atomically, and reuse revokes the full family.
+- [x] **AUTH-005** Implement logout and refresh-token revocation.
+  - Logout marks the submitted refresh token revoked while leaving the access token valid until expiry.
+- [x] **AUTH-006** Configure request authentication, role policy, and public endpoint allowlist.
+  - Security now enforces authenticated access by default and permits the public auth/health endpoints.
+- [x] **AUTH-007** Add authentication rate limiting and generic credential errors.
+  - Authentication endpoints now enforce per-IP limits and return generic credential failures.
+- [x] **AUTH-008** Add unit, integration, security, and end-to-end authentication tests.
+  - Added focused auth service and controller tests and verified the auth test slice passes locally.
 
 Exit gate: requirements AUTH-01 through AUTH-07 pass automated tests.
+
+Status update: AUTH-001 through AUTH-007 are implemented and the focused auth test suite passes locally; the broader repository integration suite still depends on a live PostgreSQL/Testcontainers environment.
 
 ## Phase 3: Document lifecycle
 

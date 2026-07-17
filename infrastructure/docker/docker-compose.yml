@@ -1,0 +1,35 @@
+name: minsearch
+
+services:
+  auth-service:
+    build:
+      context: ../../services/auth-service
+      dockerfile: Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${POSTGRES_HOST:-host.docker.internal}:${POSTGRES_PORT:-5432}/${POSTGRES_DB:-minsearch}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-postgres}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      MINSEARCH_SECURITY_JWT_SECRET: ${JWT_SECRET:-local-only-change-this-minsearch-secret-key}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${AUTH_PORT:-8081}:8080"
+
+  document-service:
+    build:
+      context: ../../services/document-service
+      dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${DOCUMENT_PORT:-8082}:8080"
+
+  search-service:
+    build:
+      context: ../../services/search-service
+      dockerfile: Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${SEARCH_PORT:-8083}:8080"
