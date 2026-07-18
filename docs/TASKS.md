@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 21 |
-| In progress | 0 |
-| Pending | 54 |
+| Done | 24 |
+| In progress | 1 |
+| Pending | 51 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -95,13 +95,20 @@ Status update: AUTH-001 through AUTH-007 are implemented and the focused auth te
 
 ## Phase 3: Document lifecycle
 
-- [ ] **DOC-001** Create document, document-version, outbox, and processed-event migrations.
-- [ ] **DOC-002** Implement safe storage keys and streaming local file persistence.
-- [ ] **DOC-003** Implement extension, media-type, size, and filename validation.
-- [ ] **DOC-004** Implement document upload with atomic metadata and outbox creation.
-- [ ] **DOC-005** Implement owner/admin metadata read and paginated listing.
-- [ ] **DOC-006** Implement content and searchable-metadata updates with monotonic versions.
-- [ ] **DOC-007** Implement immediate logical deletion and asynchronous cleanup request.
+- [x] **DOC-001** Create document, document-version, outbox, and processed-event migrations.
+  - Added the four tables and indexes in `V1__document_schema.sql`.
+- [x] **DOC-002** Implement safe storage keys and streaming local file persistence.
+  - Added configurable document storage-root wiring and verified safe local filesystem storage with traversal tests.
+- [x] **DOC-003** Implement extension, media-type, size, and filename validation.
+  - Added TXT/Markdown/PDF validation, size limits, media-type checks, safe filename handling, and unit tests.
+- [x] **DOC-004** Implement document upload with atomic metadata and outbox creation.
+  - Upload persists metadata and `document.uploaded` outbox data in one transaction and compensates storage when persistence fails.
+- [x] **DOC-005** Implement owner/admin metadata read and paginated listing.
+  - Added owner-scoped document reads and listings, excluding logically deleted records.
+- [x] **DOC-006** Implement content and searchable-metadata updates with monotonic versions.
+  - Added searchable metadata updates with monotonic document versions and update outbox events.
+- [x] **DOC-007** Implement immediate logical deletion and asynchronous cleanup request.
+  - Added logical deletion with `DELETE_PENDING` state and delete outbox events.
 - [ ] **DOC-008** Implement outbox publishing, retries, and idempotent consumption primitives.
 - [ ] **DOC-009** Add lifecycle, ownership, failure-compensation, and concurrent-upload tests.
 
@@ -219,6 +226,8 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-07-17 | Completed FOUND-007 with RFC 9457 problem-details handling, validation mapping, and stable error codes verified by MVC and unit tests. |
 | 2026-07-17 | Completed FOUND-008 with correlation IDs, request metrics, actuator exposure, and correlation-aware logging verified by unit and integration tests. |
 | 2026-07-18 | Documented local logging and debug-mode switches for the completed endpoints, including correlation-ID log tracing and production safety guidance. |
+| 2026-07-18 | Started DOC-001 and completed DOC-002/DOC-003 with document storage configuration, upload validation, and unit coverage. |
+| 2026-07-18 | Completed DOC-001 schema migration and started DOC-004 with transactional upload metadata/outbox creation and storage compensation. |
 | 2026-07-17 | Completed FOUND-009 with Spotless formatting, Checkstyle static analysis, unit tests, and Failsafe integration tests wired into `verify`. |
 | 2026-07-17 | Completed FOUND-010 with a root README and build documentation covering reproducible local development and test commands. |
 | 2026-07-17 | Completed AUTH-001 with auth schema migrations and JPA persistence adapters verified against PostgreSQL. |
