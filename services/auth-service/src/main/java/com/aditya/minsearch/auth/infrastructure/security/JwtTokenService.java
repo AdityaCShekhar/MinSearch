@@ -8,8 +8,6 @@ import java.util.Base64;
 import java.util.UUID;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import com.nimbusds.jose.jwk.source.ImmutableSecret;
-import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,10 +28,10 @@ public class JwtTokenService implements TokenService {
 	private final JwtDecoder jwtDecoder;
 	private final String issuer;
 
-	public JwtTokenService(@Value("${MINSEARCH_SECURITY_JWT_SECRET}") String secret) {
+	public JwtTokenService(@Value("${minsearch.security.jwt.secret}") String secret) {
 		this.issuer = "minsearch";
 		SecretKey secretKey = new SecretKeySpec(normalizeSecret(secret), "HmacSHA256");
-		this.jwtEncoder = new NimbusJwtEncoder(new ImmutableSecret<>(secretKey));
+		this.jwtEncoder = NimbusJwtEncoder.withSecretKey(secretKey).algorithm(MacAlgorithm.HS256).build();
 		this.jwtDecoder = NimbusJwtDecoder.withSecretKey(secretKey).macAlgorithm(MacAlgorithm.HS256).build();
 	}
 

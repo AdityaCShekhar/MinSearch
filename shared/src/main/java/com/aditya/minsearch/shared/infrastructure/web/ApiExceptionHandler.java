@@ -12,9 +12,13 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(ApiExceptionHandler.class);
 
   @ExceptionHandler({
     BindException.class,
@@ -38,6 +42,12 @@ public class ApiExceptionHandler {
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ProblemDetail> handleUnexpected(
       Exception exception, HttpServletRequest request) {
+    LOGGER.error(
+        "Unhandled API exception correlationId={} method={} path={}",
+        resolveCorrelationId(request),
+        request.getMethod(),
+        request.getRequestURI(),
+        exception);
     ProblemDetail problemDetail =
         ApiProblem.create(
             ApiErrorCode.GENERIC_INTERNAL_ERROR,

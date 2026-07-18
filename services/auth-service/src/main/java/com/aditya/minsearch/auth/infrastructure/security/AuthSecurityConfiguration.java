@@ -18,7 +18,13 @@ public class AuthSecurityConfiguration {
 		http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		http.authorizeHttpRequests(
 				auth ->
-						auth.requestMatchers("/actuator/health/liveness", "/actuator/health/readiness")
+						auth.requestMatchers(
+										"/actuator/health/liveness",
+										"/actuator/health/readiness",
+										"/swagger-ui.html",
+										"/swagger-ui/**",
+										"/v3/api-docs",
+										"/v3/api-docs/**")
 								.permitAll()
 								.requestMatchers(HttpMethod.POST, "/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/refresh")
 								.permitAll()

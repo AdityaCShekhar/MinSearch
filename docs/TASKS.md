@@ -51,6 +51,11 @@ Exit gate: [Specification](./SPECIFICATION.md) is implementation-ready and inter
   - Added a shared request-metrics filter plus a baseline application gauge.
   - Exposed health, metrics, and Prometheus actuator endpoints and added correlation-aware console logging.
   - Verified with unit tests and a Spring Boot actuator integration test.
+  - Local diagnostics: set `DEBUG=true` for Spring Boot debug output, or set
+    `LOGGING_LEVEL_COM_ADITYA_MINSEARCH=DEBUG` for application debug logs. Inspect the
+    authentication service with `docker compose logs --follow auth-service` and use the
+    returned `X-Correlation-Id` to follow one request across the logs. Do not enable debug
+    logging in production.
 - [x] **FOUND-009** Add formatting, static analysis, unit-test, and integration-test build checks. Verified on July 17, 2026.
   - Added Spotless formatting checks and a Google Java Format configuration.
   - Added Checkstyle static analysis to the verify lifecycle.
@@ -213,6 +218,7 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-07-17 | Completed FOUND-006 with safe local filesystem storage, in-process event delivery, and Caffeine-backed cache adapters verified by unit and integration tests. |
 | 2026-07-17 | Completed FOUND-007 with RFC 9457 problem-details handling, validation mapping, and stable error codes verified by MVC and unit tests. |
 | 2026-07-17 | Completed FOUND-008 with correlation IDs, request metrics, actuator exposure, and correlation-aware logging verified by unit and integration tests. |
+| 2026-07-18 | Documented local logging and debug-mode switches for the completed endpoints, including correlation-ID log tracing and production safety guidance. |
 | 2026-07-17 | Completed FOUND-009 with Spotless formatting, Checkstyle static analysis, unit tests, and Failsafe integration tests wired into `verify`. |
 | 2026-07-17 | Completed FOUND-010 with a root README and build documentation covering reproducible local development and test commands. |
 | 2026-07-17 | Completed AUTH-001 with auth schema migrations and JPA persistence adapters verified against PostgreSQL. |
