@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 52 |
-| In progress | 0 |
-| Pending | 25 |
+| Done | 53 |
+| In progress | 1 |
+| Pending | 23 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -172,8 +172,9 @@ Exit gate: requirements SEARCH-01 through SEARCH-10 pass with deterministic resu
 
 ## Phase 6: Search experience, caching, and analytics
 
-- [ ] **UX-001** Implement safe, position-aware snippets and highlighting.
-- [ ] **UX-002** Implement vocabulary and popular-query Trie autocomplete.
+- [x] **UX-001** Implement safe, position-aware snippets and highlighting.
+  - Added bounded densest-window snippets, phrase preference, case-insensitive surface highlighting, HTML escaping, and ellipses with focused XSS tests.
+- [>] **UX-002** Implement vocabulary and popular-query Trie autocomplete.
 - [ ] **UX-003** Implement spelling suggestions and confidence thresholds.
 - [ ] **CACHE-001** Implement generation-keyed local search and autocomplete caches.
 - [ ] **CACHE-002** Add Redis adapters and fail-open cache behavior.
@@ -261,3 +262,4 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-08-05 | Completed Phase 4 (INDEX-003 through INDEX-011) with language-aware analysis, immutable postings/generations, worker ordering, snapshot recovery, retry/publication primitives, and 18 passing search-service tests. |
 | 2026-08-05 | Completed SEARCH-001 with the position-aware query lexer and three focused lexer tests; started SEARCH-002. |
 | 2026-08-05 | Completed Phase 5 (SEARCH-002 through SEARCH-011) with AST parsing, Boolean/phrase retrieval, filters, prefix/fuzzy expansion, TF-IDF ranking, authorization, pagination, API contract, and 27 passing search-service tests. |
+| 2026-08-05 | Completed UX-001 with bounded safe snippets and position-aware highlighting; started UX-002. |
