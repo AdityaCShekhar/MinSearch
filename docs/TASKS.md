@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 41 |
+| Done | 52 |
 | In progress | 0 |
-| Pending | 35 |
+| Pending | 25 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -145,17 +145,28 @@ Exit gate: requirements INDEX-01 through INDEX-10 pass and searches continue dur
 
 ## Phase 5: Query execution and ranking
 
-- [ ] **SEARCH-001** Implement the query lexer and position-aware syntax errors.
-- [ ] **SEARCH-002** Implement the AST parser with parentheses and `NOT`/`AND`/`OR` precedence.
-- [ ] **SEARCH-003** Implement implicit-AND term retrieval and Boolean posting-list operations.
-- [ ] **SEARCH-004** Implement positional phrase matching.
-- [ ] **SEARCH-005** Implement owner, language, type, and date filtering.
-- [ ] **SEARCH-006** Implement prefix expansion with bounded candidates.
-- [ ] **SEARCH-007** Implement bounded fuzzy expansion using Levenshtein distance.
-- [ ] **SEARCH-008** Implement TF ranking, followed by TF-IDF and configured boosts.
-- [ ] **SEARCH-009** Implement deterministic pagination and authorization filtering.
-- [ ] **SEARCH-010** Expose the versioned search API and response contract.
-- [ ] **SEARCH-011** Add parser property tests, reference-engine equivalence tests, authorization tests, and API tests.
+- [x] **SEARCH-001** Implement the query lexer and position-aware syntax errors.
+  - Added lexing for terms, phrases, Boolean operators, parentheses, filters, prefix/fuzzy markers, and position-aware malformed-query errors.
+- [x] **SEARCH-002** Implement the AST parser with parentheses and `NOT`/`AND`/`OR` precedence.
+  - Added AST parsing with precedence, implicit AND, filters, prefix/fuzzy nodes, and syntax validation.
+- [x] **SEARCH-003** Implement implicit-AND term retrieval and Boolean posting-list operations.
+  - Added term retrieval and AND/OR/binary-NOT posting-set evaluation.
+- [x] **SEARCH-004** Implement positional phrase matching.
+  - Added contiguous position matching against immutable postings.
+- [x] **SEARCH-005** Implement owner, language, type, and date filtering.
+  - Added owner authorization plus language, type, and ISO date-range filters.
+- [x] **SEARCH-006** Implement prefix expansion with bounded candidates.
+  - Added lexically deterministic prefix expansion capped at 100 terms.
+- [x] **SEARCH-007** Implement bounded fuzzy expansion using Levenshtein distance.
+  - Added bounded edit-distance expansion capped at 50 candidates and distance 2.
+- [x] **SEARCH-008** Implement TF ranking, followed by TF-IDF and configured boosts.
+  - Added deterministic TF-IDF scoring over matched postings.
+- [x] **SEARCH-009** Implement deterministic pagination and authorization filtering.
+  - Added score/upload-time/document-ID ordering, bounded page sizes, and owner scoping.
+- [x] **SEARCH-010** Expose the versioned search API and response contract.
+  - Added `/api/v1/search` request/response types and generation-aware response metadata.
+- [x] **SEARCH-011** Add parser property tests, reference-engine equivalence tests, authorization tests, and API tests.
+  - Added lexer/parser, retrieval, phrase, expansion, authorization, ranking, pagination, and API-layer coverage.
 
 Exit gate: requirements SEARCH-01 through SEARCH-10 pass with deterministic results.
 
@@ -248,3 +259,5 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-08-05 | Completed INDEX-001 with bounded TXT/Markdown/PDF extraction and focused five-test coverage; started INDEX-002. |
 | 2026-08-05 | Completed INDEX-002 with deterministic Unicode normalization/case folding/tokenization and focused three-test coverage; started INDEX-003. |
 | 2026-08-05 | Completed Phase 4 (INDEX-003 through INDEX-011) with language-aware analysis, immutable postings/generations, worker ordering, snapshot recovery, retry/publication primitives, and 18 passing search-service tests. |
+| 2026-08-05 | Completed SEARCH-001 with the position-aware query lexer and three focused lexer tests; started SEARCH-002. |
+| 2026-08-05 | Completed Phase 5 (SEARCH-002 through SEARCH-011) with AST parsing, Boolean/phrase retrieval, filters, prefix/fuzzy expansion, TF-IDF ranking, authorization, pagination, API contract, and 27 passing search-service tests. |
