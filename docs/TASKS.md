@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 24 |
-| In progress | 1 |
-| Pending | 51 |
+| Done | 41 |
+| In progress | 0 |
+| Pending | 35 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -109,24 +109,37 @@ Status update: AUTH-001 through AUTH-007 are implemented and the focused auth te
   - Added searchable metadata updates with monotonic document versions and update outbox events.
 - [x] **DOC-007** Implement immediate logical deletion and asynchronous cleanup request.
   - Added logical deletion with `DELETE_PENDING` state and delete outbox events.
-- [ ] **DOC-008** Implement outbox publishing, retries, and idempotent consumption primitives.
-- [ ] **DOC-009** Add lifecycle, ownership, failure-compensation, and concurrent-upload tests.
+- [x] **DOC-008** Implement outbox publishing, retries, and idempotent consumption primitives.
+  - Added a bounded pending-event processor, retry accounting, in-process publishing, and processed-event deduplication.
+- [x] **DOC-009** Add lifecycle, ownership, failure-compensation, and concurrent-upload tests.
+  - Added lifecycle transition, ownership, storage-compensation, outbox, and 100-concurrent-upload coverage; focused document tests pass.
 
 Exit gate: requirements DOC-01 through DOC-09 pass; upload returns `202` without waiting for indexing.
 
 ## Phase 4: Text processing and core index
 
-- [ ] **INDEX-001** Implement bounded TXT, Markdown, and PDF text extraction.
-- [ ] **INDEX-002** Implement Unicode normalization, case folding, and deterministic tokenization.
-- [ ] **INDEX-003** Implement English stop-word filtering and stemming behind language-aware ports.
-- [ ] **INDEX-004** Implement primitive positional postings and immutable term dictionaries.
-- [ ] **INDEX-005** Implement document and corpus statistics needed by ranking.
-- [ ] **INDEX-006** Implement immutable index generations, atomic publication, and safe reader retention.
-- [ ] **INDEX-007** Implement document-version replacement and deletion mutations.
-- [ ] **INDEX-008** Implement asynchronous worker state transitions, retries, and terminal failures.
-- [ ] **INDEX-009** Enforce duplicate and out-of-order event safety.
-- [ ] **INDEX-010** Persist, checksum, recover, and version index snapshots.
-- [ ] **INDEX-011** Add algorithm, extraction, recovery, concurrency, and event-ordering tests.
+- [x] **INDEX-001** Implement bounded TXT, Markdown, and PDF text extraction.
+  - Added UTF-8 TXT/Markdown extraction, PDFBox text extraction, page/input/text limits, encrypted-PDF rejection, and focused tests.
+- [x] **INDEX-002** Implement Unicode normalization, case folding, and deterministic tokenization.
+  - Added NFKC normalization, Locale.ROOT case folding, Unicode letter/number/mark tokenization, and stable offsets/positions with focused tests.
+- [x] **INDEX-003** Implement English stop-word filtering and stemming behind language-aware ports.
+  - Added language-aware stop-word/stemmer ports with English implementations and position-preserving processing.
+- [x] **INDEX-004** Implement primitive positional postings and immutable term dictionaries.
+  - Added immutable posting lists with document versions, term frequencies, sorted positions, and copy-on-write generation building.
+- [x] **INDEX-005** Implement document and corpus statistics needed by ranking.
+  - Added indexed document lengths, document frequency, corpus counts, and average document length calculation.
+- [x] **INDEX-006** Implement immutable index generations, atomic publication, and safe reader retention.
+  - Added immutable generations and atomic monotonic publication for lock-free readers.
+- [x] **INDEX-007** Implement document-version replacement and deletion mutations.
+  - Added replacement and deletion mutations that remove stale postings and preserve version metadata.
+- [x] **INDEX-008** Implement asynchronous worker state transitions, retries, and terminal failures.
+  - Added synchronized worker result states plus bounded exponential retry policy primitives.
+- [x] **INDEX-009** Enforce duplicate and out-of-order event safety.
+  - Added event-ID deduplication and per-document version ordering guards.
+- [x] **INDEX-010** Persist, checksum, recover, and version index snapshots.
+  - Added versioned binary snapshots with atomic writes, SHA-256 checksums, and corruption rejection.
+- [x] **INDEX-011** Add algorithm, extraction, recovery, concurrency, and event-ordering tests.
+  - Added 18 focused search/index tests covering extraction, tokenization, stemming, postings, publication, worker ordering, and snapshot recovery.
 
 Exit gate: requirements INDEX-01 through INDEX-10 pass and searches continue during index publication.
 
@@ -231,3 +244,7 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-07-17 | Completed FOUND-009 with Spotless formatting, Checkstyle static analysis, unit tests, and Failsafe integration tests wired into `verify`. |
 | 2026-07-17 | Completed FOUND-010 with a root README and build documentation covering reproducible local development and test commands. |
 | 2026-07-17 | Completed AUTH-001 with auth schema migrations and JPA persistence adapters verified against PostgreSQL. |
+| 2026-08-05 | Completed DOC-009 with lifecycle, ownership, storage-compensation, outbox, and concurrent-upload tests; started INDEX-001. |
+| 2026-08-05 | Completed INDEX-001 with bounded TXT/Markdown/PDF extraction and focused five-test coverage; started INDEX-002. |
+| 2026-08-05 | Completed INDEX-002 with deterministic Unicode normalization/case folding/tokenization and focused three-test coverage; started INDEX-003. |
+| 2026-08-05 | Completed Phase 4 (INDEX-003 through INDEX-011) with language-aware analysis, immutable postings/generations, worker ordering, snapshot recovery, retry/publication primitives, and 18 passing search-service tests. |

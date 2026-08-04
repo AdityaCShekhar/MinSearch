@@ -22,4 +22,11 @@ public class DocumentOutboxJpaEntity {
     this.eventId = eventId; this.aggregateId = aggregateId; this.eventType = eventType;
     this.payload = payload; this.occurredAt = occurredAt; this.attempts = 0;
   }
+  public UUID eventId() { return eventId; }
+  public UUID aggregateId() { return aggregateId; }
+  public String eventType() { return eventType; }
+  public String payload() { return payload; }
+  public Instant occurredAt() { return occurredAt; }
+  public void markPublished(Instant time) { publishedAt = time; }
+  public void markFailed(String error) { attempts++; lastError = error; }
 }
