@@ -608,6 +608,39 @@ Required metrics include:
 
 Logs are structured JSON in deployed environments and include timestamp, level, service/module, correlation ID, event ID where applicable, and non-sensitive identifiers. Prometheus metrics are required for version 1; OpenTelemetry traces and Grafana dashboards are stretch goals.
 
+#### Local logging and debug mode
+
+The completed authentication and health endpoints use the shared request logging and
+correlation-ID infrastructure. For local diagnostics, set the following in the application
+process environment before starting or rebuilding the application (and pass the same values
+through the relevant Compose service's `environment` block when running in Docker):
+
+```dotenv
+# Spring Boot diagnostic report and selected condition details
+DEBUG=true
+
+# Application package logs at DEBUG; use INFO to return to the normal level
+LOGGING_LEVEL_COM_ADITYA_MINSEARCH=DEBUG
+```
+
+`DEBUG=true` enables Spring Boot's debug report. The package-level setting is the preferred
+switch when endpoint request and security-flow logs are needed without the full framework
+report. The effective log line includes the request's `X-Correlation-Id`; preserve that
+response header when investigating a single call.
+
+Useful local checks are:
+
+```shell
+docker compose logs --follow auth-service
+curl --include http://localhost:8081/actuator/health/liveness
+curl --include http://localhost:8081/actuator/health/readiness
+```
+
+These switches are for development and troubleshooting only. Never enable debug logging in
+production, and never log passwords, access/refresh tokens, file contents, or sensitive query
+values. Remove the variables or set `DEBUG=false` and
+`LOGGING_LEVEL_COM_ADITYA_MINSEARCH=INFO` after troubleshooting.
+
 ## 12. Testing strategy
 
 | Layer | Required coverage |

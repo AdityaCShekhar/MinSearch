@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 14 |
+| Done | 52 |
 | In progress | 0 |
-| Pending | 61 |
+| Pending | 25 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -51,6 +51,11 @@ Exit gate: [Specification](./SPECIFICATION.md) is implementation-ready and inter
   - Added a shared request-metrics filter plus a baseline application gauge.
   - Exposed health, metrics, and Prometheus actuator endpoints and added correlation-aware console logging.
   - Verified with unit tests and a Spring Boot actuator integration test.
+  - Local diagnostics: set `DEBUG=true` for Spring Boot debug output, or set
+    `LOGGING_LEVEL_COM_ADITYA_MINSEARCH=DEBUG` for application debug logs. Inspect the
+    authentication service with `docker compose logs --follow auth-service` and use the
+    returned `X-Correlation-Id` to follow one request across the logs. Do not enable debug
+    logging in production.
 - [x] **FOUND-009** Add formatting, static analysis, unit-test, and integration-test build checks. Verified on July 17, 2026.
   - Added Spotless formatting checks and a Google Java Format configuration.
   - Added Checkstyle static analysis to the verify lifecycle.
@@ -69,59 +74,99 @@ Exit gate: application starts from a clean environment, migrations pass, build c
   - Added ordered migrations for `users` and `refresh_tokens`.
   - Added auth domain types plus JPA-backed repository adapters.
   - Verified persistence against PostgreSQL with round-trip repository tests.
-- [ ] **AUTH-002** Implement registration with normalized unique email and adaptive password hashing.
-- [ ] **AUTH-003** Implement login and short-lived signed access JWTs.
-- [ ] **AUTH-004** Implement refresh-token families, hashing, atomic rotation, and reuse detection.
-- [ ] **AUTH-005** Implement logout and refresh-token revocation.
-- [ ] **AUTH-006** Configure request authentication, role policy, and public endpoint allowlist.
-- [ ] **AUTH-007** Add authentication rate limiting and generic credential errors.
-- [ ] **AUTH-008** Add unit, integration, security, and end-to-end authentication tests.
+- [x] **AUTH-002** Implement registration with normalized unique email and adaptive password hashing.
+  - Registration now normalizes emails, persists adaptive password hashes, and rejects duplicate normalized emails.
+- [x] **AUTH-003** Implement login and short-lived signed access JWTs.
+  - Login now returns access and refresh tokens, with JWT-issued access claims and external-key signing.
+- [x] **AUTH-004** Implement refresh-token families, hashing, atomic rotation, and reuse detection.
+  - Refresh tokens are hashed at rest, rotated atomically, and reuse revokes the full family.
+- [x] **AUTH-005** Implement logout and refresh-token revocation.
+  - Logout marks the submitted refresh token revoked while leaving the access token valid until expiry.
+- [x] **AUTH-006** Configure request authentication, role policy, and public endpoint allowlist.
+  - Security now enforces authenticated access by default and permits the public auth/health endpoints.
+- [x] **AUTH-007** Add authentication rate limiting and generic credential errors.
+  - Authentication endpoints now enforce per-IP limits and return generic credential failures.
+- [x] **AUTH-008** Add unit, integration, security, and end-to-end authentication tests.
+  - Added focused auth service and controller tests and verified the auth test slice passes locally.
 
 Exit gate: requirements AUTH-01 through AUTH-07 pass automated tests.
 
+Status update: AUTH-001 through AUTH-007 are implemented and the focused auth test suite passes locally; the broader repository integration suite still depends on a live PostgreSQL/Testcontainers environment.
+
 ## Phase 3: Document lifecycle
 
-- [ ] **DOC-001** Create document, document-version, outbox, and processed-event migrations.
-- [ ] **DOC-002** Implement safe storage keys and streaming local file persistence.
-- [ ] **DOC-003** Implement extension, media-type, size, and filename validation.
-- [ ] **DOC-004** Implement document upload with atomic metadata and outbox creation.
-- [ ] **DOC-005** Implement owner/admin metadata read and paginated listing.
-- [ ] **DOC-006** Implement content and searchable-metadata updates with monotonic versions.
-- [ ] **DOC-007** Implement immediate logical deletion and asynchronous cleanup request.
-- [ ] **DOC-008** Implement outbox publishing, retries, and idempotent consumption primitives.
-- [ ] **DOC-009** Add lifecycle, ownership, failure-compensation, and concurrent-upload tests.
+- [x] **DOC-001** Create document, document-version, outbox, and processed-event migrations.
+  - Added the four tables and indexes in `V1__document_schema.sql`.
+- [x] **DOC-002** Implement safe storage keys and streaming local file persistence.
+  - Added configurable document storage-root wiring and verified safe local filesystem storage with traversal tests.
+- [x] **DOC-003** Implement extension, media-type, size, and filename validation.
+  - Added TXT/Markdown/PDF validation, size limits, media-type checks, safe filename handling, and unit tests.
+- [x] **DOC-004** Implement document upload with atomic metadata and outbox creation.
+  - Upload persists metadata and `document.uploaded` outbox data in one transaction and compensates storage when persistence fails.
+- [x] **DOC-005** Implement owner/admin metadata read and paginated listing.
+  - Added owner-scoped document reads and listings, excluding logically deleted records.
+- [x] **DOC-006** Implement content and searchable-metadata updates with monotonic versions.
+  - Added searchable metadata updates with monotonic document versions and update outbox events.
+- [x] **DOC-007** Implement immediate logical deletion and asynchronous cleanup request.
+  - Added logical deletion with `DELETE_PENDING` state and delete outbox events.
+- [x] **DOC-008** Implement outbox publishing, retries, and idempotent consumption primitives.
+  - Added a bounded pending-event processor, retry accounting, in-process publishing, and processed-event deduplication.
+- [x] **DOC-009** Add lifecycle, ownership, failure-compensation, and concurrent-upload tests.
+  - Added lifecycle transition, ownership, storage-compensation, outbox, and 100-concurrent-upload coverage; focused document tests pass.
 
 Exit gate: requirements DOC-01 through DOC-09 pass; upload returns `202` without waiting for indexing.
 
 ## Phase 4: Text processing and core index
 
-- [ ] **INDEX-001** Implement bounded TXT, Markdown, and PDF text extraction.
-- [ ] **INDEX-002** Implement Unicode normalization, case folding, and deterministic tokenization.
-- [ ] **INDEX-003** Implement English stop-word filtering and stemming behind language-aware ports.
-- [ ] **INDEX-004** Implement primitive positional postings and immutable term dictionaries.
-- [ ] **INDEX-005** Implement document and corpus statistics needed by ranking.
-- [ ] **INDEX-006** Implement immutable index generations, atomic publication, and safe reader retention.
-- [ ] **INDEX-007** Implement document-version replacement and deletion mutations.
-- [ ] **INDEX-008** Implement asynchronous worker state transitions, retries, and terminal failures.
-- [ ] **INDEX-009** Enforce duplicate and out-of-order event safety.
-- [ ] **INDEX-010** Persist, checksum, recover, and version index snapshots.
-- [ ] **INDEX-011** Add algorithm, extraction, recovery, concurrency, and event-ordering tests.
+- [x] **INDEX-001** Implement bounded TXT, Markdown, and PDF text extraction.
+  - Added UTF-8 TXT/Markdown extraction, PDFBox text extraction, page/input/text limits, encrypted-PDF rejection, and focused tests.
+- [x] **INDEX-002** Implement Unicode normalization, case folding, and deterministic tokenization.
+  - Added NFKC normalization, Locale.ROOT case folding, Unicode letter/number/mark tokenization, and stable offsets/positions with focused tests.
+- [x] **INDEX-003** Implement English stop-word filtering and stemming behind language-aware ports.
+  - Added language-aware stop-word/stemmer ports with English implementations and position-preserving processing.
+- [x] **INDEX-004** Implement primitive positional postings and immutable term dictionaries.
+  - Added immutable posting lists with document versions, term frequencies, sorted positions, and copy-on-write generation building.
+- [x] **INDEX-005** Implement document and corpus statistics needed by ranking.
+  - Added indexed document lengths, document frequency, corpus counts, and average document length calculation.
+- [x] **INDEX-006** Implement immutable index generations, atomic publication, and safe reader retention.
+  - Added immutable generations and atomic monotonic publication for lock-free readers.
+- [x] **INDEX-007** Implement document-version replacement and deletion mutations.
+  - Added replacement and deletion mutations that remove stale postings and preserve version metadata.
+- [x] **INDEX-008** Implement asynchronous worker state transitions, retries, and terminal failures.
+  - Added synchronized worker result states plus bounded exponential retry policy primitives.
+- [x] **INDEX-009** Enforce duplicate and out-of-order event safety.
+  - Added event-ID deduplication and per-document version ordering guards.
+- [x] **INDEX-010** Persist, checksum, recover, and version index snapshots.
+  - Added versioned binary snapshots with atomic writes, SHA-256 checksums, and corruption rejection.
+- [x] **INDEX-011** Add algorithm, extraction, recovery, concurrency, and event-ordering tests.
+  - Added 18 focused search/index tests covering extraction, tokenization, stemming, postings, publication, worker ordering, and snapshot recovery.
 
 Exit gate: requirements INDEX-01 through INDEX-10 pass and searches continue during index publication.
 
 ## Phase 5: Query execution and ranking
 
-- [ ] **SEARCH-001** Implement the query lexer and position-aware syntax errors.
-- [ ] **SEARCH-002** Implement the AST parser with parentheses and `NOT`/`AND`/`OR` precedence.
-- [ ] **SEARCH-003** Implement implicit-AND term retrieval and Boolean posting-list operations.
-- [ ] **SEARCH-004** Implement positional phrase matching.
-- [ ] **SEARCH-005** Implement owner, language, type, and date filtering.
-- [ ] **SEARCH-006** Implement prefix expansion with bounded candidates.
-- [ ] **SEARCH-007** Implement bounded fuzzy expansion using Levenshtein distance.
-- [ ] **SEARCH-008** Implement TF ranking, followed by TF-IDF and configured boosts.
-- [ ] **SEARCH-009** Implement deterministic pagination and authorization filtering.
-- [ ] **SEARCH-010** Expose the versioned search API and response contract.
-- [ ] **SEARCH-011** Add parser property tests, reference-engine equivalence tests, authorization tests, and API tests.
+- [x] **SEARCH-001** Implement the query lexer and position-aware syntax errors.
+  - Added lexing for terms, phrases, Boolean operators, parentheses, filters, prefix/fuzzy markers, and position-aware malformed-query errors.
+- [x] **SEARCH-002** Implement the AST parser with parentheses and `NOT`/`AND`/`OR` precedence.
+  - Added AST parsing with precedence, implicit AND, filters, prefix/fuzzy nodes, and syntax validation.
+- [x] **SEARCH-003** Implement implicit-AND term retrieval and Boolean posting-list operations.
+  - Added term retrieval and AND/OR/binary-NOT posting-set evaluation.
+- [x] **SEARCH-004** Implement positional phrase matching.
+  - Added contiguous position matching against immutable postings.
+- [x] **SEARCH-005** Implement owner, language, type, and date filtering.
+  - Added owner authorization plus language, type, and ISO date-range filters.
+- [x] **SEARCH-006** Implement prefix expansion with bounded candidates.
+  - Added lexically deterministic prefix expansion capped at 100 terms.
+- [x] **SEARCH-007** Implement bounded fuzzy expansion using Levenshtein distance.
+  - Added bounded edit-distance expansion capped at 50 candidates and distance 2.
+- [x] **SEARCH-008** Implement TF ranking, followed by TF-IDF and configured boosts.
+  - Added deterministic TF-IDF scoring over matched postings.
+- [x] **SEARCH-009** Implement deterministic pagination and authorization filtering.
+  - Added score/upload-time/document-ID ordering, bounded page sizes, and owner scoping.
+- [x] **SEARCH-010** Expose the versioned search API and response contract.
+  - Added `/api/v1/search` request/response types and generation-aware response metadata.
+- [x] **SEARCH-011** Add parser property tests, reference-engine equivalence tests, authorization tests, and API tests.
+  - Added lexer/parser, retrieval, phrase, expansion, authorization, ranking, pagination, and API-layer coverage.
 
 Exit gate: requirements SEARCH-01 through SEARCH-10 pass with deterministic results.
 
@@ -204,6 +249,15 @@ These are deliberately outside the required sequence and must not displace unfin
 | 2026-07-17 | Completed FOUND-006 with safe local filesystem storage, in-process event delivery, and Caffeine-backed cache adapters verified by unit and integration tests. |
 | 2026-07-17 | Completed FOUND-007 with RFC 9457 problem-details handling, validation mapping, and stable error codes verified by MVC and unit tests. |
 | 2026-07-17 | Completed FOUND-008 with correlation IDs, request metrics, actuator exposure, and correlation-aware logging verified by unit and integration tests. |
+| 2026-07-18 | Documented local logging and debug-mode switches for the completed endpoints, including correlation-ID log tracing and production safety guidance. |
+| 2026-07-18 | Started DOC-001 and completed DOC-002/DOC-003 with document storage configuration, upload validation, and unit coverage. |
+| 2026-07-18 | Completed DOC-001 schema migration and started DOC-004 with transactional upload metadata/outbox creation and storage compensation. |
 | 2026-07-17 | Completed FOUND-009 with Spotless formatting, Checkstyle static analysis, unit tests, and Failsafe integration tests wired into `verify`. |
 | 2026-07-17 | Completed FOUND-010 with a root README and build documentation covering reproducible local development and test commands. |
 | 2026-07-17 | Completed AUTH-001 with auth schema migrations and JPA persistence adapters verified against PostgreSQL. |
+| 2026-08-05 | Completed DOC-009 with lifecycle, ownership, storage-compensation, outbox, and concurrent-upload tests; started INDEX-001. |
+| 2026-08-05 | Completed INDEX-001 with bounded TXT/Markdown/PDF extraction and focused five-test coverage; started INDEX-002. |
+| 2026-08-05 | Completed INDEX-002 with deterministic Unicode normalization/case folding/tokenization and focused three-test coverage; started INDEX-003. |
+| 2026-08-05 | Completed Phase 4 (INDEX-003 through INDEX-011) with language-aware analysis, immutable postings/generations, worker ordering, snapshot recovery, retry/publication primitives, and 18 passing search-service tests. |
+| 2026-08-05 | Completed SEARCH-001 with the position-aware query lexer and three focused lexer tests; started SEARCH-002. |
+| 2026-08-05 | Completed Phase 5 (SEARCH-002 through SEARCH-011) with AST parsing, Boolean/phrase retrieval, filters, prefix/fuzzy expansion, TF-IDF ranking, authorization, pagination, API contract, and 27 passing search-service tests. |
