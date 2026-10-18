@@ -36,6 +36,6 @@ class DatabaseMigrationTest extends PostgresRepositoryTest {
             .single();
 
     assertThat(value).isEqualTo("persisted");
-    assertThat(migrationCount).isEqualTo(3);
+    assertThat(migrationCount).isEqualTo(1);
   }
 }

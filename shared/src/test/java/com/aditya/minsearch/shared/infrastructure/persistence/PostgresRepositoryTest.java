@@ -6,8 +6,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
-@SpringBootTest(
-    properties = "spring.flyway.locations=classpath:db/migration,classpath:db/testmigration")
+@SpringBootTest(properties = "spring.flyway.locations=classpath:db/testmigration")
 @Testcontainers(disabledWithoutDocker = true)
 public abstract class PostgresRepositoryTest {
 
