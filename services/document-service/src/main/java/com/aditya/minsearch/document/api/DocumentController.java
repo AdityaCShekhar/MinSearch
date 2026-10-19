@@ -1,12 +1,14 @@
 package com.aditya.minsearch.document.api;
 
-import com.aditya.minsearch.document.application.DocumentUploadService;
-import com.aditya.minsearch.document.application.DocumentQueryService;
 import com.aditya.minsearch.document.application.DocumentLifecycleService;
+import com.aditya.minsearch.document.application.DocumentQueryService;
+import com.aditya.minsearch.document.application.DocumentUploadService;
 import com.aditya.minsearch.document.domain.Document;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,38 +18,61 @@ public class DocumentController {
   private final DocumentUploadService uploads;
   private final DocumentQueryService queries;
   private final DocumentLifecycleService lifecycle;
-  public DocumentController(DocumentUploadService uploads, DocumentQueryService queries, DocumentLifecycleService lifecycle) {
-    this.uploads = uploads; this.queries = queries; this.lifecycle = lifecycle;
+
+  public DocumentController(
+      DocumentUploadService uploads,
+      DocumentQueryService queries,
+      DocumentLifecycleService lifecycle) {
+    this.uploads = uploads;
+    this.queries = queries;
+    this.lifecycle = lifecycle;
   }
 
   @PostMapping(consumes = "multipart/form-data")
   public ResponseEntity<Document> upload(
-      @RequestHeader("X-User-Id") UUID ownerId,
+      @AuthenticationPrincipal Jwt principal,
       @RequestPart("file") MultipartFile file,
       @RequestPart(value = "title", required = false) String title,
-      @RequestPart(value = "language", required = false) String language) throws Exception {
-    return ResponseEntity.accepted().body(uploads.upload(ownerId, file, title, language));
+      @RequestPart(value = "language", required = false) String language)
+      throws Exception {
+    return ResponseEntity.accepted()
+        .body(uploads.upload(UUID.fromString(principal.getSubject()), file, title, language));
   }
 
   @GetMapping("/{id}")
-  public Document get(@PathVariable UUID id, @RequestHeader("X-User-Id") UUID ownerId) {
+  public Document get(@PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
+    UUID ownerId = UUID.fromString(principal.getSubject());
     Document document = queries.get(id);
-    if (!document.ownerId().equals(ownerId)) throw new IllegalArgumentException("Document not found");
+    if (!document.ownerId().equals(ownerId))
+      throw new IllegalArgumentException("Document not found");
     return document;
   }
 
   @GetMapping
-  public List<Document> list(@RequestHeader("X-User-Id") UUID ownerId) { return queries.list(ownerId); }
+  public List<Document> list(@AuthenticationPrincipal Jwt principal) {
+    return queries.list(UUID.fromString(principal.getSubject()));
+  }
+
+  @GetMapping("/{id}/status")
+  public DocumentQueryService.ProcessingStatus status(
+      @PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
+    return queries.status(id, UUID.fromString(principal.getSubject()));
+  }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Document> update(@PathVariable UUID id, @RequestHeader("X-User-Id") UUID ownerId,
+  public ResponseEntity<Document> update(
+      @PathVariable UUID id,
+      @AuthenticationPrincipal Jwt principal,
       @RequestPart(value = "title", required = false) String title,
       @RequestPart(value = "language", required = false) String language) {
-    return ResponseEntity.accepted().body(lifecycle.update(id, ownerId, title, language));
+    return ResponseEntity.accepted()
+        .body(lifecycle.update(id, UUID.fromString(principal.getSubject()), title, language));
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Document> delete(@PathVariable UUID id, @RequestHeader("X-User-Id") UUID ownerId) {
-    return ResponseEntity.accepted().body(lifecycle.delete(id, ownerId));
+  public ResponseEntity<Document> delete(
+      @PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
+    return ResponseEntity.accepted()
+        .body(lifecycle.delete(id, UUID.fromString(principal.getSubject())));
   }
 }

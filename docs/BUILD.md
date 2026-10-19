@@ -23,8 +23,7 @@ For a shorter local workflow, start with the repository root [README](../README.
 4. Snapshot dependencies and dynamic version ranges are not allowed in a release build.
 5. Framework version upgrades must be isolated changes with the full test suite and dependency-tree review.
 
-The Maven Enforcer plugin rejects unsupported Java/Maven versions, duplicate dependency declarations, and dependency convergence conflicts during every build.
-The build also runs formatting checks, Checkstyle static analysis, unit tests, and Failsafe integration tests during `verify`.
+The `verify` lifecycle runs Surefire tests, packages the services, and runs Failsafe integration tests. PostgreSQL repository tests use Testcontainers. Additional formatting, dependency-enforcement, and static-analysis gates remain build-hardening work.
 
 ## Common commands
 
@@ -34,9 +33,6 @@ The build also runs formatting checks, Checkstyle static analysis, unit tests, a
 
 # Run all verification checks and create the executable JAR
 ./mvnw verify
-
-# Run formatter and static-analysis checks explicitly
-./mvnw spotless:check checkstyle:check
 
 # Run integration tests only
 ./mvnw failsafe:integration-test failsafe:verify
@@ -57,3 +53,19 @@ phase also exercises the application startup path:
 ```
 
 Performance test commands will be added when that test suite is introduced.
+
+## Current pipeline verification
+
+Run the complete reactor, including shared fixtures, isolated auth persistence, document outcomes/cleanup, search recovery, and the application startup integration check:
+
+```shell
+./mvnw verify
+```
+
+The shared web/startup tests explicitly isolate database auto-configuration, and the shared repository fixture lives in the shared test resources. Database-backed tests use isolated containers rather than a developer database. Testcontainers tests are skipped when Docker is unavailable; a run with skipped tests does not verify persistence behavior.
+
+For the running services and Kafka delivery, use:
+
+```shell
+python3 scripts/smoke-search.py --restart-search --verify-cleanup --timeout 60
+```

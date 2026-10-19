@@ -15,9 +15,9 @@ Deferred stretch goals are excluded from these counts.
 
 | State | Count |
 | --- | ---: |
-| Done | 53 |
+| Done | 61 |
 | In progress | 1 |
-| Pending | 23 |
+| Pending | 14 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -174,20 +174,37 @@ Exit gate: requirements SEARCH-01 through SEARCH-10 pass with deterministic resu
 
 - [x] **UX-001** Implement safe, position-aware snippets and highlighting.
   - Added bounded densest-window snippets, phrase preference, case-insensitive surface highlighting, HTML escaping, and ellipses with focused XSS tests.
-- [>] **UX-002** Implement vocabulary and popular-query Trie autocomplete.
-- [ ] **UX-003** Implement spelling suggestions and confidence thresholds.
-- [ ] **CACHE-001** Implement generation-keyed local search and autocomplete caches.
-- [ ] **CACHE-002** Add Redis adapters and fail-open cache behavior.
-- [ ] **ANALYTICS-001** Create search-history persistence and asynchronous recording.
-- [ ] **ANALYTICS-002** Implement personal history read/delete operations.
-- [ ] **ANALYTICS-003** Implement admin trending and aggregate metrics APIs.
-- [ ] **UX-004** Add snippet-XSS, Trie, suggestion, cache, and analytics tests.
+- [x] **UX-002** Implement vocabulary and popular-query Trie autocomplete.
+  - Added a deterministic Trie over generation vocabulary and normalized popular queries, ordered by popularity then lexical order and capped at 10 results.
+- [x] **UX-003** Implement spelling suggestions and confidence thresholds.
+  - Added bounded Levenshtein candidate search with distance/document-frequency/lexical ordering, exact-term preservation, and a conservative confidence threshold.
+- [x] **CACHE-001** Implement generation-keyed local search and autocomplete caches.
+  - Search and autocomplete cache keys include index generation; owner, query, and pagination are included for search.
+- [x] **CACHE-002** Add Redis adapters and fail-open cache behavior.
+  - Added JSON Redis cache storage behind `CacheStore`, optional enablement through `minsearch.cache.redis.enabled`, and local Caffeine fallback. Cache read/write failures do not fail search.
+- [x] **ANALYTICS-001** Create search-history persistence and asynchronous recording.
+  - Added the `search_history` migration and asynchronous, best-effort search recording.
+- [x] **ANALYTICS-002** Implement personal history read/delete operations.
+  - Added owner-scoped history listing and deletion endpoints.
+- [x] **ANALYTICS-003** Implement admin trending and aggregate metrics APIs.
+  - Added time-windowed trending and aggregate latency, failed-query, and cache-hit-rate metrics endpoints.
+- [x] **UX-004** Add snippet-XSS, Trie, suggestion, cache, and analytics tests.
+  - Added Trie, spelling-suggestion, and asynchronous analytics coverage; existing snippet-XSS and cache adapter tests cover their areas.
 
 Exit gate: SNIP, AUTO, SUGG, and ANALYTICS requirements pass; cache failure cannot fail search.
 
 ## Phase 7: Production adapters and hardening
 
-- [ ] **PROD-001** Add Kafka event adapters with partitioning, retry, and dead-letter behavior.
+- [>] **PROD-001** Add Kafka event adapters with partitioning, retry, and dead-letter behavior.
+  - Connected document upload/update/delete outbox events to the search service through Kafka, keyed by document ID, with acknowledged producer sends, polling retries, bounded consumer retries, and dead-letter topics.
+  - Added a versioned event payload carrying ownership, storage, checksum, type, language, and upload time; JSON serialization handles quoted filenames safely.
+  - Added a PostgreSQL token projection and deletion tombstones for durable version checks and startup reconstruction. Index and authorization metadata are published together.
+  - Connected document/search bearer authentication to the auth service and replaced caller-supplied ownership headers with the token subject.
+  - Added transactional `index.completed` outcomes, durable terminal-failure feedback, version-aware status consumers, and a durable file-cleanup queue after index deletion confirmation.
+  - Added owner-scoped processing-status polling, including `INDEX_FAILED` error descriptions and deletion progress. Cleanup retries storage failures and ignores obsolete jobs; status and event deduplication commit together.
+  - Repaired shared test fixtures and isolated auth persistence tests; the full Maven test suite passes without exclusions. Failsafe now runs startup integration checks during `verify`.
+  - Verified `./mvnw verify`: 87 tests passed with no failures or skips. Live Docker checks passed indexed status, owner isolation, metadata updates, restart recovery, physical cleanup, and terminal PDF failure. Explicit `.DLT` routing is covered by regression tests for both consumers.
+  - Remaining: dead-letter replay tooling and broader failure/concurrency hardening; the production exit gate is still open.
 - [ ] **PROD-002** Add deployed Redis configuration and serialization compatibility checks.
 - [ ] **PROD-003** Complete upload/parser security limits, CORS, headers, secrets, and audit logging.
 - [ ] **PROD-004** Complete Prometheus metrics and operational health behavior.

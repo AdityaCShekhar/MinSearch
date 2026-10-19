@@ -22,7 +22,9 @@ class DocumentOutboxProcessorTest {
   @Test
   void publishesAndMarksPendingEventProcessed() {
     UUID eventId = UUID.randomUUID();
-    DocumentOutboxJpaEntity event = new DocumentOutboxJpaEntity(eventId, UUID.randomUUID(), "document.uploaded", "{}", clock.instant());
+    DocumentOutboxJpaEntity event =
+        new DocumentOutboxJpaEntity(
+            eventId, UUID.randomUUID(), "document.uploaded", "{}", clock.instant());
     when(outbox.findTop100ByPublishedAtIsNullOrderByOccurredAtAsc()).thenReturn(List.of(event));
     when(processed.existsById(eventId)).thenReturn(false);
 
@@ -37,11 +39,32 @@ class DocumentOutboxProcessorTest {
   @Test
   void skipsAlreadyProcessedEvent() {
     UUID eventId = UUID.randomUUID();
-    DocumentOutboxJpaEntity event = new DocumentOutboxJpaEntity(eventId, UUID.randomUUID(), "document.updated", "{}", clock.instant());
+    DocumentOutboxJpaEntity event =
+        new DocumentOutboxJpaEntity(
+            eventId, UUID.randomUUID(), "document.updated", "{}", clock.instant());
     when(outbox.findTop100ByPublishedAtIsNullOrderByOccurredAtAsc()).thenReturn(List.of(event));
     when(processed.existsById(eventId)).thenReturn(true);
 
-    assertThat(new DocumentOutboxProcessor(outbox, processed, publisher, clock).publishPending()).isZero();
+    assertThat(new DocumentOutboxProcessor(outbox, processed, publisher, clock).publishPending())
+        .isZero();
     verifyNoInteractions(publisher);
+  }
+
+  @Test
+  void leavesFailedPublicationPendingForTheNextPoll() {
+    DocumentOutboxJpaEntity event =
+        new DocumentOutboxJpaEntity(
+            UUID.randomUUID(), UUID.randomUUID(), "document.uploaded", "{}", clock.instant());
+    when(outbox.findTop100ByPublishedAtIsNullOrderByOccurredAtAsc()).thenReturn(List.of(event));
+    doThrow(new IllegalStateException("broker unavailable"))
+        .doNothing()
+        .when(publisher)
+        .publish(any());
+    var processor = new DocumentOutboxProcessor(outbox, processed, publisher, clock);
+    assertThat(processor.publishPending()).isZero();
+    verify(processed, never()).save(any());
+    assertThat(processor.publishPending()).isOne();
+    verify(publisher, times(2)).publish(any());
+    verify(processed).save(any());
   }
 }
