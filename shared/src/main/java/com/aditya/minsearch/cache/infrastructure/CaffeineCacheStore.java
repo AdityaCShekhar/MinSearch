@@ -17,6 +17,11 @@ public class CaffeineCacheStore implements CacheStore {
     this(Caffeine.newBuilder().maximumSize(10_000).build());
   }
 
+  public CaffeineCacheStore(io.micrometer.core.instrument.MeterRegistry registry) {
+    this(Caffeine.newBuilder().maximumSize(10_000).recordStats().build());
+    if (registry != null) io.micrometer.core.instrument.binder.cache.CaffeineCacheMetrics.monitor(registry, cache, "minsearch-local");
+  }
+
   public CaffeineCacheStore(Cache<String, CachedValue> cache) {
     this.cache = cache;
   }

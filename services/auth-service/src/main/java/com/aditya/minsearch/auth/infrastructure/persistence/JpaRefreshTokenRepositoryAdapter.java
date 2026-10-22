@@ -11,9 +11,19 @@ import org.springframework.stereotype.Repository;
 public class JpaRefreshTokenRepositoryAdapter implements RefreshTokenRepository {
 
 	private final SpringDataRefreshTokenRepository repository;
+	private final org.springframework.jdbc.core.JdbcTemplate jdbc;
 
-	public JpaRefreshTokenRepositoryAdapter(SpringDataRefreshTokenRepository repository) {
+	public JpaRefreshTokenRepositoryAdapter(SpringDataRefreshTokenRepository repository, org.springframework.jdbc.core.JdbcTemplate jdbc) {
 		this.repository = repository;
+		this.jdbc = jdbc;
+	}
+
+	@Override public void lockFamily(UUID familyId) {
+		jdbc.execute(connection -> {
+			var statement = connection.prepareStatement("SELECT pg_advisory_xact_lock(?)");
+			statement.setLong(1, familyId.getMostSignificantBits() ^ familyId.getLeastSignificantBits());
+			return statement;
+		}, (org.springframework.jdbc.core.PreparedStatementCallback<Void>) statement -> { statement.execute(); return null; });
 	}
 
 	@Override
@@ -22,8 +32,9 @@ public class JpaRefreshTokenRepositoryAdapter implements RefreshTokenRepository 
 	}
 
 	@Override
+	@org.springframework.transaction.annotation.Transactional
 	public Optional<RefreshToken> findById(UUID id) {
-		return repository.findById(id).map(RefreshTokenJpaEntity::toDomain);
+		return repository.findByIdForUpdate(id).map(RefreshTokenJpaEntity::toDomain);
 	}
 
 	@Override

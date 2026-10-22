@@ -1,0 +1,3719 @@
+{
+  "samples": [
+    {
+      "utc": "2026-10-18T20:14:01.661705+00:00",
+      "phase": "setup",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 49.2kB",
+          "CPUPerc": "0.22%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "37.7kB / 44.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 32.8kB",
+          "CPUPerc": "1.50%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.96%",
+          "MemUsage": "391.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "58kB / 53.3kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.59MB",
+          "CPUPerc": "2.65%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "53.76%",
+          "MemUsage": "412.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "28.6kB / 52.7kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "14.5MB / 53.9MB",
+          "CPUPerc": "1.12%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "13.94%",
+          "MemUsage": "71.35MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "140kB / 127kB",
+          "PIDs": "26"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "0.00%",
+          "MemUsage": "0B / 0B",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "0B / 0B",
+          "PIDs": "0"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:06.321611+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 49.2kB",
+          "CPUPerc": "0.24%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "37.8kB / 44.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 32.8kB",
+          "CPUPerc": "2.22%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "49.99%",
+          "MemUsage": "383.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "62kB / 59.3kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.68MB",
+          "CPUPerc": "3.60%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.07%",
+          "MemUsage": "415.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "30.4kB / 54.3kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "14.5MB / 53.9MB",
+          "CPUPerc": "0.12%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "13.89%",
+          "MemUsage": "71.11MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "144kB / 128kB",
+          "PIDs": "26"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:10.947406+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 49.2kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "37.9kB / 44.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 32.8kB",
+          "CPUPerc": "1.26%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.01%",
+          "MemUsage": "384.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "65.9kB / 65.4kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.75MB",
+          "CPUPerc": "2.98%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "53.66%",
+          "MemUsage": "412.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "32.2kB / 55.9kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "14.5MB / 53.9MB",
+          "CPUPerc": "0.10%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "13.89%",
+          "MemUsage": "71.11MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "149kB / 131kB",
+          "PIDs": "26"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:15.579278+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 61.4kB",
+          "CPUPerc": "0.15%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 45.1kB",
+          "CPUPerc": "0.91%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.03%",
+          "MemUsage": "384.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "70.1kB / 71.7kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.81MB",
+          "CPUPerc": "31.55%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "60.35%",
+          "MemUsage": "463.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "33.8kB / 57.3kB",
+          "PIDs": "123"
+        },
+        {
+          "BlockIO": "14.5MB / 111MB",
+          "CPUPerc": "101.04%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "20.56%",
+          "MemUsage": "105.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "153kB / 133kB",
+          "PIDs": "28"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:20.197188+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 61.4kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 45.1kB",
+          "CPUPerc": "1.18%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.03%",
+          "MemUsage": "384.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "73.7kB / 77.4kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.89MB",
+          "CPUPerc": "2.44%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "53.71%",
+          "MemUsage": "412.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "35.5kB / 58.9kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "14.5MB / 401MB",
+          "CPUPerc": "101.20%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "28.13%",
+          "MemUsage": "144MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "157kB / 135kB",
+          "PIDs": "28"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:24.850168+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 69.6kB",
+          "CPUPerc": "0.14%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.2kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 57.3kB",
+          "CPUPerc": "0.89%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.04%",
+          "MemUsage": "384.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "77.1kB / 82.6kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 1.99MB",
+          "CPUPerc": "4.74%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "53.79%",
+          "MemUsage": "413.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "39.7kB / 65.3kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "17.3MB / 648MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "33.49%",
+          "MemUsage": "171.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "163kB / 138kB",
+          "PIDs": "26"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:29.468956+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 69.6kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.3kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 57.3kB",
+          "CPUPerc": "0.72%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.07%",
+          "MemUsage": "384.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "82kB / 90kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.04MB",
+          "CPUPerc": "69.92%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "65.77%",
+          "MemUsage": "505.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "47kB / 78.8kB",
+          "PIDs": "120"
+        },
+        {
+          "BlockIO": "0B / 197kB",
+          "CPUPerc": "100.11%",
+          "Container": "930dd5c49baff2160b56044ece8d67eebb1292d1fa1b994e175272b613947076",
+          "ID": "930dd5c49baf",
+          "MemPerc": "1.23%",
+          "MemUsage": "96.05MiB / 7.653GiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-init-1",
+          "NetIO": "18kB / 8.25kB",
+          "PIDs": "29"
+        },
+        {
+          "BlockIO": "17.3MB / 648MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "33.46%",
+          "MemUsage": "171.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "166kB / 140kB",
+          "PIDs": "26"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:34.091906+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 77.8kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.5kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 69.6kB",
+          "CPUPerc": "0.54%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.09%",
+          "MemUsage": "384.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "85.5kB / 95.2kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.13MB",
+          "CPUPerc": "1.68%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.01%",
+          "MemUsage": "414.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "51.9kB / 87.4kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "930dd5c49baff2160b56044ece8d67eebb1292d1fa1b994e175272b613947076",
+          "ID": "930dd5c49baf",
+          "MemPerc": "0.00%",
+          "MemUsage": "0B / 0B",
+          "Name": "minsearch-bench-1760898f-100000-kafka-init-1",
+          "NetIO": "0B / 0B",
+          "PIDs": "0"
+        },
+        {
+          "BlockIO": "17.3MB / 648MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "33.46%",
+          "MemUsage": "171.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "171kB / 143kB",
+          "PIDs": "26"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:38.122612+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 77.8kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.5kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 69.6kB",
+          "CPUPerc": "0.74%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.12%",
+          "MemUsage": "384.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "89.5kB / 101kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.2MB",
+          "CPUPerc": "1.47%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.88%",
+          "MemUsage": "421.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "53.9kB / 89.1kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "29.4MB / 650MB",
+          "CPUPerc": "23.57%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.84%",
+          "MemUsage": "219.4MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "1.77MB / 208MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "49.2kB / 0B",
+          "CPUPerc": "109.41%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "43.06%",
+          "MemUsage": "1.292GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "336MB / 2.57MB",
+          "PIDs": "28"
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-18T20:14:42.745693+00:00",
+      "phase": "fixture-materialization",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 77.8kB",
+          "CPUPerc": "0.08%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.69%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.5kB / 44.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 69.6kB",
+          "CPUPerc": "0.67%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.14%",
+          "MemUsage": "385MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "92.9kB / 107kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.24MB",
+          "CPUPerc": "76.27%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "65.35%",
+          "MemUsage": "501.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "55.3kB / 90.4kB",
+          "PIDs": "120"
+        },
+        {
+          "BlockIO": "30.3MB / 751MB",
+          "CPUPerc": "1.51%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.86%",
+          "MemUsage": "219.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.77MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "49.2kB / 0B",
+          "CPUPerc": "186.47%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "49.80%",
+          "MemUsage": "1.494GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 4.59MB",
+          "PIDs": "40"
+        }
+      ],
+      "heap_used_bytes": 930458200.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.75
+    },
+    {
+      "utc": "2026-10-18T20:14:46.836976+00:00",
+      "phase": "cold-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 77.8kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.6kB / 44.6kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 69.6kB",
+          "CPUPerc": "0.84%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.17%",
+          "MemUsage": "385.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "96.3kB / 112kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.32MB",
+          "CPUPerc": "2.83%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.82%",
+          "MemUsage": "421MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "62.3kB / 98.8kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "30.3MB / 754MB",
+          "CPUPerc": "0.10%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.87%",
+          "MemUsage": "219.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.78MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 0B",
+          "CPUPerc": "162.56%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "54.48%",
+          "MemUsage": "1.635GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 4.8MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 924692448.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.8282608695652174,
+      "jvm_gc_pause": {
+        "COUNT": 5.0,
+        "TOTAL_TIME": 0.29300000000000004,
+        "MAX": 0.091
+      }
+    },
+    {
+      "utc": "2026-10-18T20:14:51.459888+00:00",
+      "phase": "cold-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 90.1kB",
+          "CPUPerc": "0.15%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.7kB / 44.6kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 81.9kB",
+          "CPUPerc": "0.45%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.20%",
+          "MemUsage": "385.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "101kB / 119kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.43MB",
+          "CPUPerc": "1.58%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.06%",
+          "MemUsage": "415.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "65.5kB / 102kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "30.3MB / 754MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.91%",
+          "MemUsage": "219.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.79MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 32.8kB",
+          "CPUPerc": "120.01%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "59.25%",
+          "MemUsage": "1.778GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 4.88MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 745385984.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6695652173913044,
+      "jvm_gc_pause": {
+        "COUNT": 16.0,
+        "TOTAL_TIME": 0.639,
+        "MAX": 0.091
+      }
+    },
+    {
+      "utc": "2026-10-18T20:14:56.101633+00:00",
+      "phase": "cold-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 90.1kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.7kB / 44.6kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 81.9kB",
+          "CPUPerc": "0.52%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.20%",
+          "MemUsage": "385.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "105kB / 125kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.47MB",
+          "CPUPerc": "74.25%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "65.26%",
+          "MemUsage": "501.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "68.3kB / 104kB",
+          "PIDs": "120"
+        },
+        {
+          "BlockIO": "30.3MB / 754MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.86%",
+          "MemUsage": "219.4MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.79MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 32.8kB",
+          "CPUPerc": "134.78%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "65.08%",
+          "MemUsage": "1.952GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 5MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 785231872.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6414893617021277,
+      "jvm_gc_pause": {
+        "COUNT": 22.0,
+        "TOTAL_TIME": 0.9279999999999999,
+        "MAX": 0.091
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:00.726513+00:00",
+      "phase": "cold-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 90.1kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.8kB / 44.7kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 81.9kB",
+          "CPUPerc": "0.94%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.25%",
+          "MemUsage": "385.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "109kB / 132kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.54MB",
+          "CPUPerc": "1.44%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.02%",
+          "MemUsage": "414.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "71.6kB / 108kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "30.3MB / 754MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.86%",
+          "MemUsage": "219.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.8MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 32.8kB",
+          "CPUPerc": "116.05%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "68.69%",
+          "MemUsage": "2.061GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 5.11MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 1549643776.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.5978260869565217,
+      "jvm_gc_pause": {
+        "COUNT": 28.0,
+        "TOTAL_TIME": 1.237,
+        "MAX": 0.091
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:05.352939+00:00",
+      "phase": "cold-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 102kB",
+          "CPUPerc": "0.16%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.8kB / 44.7kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 94.2kB",
+          "CPUPerc": "0.68%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.27%",
+          "MemUsage": "386.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "112kB / 136kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.65MB",
+          "CPUPerc": "2.05%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.23%",
+          "MemUsage": "416.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "75.7kB / 111kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "30.3MB / 809MB",
+          "CPUPerc": "2.00%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "43.13%",
+          "MemUsage": "220.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.81MB / 603MB",
+          "PIDs": "37"
+        },
+        {
+          "BlockIO": "401kB / 49.2kB",
+          "CPUPerc": "111.73%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "68.80%",
+          "MemUsage": "2.064GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "603MB / 5.2MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 1457369088.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6326086956521739,
+      "jvm_gc_pause": {
+        "COUNT": 35.0,
+        "TOTAL_TIME": 1.576,
+        "MAX": 0.097
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:10.004656+00:00",
+      "phase": "warm-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 102kB",
+          "CPUPerc": "0.21%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.8kB / 44.7kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 94.2kB",
+          "CPUPerc": "0.50%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.28%",
+          "MemUsage": "386.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "116kB / 143kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.73MB",
+          "CPUPerc": "1.51%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.19%",
+          "MemUsage": "416.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "79.2kB / 114kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 817MB",
+          "CPUPerc": "0.14%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "43.65%",
+          "MemUsage": "223.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.81MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 49.2kB",
+          "CPUPerc": "127.25%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "69.10%",
+          "MemUsage": "2.073GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "605MB / 10.2MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 1395503104.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.7053191489361702,
+      "jvm_gc_pause": {
+        "COUNT": 42.0,
+        "TOTAL_TIME": 1.7160000000000002,
+        "MAX": 0.097
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:14.634595+00:00",
+      "phase": "warm-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 102kB",
+          "CPUPerc": "0.08%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.8kB / 44.7kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 94.2kB",
+          "CPUPerc": "0.45%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.30%",
+          "MemUsage": "386.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "121kB / 149kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.76MB",
+          "CPUPerc": "103.54%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "65.90%",
+          "MemUsage": "506.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "81.9kB / 117kB",
+          "PIDs": "125"
+        },
+        {
+          "BlockIO": "45.9MB / 818MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "43.65%",
+          "MemUsage": "223.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.82MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 49.2kB",
+          "CPUPerc": "139.49%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "69.11%",
+          "MemUsage": "2.073GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 15.2MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 1273868288.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.64875,
+      "jvm_gc_pause": {
+        "COUNT": 46.0,
+        "TOTAL_TIME": 1.7999999999999998,
+        "MAX": 0.097
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:18.666496+00:00",
+      "phase": "mixed-c1-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 115kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.9kB / 44.8kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 106kB",
+          "CPUPerc": "0.55%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.31%",
+          "MemUsage": "386.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "124kB / 155kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.83MB",
+          "CPUPerc": "1.08%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.18%",
+          "MemUsage": "416.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "84.3kB / 119kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 818MB",
+          "CPUPerc": "0.09%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "43.65%",
+          "MemUsage": "223.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.83MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 65.5kB",
+          "CPUPerc": "147.11%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "69.10%",
+          "MemUsage": "2.073GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 15.5MB",
+          "PIDs": "46"
+        }
+      ],
+      "heap_used_bytes": 811446272.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6706521739130434,
+      "jvm_gc_pause": {
+        "COUNT": 53.0,
+        "TOTAL_TIME": 2.255,
+        "MAX": 0.157
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:23.301807+00:00",
+      "phase": "cold-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 115kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.9kB / 44.8kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 106kB",
+          "CPUPerc": "0.76%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.32%",
+          "MemUsage": "386.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "128kB / 161kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 2.93MB",
+          "CPUPerc": "1.66%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.24%",
+          "MemUsage": "416.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "88.6kB / 123kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 819MB",
+          "CPUPerc": "0.21%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "45.18%",
+          "MemUsage": "231.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.83MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 65.5kB",
+          "CPUPerc": "212.50%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "77.42%",
+          "MemUsage": "2.322GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 15.7MB",
+          "PIDs": "52"
+        }
+      ],
+      "heap_used_bytes": 1791864832.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.971875,
+      "jvm_gc_pause": {
+        "COUNT": 59.0,
+        "TOTAL_TIME": 2.7119999999999997,
+        "MAX": 0.187
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:28.028759+00:00",
+      "phase": "cold-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 115kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "38.9kB / 44.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 106kB",
+          "CPUPerc": "1.10%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.33%",
+          "MemUsage": "386.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "132kB / 168kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.01MB",
+          "CPUPerc": "14.63%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.32%",
+          "MemUsage": "417.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "92.5kB / 126kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 820MB",
+          "CPUPerc": "1.21%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.29%",
+          "MemUsage": "216.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.84MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 65.5kB",
+          "CPUPerc": "200.35%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.55%",
+          "MemUsage": "2.626GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 15.8MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 774335264.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 105.0,
+        "TOTAL_TIME": 3.934,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:33.040122+00:00",
+      "phase": "cold-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 115kB",
+          "CPUPerc": "0.15%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.2kB / 45.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 106kB",
+          "CPUPerc": "0.60%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.35%",
+          "MemUsage": "386.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "136kB / 173kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.05MB",
+          "CPUPerc": "1.49%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.38%",
+          "MemUsage": "417.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "95.4kB / 129kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 820MB",
+          "CPUPerc": "0.92%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.29%",
+          "MemUsage": "216.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.85MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 65.5kB",
+          "CPUPerc": "205.31%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "65.79%",
+          "MemUsage": "1.974GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 15.9MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1400420960.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9916666666666667,
+      "jvm_gc_pause": {
+        "COUNT": 109.0,
+        "TOTAL_TIME": 4.426,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:37.132747+00:00",
+      "phase": "cold-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 127kB",
+          "CPUPerc": "0.13%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.4kB / 45.6kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 119kB",
+          "CPUPerc": "1.15%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.39%",
+          "MemUsage": "387MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "141kB / 181kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.15MB",
+          "CPUPerc": "2.36%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.47%",
+          "MemUsage": "418.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "99.6kB / 132kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.10%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.29%",
+          "MemUsage": "216.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.85MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 81.9kB",
+          "CPUPerc": "198.13%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "80.26%",
+          "MemUsage": "2.408GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 16MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 2255010400.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9989795918367347,
+      "jvm_gc_pause": {
+        "COUNT": 121.0,
+        "TOTAL_TIME": 5.314,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:42.062065+00:00",
+      "phase": "cold-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 127kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.5kB / 45.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 119kB",
+          "CPUPerc": "0.56%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.40%",
+          "MemUsage": "387MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "144kB / 186kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.22MB",
+          "CPUPerc": "1.11%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.28%",
+          "MemUsage": "416.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "103kB / 135kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.29%",
+          "MemUsage": "216.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.86MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 81.9kB",
+          "CPUPerc": "190.52%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "66.22%",
+          "MemUsage": "1.986GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "608MB / 16.1MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1091809328.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.991304347826087,
+      "jvm_gc_pause": {
+        "COUNT": 136.0,
+        "TOTAL_TIME": 5.963,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:46.706805+00:00",
+      "phase": "warm-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 127kB",
+          "CPUPerc": "0.22%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.8kB / 46.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 119kB",
+          "CPUPerc": "0.58%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.41%",
+          "MemUsage": "387.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "149kB / 194kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.26MB",
+          "CPUPerc": "30.90%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "59.39%",
+          "MemUsage": "456.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "106kB / 137kB",
+          "PIDs": "123"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.13%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.87MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 81.9kB",
+          "CPUPerc": "203.46%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "79.60%",
+          "MemUsage": "2.388GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "614MB / 30.3MB",
+          "PIDs": "57"
+        }
+      ],
+      "heap_used_bytes": 626728728.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9851063829787234,
+      "jvm_gc_pause": {
+        "COUNT": 147.0,
+        "TOTAL_TIME": 6.096,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:51.339668+00:00",
+      "phase": "mixed-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 139kB",
+          "CPUPerc": "0.14%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.8kB / 46.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 131kB",
+          "CPUPerc": "0.60%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.42%",
+          "MemUsage": "387.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "153kB / 198kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.37MB",
+          "CPUPerc": "1.94%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.52%",
+          "MemUsage": "418.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "110kB / 141kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.09%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.88MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 94.2kB",
+          "CPUPerc": "196.70%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.21%",
+          "MemUsage": "2.616GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 35.5MB",
+          "PIDs": "55"
+        }
+      ],
+      "heap_used_bytes": 1456713816.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9887755102040816,
+      "jvm_gc_pause": {
+        "COUNT": 154.0,
+        "TOTAL_TIME": 6.59,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:15:56.228216+00:00",
+      "phase": "mixed-c16-r0",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 139kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.8kB / 46.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 131kB",
+          "CPUPerc": "0.44%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.44%",
+          "MemUsage": "387.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "158kB / 207kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.44MB",
+          "CPUPerc": "1.22%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.46%",
+          "MemUsage": "418.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "114kB / 144kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.89MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 94.2kB",
+          "CPUPerc": "153.71%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.18%",
+          "MemUsage": "2.645GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 35.7MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1659283016.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.8336956521739131,
+      "jvm_gc_pause": {
+        "COUNT": 161.0,
+        "TOTAL_TIME": 7.012,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:00.875087+00:00",
+      "phase": "cold-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 139kB",
+          "CPUPerc": "0.16%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.70%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.8kB / 46.4kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 131kB",
+          "CPUPerc": "1.69%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.48%",
+          "MemUsage": "387.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "162kB / 213kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.52MB",
+          "CPUPerc": "1.70%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.37%",
+          "MemUsage": "417.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "117kB / 147kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.89MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 94.2kB",
+          "CPUPerc": "107.50%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.26%",
+          "MemUsage": "2.648GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 35.8MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 830908000.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.7195652173913043,
+      "jvm_gc_pause": {
+        "COUNT": 167.0,
+        "TOTAL_TIME": 7.2989999999999995,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:05.506563+00:00",
+      "phase": "cold-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 152kB",
+          "CPUPerc": "0.13%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 131kB",
+          "CPUPerc": "0.70%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.49%",
+          "MemUsage": "387.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "165kB / 217kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.59MB",
+          "CPUPerc": "58.67%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "62.03%",
+          "MemUsage": "476.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "120kB / 150kB",
+          "PIDs": "124"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.9MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 106kB",
+          "CPUPerc": "140.33%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.72%",
+          "MemUsage": "2.662GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 35.9MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 838248032.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6553191489361702,
+      "jvm_gc_pause": {
+        "COUNT": 173.0,
+        "TOTAL_TIME": 7.62,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:10.131767+00:00",
+      "phase": "cold-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 152kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 143kB",
+          "CPUPerc": "13.11%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "51.28%",
+          "MemUsage": "393.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "170kB / 225kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.65MB",
+          "CPUPerc": "1.22%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.42%",
+          "MemUsage": "417.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "123kB / 153kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.91MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 106kB",
+          "CPUPerc": "129.12%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "86.72%",
+          "MemUsage": "2.602GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 36MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 791062120.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6695652173913044,
+      "jvm_gc_pause": {
+        "COUNT": 179.0,
+        "TOTAL_TIME": 7.95,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:14.757014+00:00",
+      "phase": "cold-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 152kB",
+          "CPUPerc": "0.08%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 143kB",
+          "CPUPerc": "0.35%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "51.28%",
+          "MemUsage": "393.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "174kB / 230kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.73MB",
+          "CPUPerc": "1.09%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.48%",
+          "MemUsage": "418.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "127kB / 156kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.91MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 106kB",
+          "CPUPerc": "103.13%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.56%",
+          "MemUsage": "2.627GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "617MB / 36.1MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1016505968.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.61875,
+      "jvm_gc_pause": {
+        "COUNT": 183.0,
+        "TOTAL_TIME": 8.234,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:18.784231+00:00",
+      "phase": "warm-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 152kB",
+          "CPUPerc": "0.07%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 143kB",
+          "CPUPerc": "0.40%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.79%",
+          "MemUsage": "390.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "178kB / 237kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.78MB",
+          "CPUPerc": "99.05%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "66.03%",
+          "MemUsage": "507.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "130kB / 159kB",
+          "PIDs": "120"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.09%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.92MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 106kB",
+          "CPUPerc": "122.52%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.63%",
+          "MemUsage": "2.629GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "618MB / 38.8MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1465496944.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.558695652173913,
+      "jvm_gc_pause": {
+        "COUNT": 190.0,
+        "TOTAL_TIME": 8.421,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:23.401115+00:00",
+      "phase": "warm-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 164kB",
+          "CPUPerc": "0.08%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 156kB",
+          "CPUPerc": "0.65%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.80%",
+          "MemUsage": "390.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "182kB / 242kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.87MB",
+          "CPUPerc": "0.97%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.51%",
+          "MemUsage": "418.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "133kB / 162kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "0.87%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.36%",
+          "MemUsage": "216.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.93MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 119kB",
+          "CPUPerc": "109.74%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.64%",
+          "MemUsage": "2.629GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 48.8MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1147169440.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.41444444444444445,
+      "jvm_gc_pause": {
+        "COUNT": 195.0,
+        "TOTAL_TIME": 8.540000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:27.851576+00:00",
+      "phase": "mixed-c1-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 164kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 156kB",
+          "CPUPerc": "0.47%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.81%",
+          "MemUsage": "390.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "186kB / 249kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 3.94MB",
+          "CPUPerc": "1.04%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.53%",
+          "MemUsage": "418.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "137kB / 165kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 845MB",
+          "CPUPerc": "1.04%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.40%",
+          "MemUsage": "217.1MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.94MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 119kB",
+          "CPUPerc": "147.92%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.62%",
+          "MemUsage": "2.629GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 49.1MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 937862816.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6851063829787234,
+      "jvm_gc_pause": {
+        "COUNT": 199.0,
+        "TOTAL_TIME": 8.851999999999999,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:32.626695+00:00",
+      "phase": "cold-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 164kB",
+          "CPUPerc": "0.09%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 156kB",
+          "CPUPerc": "0.39%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.81%",
+          "MemUsage": "390.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "190kB / 254kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.02MB",
+          "CPUPerc": "34.49%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.88%",
+          "MemUsage": "360MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "140kB / 168kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.12%",
+          "MemUsage": "215.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.94MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 119kB",
+          "CPUPerc": "198.92%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.86%",
+          "MemUsage": "2.666GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 49.3MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1659283104.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 204.0,
+        "TOTAL_TIME": 9.379,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:37.227052+00:00",
+      "phase": "cold-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 172kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 168kB",
+          "CPUPerc": "0.66%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.82%",
+          "MemUsage": "390.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "194kB / 261kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.08MB",
+          "CPUPerc": "1.57%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.74%",
+          "MemUsage": "359MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "143kB / 170kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.12%",
+          "MemUsage": "215.7MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.95MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 131kB",
+          "CPUPerc": "197.04%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "90.56%",
+          "MemUsage": "2.717GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 49.4MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1935527072.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.984,
+      "jvm_gc_pause": {
+        "COUNT": 233.0,
+        "TOTAL_TIME": 10.456,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:42.040001+00:00",
+      "phase": "cold-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 172kB",
+          "CPUPerc": "0.17%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 168kB",
+          "CPUPerc": "0.65%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.83%",
+          "MemUsage": "390.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "199kB / 267kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.16MB",
+          "CPUPerc": "1.54%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.80%",
+          "MemUsage": "359.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "147kB / 174kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.12%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.96MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 131kB",
+          "CPUPerc": "202.06%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "75.66%",
+          "MemUsage": "2.27GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 49.5MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1124105960.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 248.0,
+        "TOTAL_TIME": 11.346,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:46.925692+00:00",
+      "phase": "cold-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 172kB",
+          "CPUPerc": "0.13%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 168kB",
+          "CPUPerc": "0.67%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.84%",
+          "MemUsage": "390.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "203kB / 273kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.24MB",
+          "CPUPerc": "1.50%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.79%",
+          "MemUsage": "359.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "152kB / 177kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.96MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 131kB",
+          "CPUPerc": "199.36%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "71.22%",
+          "MemUsage": "2.137GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 49.6MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1791748808.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 258.0,
+        "TOTAL_TIME": 12.27,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:51.926355+00:00",
+      "phase": "cold-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 184kB",
+          "CPUPerc": "0.13%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 180kB",
+          "CPUPerc": "1.53%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.85%",
+          "MemUsage": "390.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "207kB / 280kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.34MB",
+          "CPUPerc": "16.24%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.86%",
+          "MemUsage": "359.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "155kB / 181kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.09%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.97MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 143kB",
+          "CPUPerc": "198.68%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.84%",
+          "MemUsage": "2.635GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "623MB / 50.1MB",
+          "PIDs": "63"
+        }
+      ],
+      "heap_used_bytes": 670133168.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 270.0,
+        "TOTAL_TIME": 12.781000000000002,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:16:56.560556+00:00",
+      "phase": "warm-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 184kB",
+          "CPUPerc": "0.08%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 180kB",
+          "CPUPerc": "0.70%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.86%",
+          "MemUsage": "390.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "211kB / 286kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.38MB",
+          "CPUPerc": "20.88%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "51.18%",
+          "MemUsage": "393.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "158kB / 184kB",
+          "PIDs": "123"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.98MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 143kB",
+          "CPUPerc": "208.74%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.56%",
+          "MemUsage": "2.627GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "636MB / 76.9MB",
+          "PIDs": "65"
+        }
+      ],
+      "heap_used_bytes": 2118774688.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.933,
+      "jvm_gc_pause": {
+        "COUNT": 282.0,
+        "TOTAL_TIME": 13.046000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:01.533592+00:00",
+      "phase": "mixed-c16-r1",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 184kB",
+          "CPUPerc": "0.14%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.71%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "39.9kB / 46.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 180kB",
+          "CPUPerc": "0.49%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.86%",
+          "MemUsage": "390.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "215kB / 291kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.46MB",
+          "CPUPerc": "1.64%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.81%",
+          "MemUsage": "359.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "163kB / 187kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.10%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.99MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 143kB",
+          "CPUPerc": "198.54%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "90.94%",
+          "MemUsage": "2.728GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "636MB / 78.8MB",
+          "PIDs": "55"
+        }
+      ],
+      "heap_used_bytes": 1369892608.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 287.0,
+        "TOTAL_TIME": 13.552000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:06.194407+00:00",
+      "phase": "cold-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 197kB",
+          "CPUPerc": "0.07%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40kB / 46.6kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 193kB",
+          "CPUPerc": "0.43%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.88%",
+          "MemUsage": "390.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "220kB / 299kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.56MB",
+          "CPUPerc": "0.88%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.83%",
+          "MemUsage": "359.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "166kB / 190kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "4.99MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 143kB",
+          "CPUPerc": "136.32%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "90.96%",
+          "MemUsage": "2.729GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "636MB / 78.9MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1283909376.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6902173913043478,
+      "jvm_gc_pause": {
+        "COUNT": 293.0,
+        "TOTAL_TIME": 13.774000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:10.817229+00:00",
+      "phase": "cold-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 197kB",
+          "CPUPerc": "0.18%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.1kB / 46.8kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 193kB",
+          "CPUPerc": "0.59%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.90%",
+          "MemUsage": "390.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "224kB / 305kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.64MB",
+          "CPUPerc": "44.87%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "46.84%",
+          "MemUsage": "359.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "169kB / 193kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.09%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.09%",
+          "MemUsage": "215.5MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 156kB",
+          "CPUPerc": "122.40%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "86.75%",
+          "MemUsage": "2.603GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "637MB / 79MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1172760336.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.652127659574468,
+      "jvm_gc_pause": {
+        "COUNT": 299.0,
+        "TOTAL_TIME": 14.120000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:15.433557+00:00",
+      "phase": "cold-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 197kB",
+          "CPUPerc": "0.24%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.2kB / 46.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 193kB",
+          "CPUPerc": "0.46%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.92%",
+          "MemUsage": "391MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "227kB / 310kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.69MB",
+          "CPUPerc": "0.97%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.00%",
+          "MemUsage": "360.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "172kB / 196kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.01MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 156kB",
+          "CPUPerc": "148.64%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.71%",
+          "MemUsage": "2.631GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "637MB / 79.2MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1152837392.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6641304347826087,
+      "jvm_gc_pause": {
+        "COUNT": 305.0,
+        "TOTAL_TIME": 14.434000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:20.067916+00:00",
+      "phase": "cold-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 197kB",
+          "CPUPerc": "0.12%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.4kB / 47.2kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 193kB",
+          "CPUPerc": "0.38%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.92%",
+          "MemUsage": "391.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "232kB / 318kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.76MB",
+          "CPUPerc": "1.27%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.95%",
+          "MemUsage": "368.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "176kB / 199kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.02MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 156kB",
+          "CPUPerc": "120.53%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.72%",
+          "MemUsage": "2.632GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "637MB / 79.3MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1128720144.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6695652173913044,
+      "jvm_gc_pause": {
+        "COUNT": 311.0,
+        "TOTAL_TIME": 14.767000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:24.688063+00:00",
+      "phase": "cold-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 209kB",
+          "CPUPerc": "0.07%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.4kB / 47.2kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.35%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.92%",
+          "MemUsage": "391.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "236kB / 323kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.85MB",
+          "CPUPerc": "2.07%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.99%",
+          "MemUsage": "368.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "179kB / 202kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.02MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 168kB",
+          "CPUPerc": "143.30%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.62%",
+          "MemUsage": "2.659GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "637MB / 79.7MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 633214224.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.64,
+      "jvm_gc_pause": {
+        "COUNT": 319.0,
+        "TOTAL_TIME": 15.113,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:28.709686+00:00",
+      "phase": "warm-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 209kB",
+          "CPUPerc": "0.07%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.4kB / 47.2kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.44%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.92%",
+          "MemUsage": "391.1MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "240kB / 329kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.89MB",
+          "CPUPerc": "34.17%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "54.23%",
+          "MemUsage": "416.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "182kB / 205kB",
+          "PIDs": "123"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.94%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.03MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 168kB",
+          "CPUPerc": "88.38%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.66%",
+          "MemUsage": "2.66GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "641MB / 89.3MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 599697920.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.3170212765957447,
+      "jvm_gc_pause": {
+        "COUNT": 326.0,
+        "TOTAL_TIME": 15.121,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:33.335433+00:00",
+      "phase": "mixed-c1-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 209kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.5kB / 47.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.48%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.94%",
+          "MemUsage": "391.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "244kB / 336kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 4.96MB",
+          "CPUPerc": "1.31%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "48.15%",
+          "MemUsage": "369.8MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "185kB / 208kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.85%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.11%",
+          "MemUsage": "215.6MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.04MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 168kB",
+          "CPUPerc": "129.39%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "85.01%",
+          "MemUsage": "2.55GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.1MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1219381512.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.63,
+      "jvm_gc_pause": {
+        "COUNT": 329.0,
+        "TOTAL_TIME": 15.322000000000001,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:37.877176+00:00",
+      "phase": "cold-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 217kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.5kB / 47.5kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.52%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.95%",
+          "MemUsage": "391.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "248kB / 342kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.05MB",
+          "CPUPerc": "2.01%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.78%",
+          "MemUsage": "367MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "188kB / 210kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.04MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 180kB",
+          "CPUPerc": "198.83%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "88.35%",
+          "MemUsage": "2.651GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.3MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1829652752.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.8489583333333334,
+      "jvm_gc_pause": {
+        "COUNT": 335.0,
+        "TOTAL_TIME": 15.961,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:42.729472+00:00",
+      "phase": "cold-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 217kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.7kB / 47.8kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.44%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.95%",
+          "MemUsage": "391.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "252kB / 348kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.11MB",
+          "CPUPerc": "105.01%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "59.04%",
+          "MemUsage": "453.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "192kB / 214kB",
+          "PIDs": "125"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.05MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 180kB",
+          "CPUPerc": "209.14%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "69.90%",
+          "MemUsage": "2.097GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.4MB",
+          "PIDs": "53"
+        }
+      ],
+      "heap_used_bytes": 1014178144.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.990909090909091,
+      "jvm_gc_pause": {
+        "COUNT": 369.0,
+        "TOTAL_TIME": 17.060000000000002,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:47.125968+00:00",
+      "phase": "cold-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 217kB",
+          "CPUPerc": "0.13%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.52%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "51.23%",
+          "MemUsage": "393.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "256kB / 354kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.18MB",
+          "CPUPerc": "1.25%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.82%",
+          "MemUsage": "367.3MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "195kB / 216kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.11%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.06MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 180kB",
+          "CPUPerc": "198.72%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "73.60%",
+          "MemUsage": "2.208GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.5MB",
+          "PIDs": "55"
+        }
+      ],
+      "heap_used_bytes": 1665343840.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9928571428571429,
+      "jvm_gc_pause": {
+        "COUNT": 376.0,
+        "TOTAL_TIME": 17.812,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:52.017148+00:00",
+      "phase": "cold-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 217kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 205kB",
+          "CPUPerc": "0.59%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.98%",
+          "MemUsage": "391.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "260kB / 359kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.27MB",
+          "CPUPerc": "1.01%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.83%",
+          "MemUsage": "367.4MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "200kB / 220kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.14%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.07MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 180kB",
+          "CPUPerc": "211.34%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "74.37%",
+          "MemUsage": "2.231GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.6MB",
+          "PIDs": "56"
+        }
+      ],
+      "heap_used_bytes": 852634616.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 1.0,
+      "jvm_gc_pause": {
+        "COUNT": 399.0,
+        "TOTAL_TIME": 18.859,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:17:57.026913+00:00",
+      "phase": "cold-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 229kB",
+          "CPUPerc": "0.11%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 217kB",
+          "CPUPerc": "0.61%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.98%",
+          "MemUsage": "391.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "265kB / 367kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.35MB",
+          "CPUPerc": "31.40%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.87%",
+          "MemUsage": "367.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "203kB / 223kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.06%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.3MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.07MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 193kB",
+          "CPUPerc": "186.87%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "71.92%",
+          "MemUsage": "2.158GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "643MB / 93.7MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1536339296.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9957446808510638,
+      "jvm_gc_pause": {
+        "COUNT": 404.0,
+        "TOTAL_TIME": 19.403000000000002,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:18:01.663347+00:00",
+      "phase": "warm-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 229kB",
+          "CPUPerc": "0.10%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 217kB",
+          "CPUPerc": "0.67%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "50.99%",
+          "MemUsage": "391.6MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "269kB / 373kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.4MB",
+          "CPUPerc": "100.92%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "56.93%",
+          "MemUsage": "437.2MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "207kB / 226kB",
+          "PIDs": "124"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.07%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.08MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 193kB",
+          "CPUPerc": "207.62%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "87.34%",
+          "MemUsage": "2.62GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "650MB / 109MB",
+          "PIDs": "57"
+        }
+      ],
+      "heap_used_bytes": 1598111552.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9670212765957447,
+      "jvm_gc_pause": {
+        "COUNT": 417.0,
+        "TOTAL_TIME": 19.504,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:18:06.329487+00:00",
+      "phase": "mixed-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 229kB",
+          "CPUPerc": "0.12%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 217kB",
+          "CPUPerc": "0.56%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "51.00%",
+          "MemUsage": "391.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "273kB / 380kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.48MB",
+          "CPUPerc": "1.28%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "47.87%",
+          "MemUsage": "367.7MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "210kB / 229kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.08%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "42.04%",
+          "MemUsage": "215.2MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.09MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 193kB",
+          "CPUPerc": "199.25%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "85.36%",
+          "MemUsage": "2.561GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "655MB / 121MB",
+          "PIDs": "56"
+        }
+      ],
+      "heap_used_bytes": 1545438904.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.9418367346938775,
+      "jvm_gc_pause": {
+        "COUNT": 422.0,
+        "TOTAL_TIME": 19.919,
+        "MAX": 0.338
+      }
+    },
+    {
+      "utc": "2026-10-18T20:18:11.225332+00:00",
+      "phase": "mixed-c16-r2",
+      "docker": [
+        {
+          "BlockIO": "72.5MB / 229kB",
+          "CPUPerc": "0.33%",
+          "Container": "de0ebd05a7611ff52b5236fcbbf95e1d682f716517de609d6648d83f8686b565",
+          "ID": "de0ebd05a761",
+          "MemPerc": "68.72%",
+          "MemUsage": "351.9MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-auth-service-1",
+          "NetIO": "40.8kB / 47.9kB",
+          "PIDs": "33"
+        },
+        {
+          "BlockIO": "72.9MB / 217kB",
+          "CPUPerc": "1.07%",
+          "Container": "38b5d7c9165aea3b3249017847f2b3c391913bab5da5f49c704b413188789cf0",
+          "ID": "38b5d7c9165a",
+          "MemPerc": "51.03%",
+          "MemUsage": "391.9MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-document-service-1",
+          "NetIO": "278kB / 386kB",
+          "PIDs": "38"
+        },
+        {
+          "BlockIO": "64.2MB / 5.59MB",
+          "CPUPerc": "2.85%",
+          "Container": "2eea20d89c4768fc101a2eef55af4604ef62419e4a98d4d41e2a4c5a3917ec27",
+          "ID": "2eea20d89c47",
+          "MemPerc": "48.11%",
+          "MemUsage": "369.5MiB / 768MiB",
+          "Name": "minsearch-bench-1760898f-100000-kafka-1",
+          "NetIO": "215kB / 232kB",
+          "PIDs": "105"
+        },
+        {
+          "BlockIO": "45.9MB / 846MB",
+          "CPUPerc": "0.18%",
+          "Container": "05a52fd6b108e06cbf72c02bf15adefdce2a70ad2ed3e7aefdec891709a510fa",
+          "ID": "05a52fd6b108",
+          "MemPerc": "41.96%",
+          "MemUsage": "214.8MiB / 512MiB",
+          "Name": "minsearch-bench-1760898f-100000-postgres-1",
+          "NetIO": "5.1MB / 603MB",
+          "PIDs": "36"
+        },
+        {
+          "BlockIO": "401kB / 205kB",
+          "CPUPerc": "29.76%",
+          "Container": "ac7586cedfb3a119e72d198fb6bef7cbfe335491911d92e2d4fd857d927a2b71",
+          "ID": "ac7586cedfb3",
+          "MemPerc": "91.98%",
+          "MemUsage": "2.759GiB / 3GiB",
+          "Name": "minsearch-bench-1760898f-100000-search-service-1",
+          "NetIO": "656MB / 121MB",
+          "PIDs": "54"
+        }
+      ],
+      "heap_used_bytes": 1145931448.0,
+      "heap_max_bytes": 2415919102.0,
+      "process_cpu_usage": 0.6428571428571429,
+      "jvm_gc_pause": {
+        "COUNT": 423.0,
+        "TOTAL_TIME": 20.085,
+        "MAX": 0.338
+      }
+    }
+  ],
+  "errors": [
+    {
+      "utc": "2026-10-18T20:14:01.661705+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:06.321611+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:10.947406+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:15.579278+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:20.197188+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:24.850168+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:29.468956+00:00",
+      "phase": "fixture-materialization",
+      "error": "[Errno 61] Connection refused"
+    },
+    {
+      "utc": "2026-10-18T20:14:34.091906+00:00",
+      "phase": "fixture-materialization",
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "utc": "2026-10-18T20:14:38.122612+00:00",
+      "phase": "fixture-materialization",
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "utc": "2026-10-18T20:14:42.745693+00:00",
+      "phase": "fixture-materialization",
+      "error": "search GET /actuator/metrics/jvm.gc.pause: HTTP 404: None"
+    }
+  ]
+}

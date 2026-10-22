@@ -14,7 +14,11 @@ public record DocumentIndexPayload(
     String checksum,
     String language,
     String fileType,
-    Instant uploadedAt) {
+    Instant uploadedAt, String title) {
+  public DocumentIndexPayload(int schemaVersion, UUID documentId, UUID ownerId, long version, String storageKey,
+      String checksum, String language, String fileType, Instant uploadedAt) {
+    this(schemaVersion,documentId,ownerId,version,storageKey,checksum,language,fileType,uploadedAt,null);
+  }
   public DocumentIndexPayload {
     if (schemaVersion != 1 || version < 1)
       throw new IllegalArgumentException("Unsupported document event version");
@@ -24,5 +28,6 @@ public record DocumentIndexPayload(
     Objects.requireNonNull(checksum);
     Objects.requireNonNull(fileType);
     Objects.requireNonNull(uploadedAt);
+    if (title!=null && title.length()>500) throw new IllegalArgumentException("Document title limit exceeded");
   }
 }

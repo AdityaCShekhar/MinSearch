@@ -18,14 +18,16 @@ public class DocumentController {
   private final DocumentUploadService uploads;
   private final DocumentQueryService queries;
   private final DocumentLifecycleService lifecycle;
+  private final com.aditya.minsearch.document.application.DocumentContentService content;
 
   public DocumentController(
       DocumentUploadService uploads,
       DocumentQueryService queries,
-      DocumentLifecycleService lifecycle) {
+      DocumentLifecycleService lifecycle, com.aditya.minsearch.document.application.DocumentContentService content) {
     this.uploads = uploads;
     this.queries = queries;
     this.lifecycle = lifecycle;
+    this.content = content;
   }
 
   @PostMapping(consumes = "multipart/form-data")
@@ -42,21 +44,19 @@ public class DocumentController {
   @GetMapping("/{id}")
   public Document get(@PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
     UUID ownerId = UUID.fromString(principal.getSubject());
-    Document document = queries.get(id);
-    if (!document.ownerId().equals(ownerId))
-      throw new IllegalArgumentException("Document not found");
-    return document;
+    return queries.get(id,ownerId,admin(principal));
   }
 
   @GetMapping
-  public List<Document> list(@AuthenticationPrincipal Jwt principal) {
-    return queries.list(UUID.fromString(principal.getSubject()));
+  public List<Document> list(@AuthenticationPrincipal Jwt principal, @RequestParam(defaultValue="0") int page,
+      @RequestParam(defaultValue="20") int size) {
+    return queries.list(UUID.fromString(principal.getSubject()),admin(principal),page,size);
   }
 
   @GetMapping("/{id}/status")
   public DocumentQueryService.ProcessingStatus status(
       @PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
-    return queries.status(id, UUID.fromString(principal.getSubject()));
+    return queries.status(id, UUID.fromString(principal.getSubject()),admin(principal));
   }
 
   @PutMapping("/{id}")
@@ -64,15 +64,18 @@ public class DocumentController {
       @PathVariable UUID id,
       @AuthenticationPrincipal Jwt principal,
       @RequestPart(value = "title", required = false) String title,
-      @RequestPart(value = "language", required = false) String language) {
+      @RequestPart(value = "language", required = false) String language,
+      @RequestPart(value = "file", required = false) MultipartFile file) throws Exception {
     return ResponseEntity.accepted()
-        .body(lifecycle.update(id, UUID.fromString(principal.getSubject()), title, language));
+        .body(file==null ? lifecycle.update(id, UUID.fromString(principal.getSubject()), title, language,admin(principal))
+            : content.replace(id,UUID.fromString(principal.getSubject()),admin(principal),file,title,language));
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Document> delete(
       @PathVariable UUID id, @AuthenticationPrincipal Jwt principal) {
     return ResponseEntity.accepted()
-        .body(lifecycle.delete(id, UUID.fromString(principal.getSubject())));
+        .body(lifecycle.delete(id, UUID.fromString(principal.getSubject()),admin(principal)));
   }
+  private static boolean admin(Jwt principal) { return "ADMIN".equals(principal.getClaimAsString("role")); }
 }

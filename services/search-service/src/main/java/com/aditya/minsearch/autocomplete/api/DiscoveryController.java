@@ -34,7 +34,7 @@ public final class DiscoveryController {
     UUID owner = UUID.fromString(principal.getSubject());
     return Map.of(
         "completions",
-        autocomplete.complete(prefix, indexing.current().generationForOwner(owner), limit, owner));
+        autocomplete.complete(prefix, indexing.current().generationForOwner("ADMIN".equals(principal.getClaimAsString("role")) ? null : owner), limit, owner));
   }
 
   @GetMapping("/suggest")
@@ -42,7 +42,7 @@ public final class DiscoveryController {
       @RequestParam String term, @AuthenticationPrincipal Jwt principal) {
     UUID owner = UUID.fromString(principal.getSubject());
     return suggestions
-        .suggest(term, indexing.current().generationForOwner(owner))
+        .suggest(term, indexing.current().generationForOwner("ADMIN".equals(principal.getClaimAsString("role")) ? null : owner))
         .map(s -> Map.of("suggestion", s))
         .orElseGet(Map::of);
   }

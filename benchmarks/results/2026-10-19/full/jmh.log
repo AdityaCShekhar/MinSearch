@@ -1,0 +1,2240 @@
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein
+# Parameters: (term = distributed)
+
+# Run progress: 0.00% complete, ETA 00:05:04
+# Fork: 1 of 2
+# Warmup Iteration   1: 107.969 ns/op
+# Warmup Iteration   2: 102.552 ns/op
+# Warmup Iteration   3: 114.355 ns/op
+Iteration   1: 113.271 ns/op
+                 gc.alloc.rate:      7273.462 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   2: 112.274 ns/op
+                 gc.alloc.rate:      7338.062 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   3: 112.764 ns/op
+                 gc.alloc.rate:      7306.058 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            10.000 ms
+
+Iteration   4: 113.037 ns/op
+                 gc.alloc.rate:      7288.354 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   5: 114.346 ns/op
+                 gc.alloc.rate:      7203.995 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+
+# Run progress: 2.63% complete, ETA 00:05:02
+# Fork: 2 of 2
+# Warmup Iteration   1: 102.660 ns/op
+# Warmup Iteration   2: 90.862 ns/op
+# Warmup Iteration   3: 112.798 ns/op
+Iteration   1: 113.180 ns/op
+                 gc.alloc.rate:      7279.029 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   2: 111.897 ns/op
+                 gc.alloc.rate:      7362.787 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           25.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   3: 112.560 ns/op
+                 gc.alloc.rate:      7319.473 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   4: 115.343 ns/op
+                 gc.alloc.rate:      7142.755 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   5: 113.310 ns/op
+                 gc.alloc.rate:      7271.078 MB/sec
+                 gc.alloc.rate.norm: 864.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            11.000 ms
+
+
+
+Result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein":
+  113.198 ±(99.9%) 1.521 ns/op [Average]
+  (min, avg, max) = (111.897, 113.198, 115.343), stdev = 1.006
+  CI (99.9%): [111.677, 114.719] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate":
+  7278.505 ±(99.9%) 97.259 MB/sec [Average]
+  (min, avg, max) = (7142.755, 7278.505, 7362.787), stdev = 64.331
+  CI (99.9%): [7181.247, 7375.764] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm":
+  864.001 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (864.001, 864.001, 864.001), stdev = 0.001
+  CI (99.9%): [864.001, 864.001] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count":
+  238.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (23.000, 23.800, 25.000), stdev = 0.632
+  CI (99.9%): [238.000, 238.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time":
+  112.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (10.000, 11.200, 12.000), stdev = 0.632
+  CI (99.9%): [112.000, 112.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein
+# Parameters: (term = transactional)
+
+# Run progress: 5.26% complete, ETA 00:04:53
+# Fork: 1 of 2
+# Warmup Iteration   1: 116.558 ns/op
+# Warmup Iteration   2: 105.793 ns/op
+# Warmup Iteration   3: 119.277 ns/op
+Iteration   1: 119.195 ns/op
+                 gc.alloc.rate:      8064.059 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           26.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   2: 122.086 ns/op
+                 gc.alloc.rate:      7872.954 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           26.000 counts
+                 gc.time:            13.000 ms
+
+Iteration   3: 119.963 ns/op
+                 gc.alloc.rate:      8012.308 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           27.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   4: 119.326 ns/op
+                 gc.alloc.rate:      8055.108 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           26.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   5: 119.249 ns/op
+                 gc.alloc.rate:      8060.358 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           27.000 counts
+                 gc.time:            12.000 ms
+
+
+# Run progress: 7.89% complete, ETA 00:04:45
+# Fork: 2 of 2
+# Warmup Iteration   1: 111.088 ns/op
+# Warmup Iteration   2: 107.224 ns/op
+# Warmup Iteration   3: 120.272 ns/op
+Iteration   1: 118.363 ns/op
+                 gc.alloc.rate:      8120.694 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           26.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   2: 118.526 ns/op
+                 gc.alloc.rate:      8109.569 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           27.000 counts
+                 gc.time:            13.000 ms
+
+Iteration   3: 118.739 ns/op
+                 gc.alloc.rate:      8094.951 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           27.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   4: 118.559 ns/op
+                 gc.alloc.rate:      8107.154 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           26.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   5: 119.746 ns/op
+                 gc.alloc.rate:      8026.698 MB/sec
+                 gc.alloc.rate.norm: 1008.001 B/op
+                 gc.count:           27.000 counts
+                 gc.time:            12.000 ms
+
+
+
+Result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein":
+  119.375 ±(99.9%) 1.649 ns/op [Average]
+  (min, avg, max) = (118.363, 119.375, 122.086), stdev = 1.090
+  CI (99.9%): [117.727, 121.024] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate":
+  8052.385 ±(99.9%) 109.737 MB/sec [Average]
+  (min, avg, max) = (7872.954, 8052.385, 8120.694), stdev = 72.584
+  CI (99.9%): [7942.648, 8162.122] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm":
+  1008.001 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (1008.001, 1008.001, 1008.001), stdev = 0.001
+  CI (99.9%): [1008.001, 1008.001] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count":
+  265.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (26.000, 26.500, 27.000), stdev = 0.527
+  CI (99.9%): [265.000, 265.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time":
+  121.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (11.000, 12.100, 13.000), stdev = 0.568
+  CI (99.9%): [121.000, 121.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein
+# Parameters: (term = internationalization)
+
+# Run progress: 10.53% complete, ETA 00:04:37
+# Fork: 1 of 2
+# Warmup Iteration   1: 194.966 ns/op
+# Warmup Iteration   2: 185.535 ns/op
+# Warmup Iteration   3: 203.803 ns/op
+Iteration   1: 203.882 ns/op
+                 gc.alloc.rate:      7071.587 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   2: 203.461 ns/op
+                 gc.alloc.rate:      7086.313 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            10.000 ms
+
+Iteration   3: 206.320 ns/op
+                 gc.alloc.rate:      6987.905 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   4: 204.628 ns/op
+                 gc.alloc.rate:      7045.642 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            10.000 ms
+
+Iteration   5: 204.150 ns/op
+                 gc.alloc.rate:      7062.360 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+
+# Run progress: 13.16% complete, ETA 00:04:29
+# Fork: 2 of 2
+# Warmup Iteration   1: 192.996 ns/op
+# Warmup Iteration   2: 167.362 ns/op
+# Warmup Iteration   3: 204.165 ns/op
+Iteration   1: 208.271 ns/op
+                 gc.alloc.rate:      6922.632 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   2: 203.534 ns/op
+                 gc.alloc.rate:      7083.654 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   3: 204.236 ns/op
+                 gc.alloc.rate:      7059.367 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           24.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   4: 203.131 ns/op
+                 gc.alloc.rate:      7097.706 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+Iteration   5: 203.108 ns/op
+                 gc.alloc.rate:      7098.634 MB/sec
+                 gc.alloc.rate.norm: 1512.001 B/op
+                 gc.count:           23.000 counts
+                 gc.time:            11.000 ms
+
+
+
+Result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein":
+  204.472 ±(99.9%) 2.466 ns/op [Average]
+  (min, avg, max) = (203.108, 204.472, 208.271), stdev = 1.631
+  CI (99.9%): [202.006, 206.938] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate":
+  7051.580 ±(99.9%) 84.133 MB/sec [Average]
+  (min, avg, max) = (6922.632, 7051.580, 7098.634), stdev = 55.649
+  CI (99.9%): [6967.447, 7135.713] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm":
+  1512.001 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (1512.001, 1512.001, 1512.001), stdev = 0.001
+  CI (99.9%): [1512.001, 1512.001] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count":
+  232.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (23.000, 23.200, 24.000), stdev = 0.422
+  CI (99.9%): [232.000, 232.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time":
+  108.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (10.000, 10.800, 11.000), stdev = 0.422
+  CI (99.9%): [108.000, 108.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration
+# Parameters: (documents = 1000)
+
+# Run progress: 15.79% complete, ETA 00:04:21
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.183 ms/op
+# Warmup Iteration   2: 2.057 ms/op
+# Warmup Iteration   3: 2.019 ms/op
+Iteration   1: 1.997 ms/op
+                 gc.alloc.rate:      3670.676 MB/sec
+                 gc.alloc.rate.norm: 7689243.825 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   2: 2.003 ms/op
+                 gc.alloc.rate:      3660.999 MB/sec
+                 gc.alloc.rate.norm: 7689243.873 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.024 ms/op
+                 gc.alloc.rate:      3622.630 MB/sec
+                 gc.alloc.rate.norm: 7689243.992 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   4: 1.995 ms/op
+                 gc.alloc.rate:      3675.735 MB/sec
+                 gc.alloc.rate.norm: 7689243.825 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   5: 2.047 ms/op
+                 gc.alloc.rate:      3581.150 MB/sec
+                 gc.alloc.rate.norm: 7689244.138 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            8.000 ms
+
+
+# Run progress: 18.42% complete, ETA 00:04:12
+# Fork: 2 of 2
+# Warmup Iteration   1: 2.175 ms/op
+# Warmup Iteration   2: 1.956 ms/op
+# Warmup Iteration   3: 1.933 ms/op
+Iteration   1: 1.950 ms/op
+                 gc.alloc.rate:      3775.922 MB/sec
+                 gc.alloc.rate.norm: 7721243.628 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   2: 1.945 ms/op
+                 gc.alloc.rate:      3784.792 MB/sec
+                 gc.alloc.rate.norm: 7721243.550 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.003 ms/op
+                 gc.alloc.rate:      3676.267 MB/sec
+                 gc.alloc.rate.norm: 7721243.873 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   4: 1.946 ms/op
+                 gc.alloc.rate:      3783.278 MB/sec
+                 gc.alloc.rate.norm: 7721243.528 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   5: 1.942 ms/op
+                 gc.alloc.rate:      3792.105 MB/sec
+                 gc.alloc.rate.norm: 7721243.550 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            7.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration":
+  1.985 ±(99.9%) 0.056 ms/op [Average]
+  (min, avg, max) = (1.942, 1.985, 2.047), stdev = 0.037
+  CI (99.9%): [1.929, 2.042] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate":
+  3702.355 ±(99.9%) 114.876 MB/sec [Average]
+  (min, avg, max) = (3581.150, 3702.355, 3792.105), stdev = 75.983
+  CI (99.9%): [3587.479, 3817.231] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate.norm":
+  7705243.778 ±(99.9%) 25497.958 B/op [Average]
+  (min, avg, max) = (7689243.825, 7705243.778, 7721243.873), stdev = 16865.320
+  CI (99.9%): [7679745.821, 7730741.736] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.count":
+  122.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (12.000, 12.200, 13.000), stdev = 0.422
+  CI (99.9%): [122.000, 122.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.time":
+  76.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (7.000, 7.600, 8.000), stdev = 0.516
+  CI (99.9%): [76.000, 76.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration
+# Parameters: (documents = 10000)
+
+# Run progress: 21.05% complete, ETA 00:04:04
+# Fork: 1 of 2
+# Warmup Iteration   1: 28.733 ms/op
+# Warmup Iteration   2: 25.474 ms/op
+# Warmup Iteration   3: 26.233 ms/op
+Iteration   1: 26.028 ms/op
+                 gc.alloc.rate:      2861.374 MB/sec
+                 gc.alloc.rate.norm: 78101992.821 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            14.000 ms
+
+Iteration   2: 25.337 ms/op
+                 gc.alloc.rate:      2939.259 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   3: 25.397 ms/op
+                 gc.alloc.rate:      2932.379 MB/sec
+                 gc.alloc.rate.norm: 78101990.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   4: 25.393 ms/op
+                 gc.alloc.rate:      2932.892 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   5: 25.460 ms/op
+                 gc.alloc.rate:      2925.210 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            17.000 ms
+
+
+# Run progress: 23.68% complete, ETA 00:03:56
+# Fork: 2 of 2
+# Warmup Iteration   1: 29.872 ms/op
+# Warmup Iteration   2: 25.690 ms/op
+# Warmup Iteration   3: 25.712 ms/op
+Iteration   1: 25.259 ms/op
+                 gc.alloc.rate:      2948.473 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   2: 25.297 ms/op
+                 gc.alloc.rate:      2943.777 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   3: 25.285 ms/op
+                 gc.alloc.rate:      2945.384 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   4: 26.690 ms/op
+                 gc.alloc.rate:      2790.375 MB/sec
+                 gc.alloc.rate.norm: 78101996.842 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            13.000 ms
+
+Iteration   5: 25.340 ms/op
+                 gc.alloc.rate:      2938.997 MB/sec
+                 gc.alloc.rate.norm: 78101989.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            17.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration":
+  25.549 ±(99.9%) 0.693 ms/op [Average]
+  (min, avg, max) = (25.259, 25.549, 26.690), stdev = 0.458
+  CI (99.9%): [24.855, 26.242] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate":
+  2915.812 ±(99.9%) 76.699 MB/sec [Average]
+  (min, avg, max) = (2790.375, 2915.812, 2948.473), stdev = 50.731
+  CI (99.9%): [2839.113, 2992.511] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate.norm":
+  78101990.266 ±(99.9%) 3.938 B/op [Average]
+  (min, avg, max) = (78101989.000, 78101990.266, 78101996.842), stdev = 2.605
+  CI (99.9%): [78101986.328, 78101994.204] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.count":
+  98.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (9.000, 9.800, 10.000), stdev = 0.422
+  CI (99.9%): [98.000, 98.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.IndexBuildBenchmark.buildGeneration:gc.time":
+  160.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (13.000, 16.000, 17.000), stdev = 1.414
+  CI (99.9%): [160.000, 160.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval
+# Parameters: (documents = 1000)
+
+# Run progress: 26.32% complete, ETA 00:03:48
+# Fork: 1 of 2
+# Warmup Iteration   1: 154.623 us/op
+# Warmup Iteration   2: 139.027 us/op
+# Warmup Iteration   3: 137.641 us/op
+Iteration   1: 138.050 us/op
+                 gc.alloc.rate:      2264.803 MB/sec
+                 gc.alloc.rate.norm: 327888.819 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   2: 142.954 us/op
+                 gc.alloc.rate:      2187.140 MB/sec
+                 gc.alloc.rate.norm: 327888.852 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   3: 137.647 us/op
+                 gc.alloc.rate:      2271.501 MB/sec
+                 gc.alloc.rate.norm: 327888.816 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   4: 139.706 us/op
+                 gc.alloc.rate:      2237.978 MB/sec
+                 gc.alloc.rate.norm: 327888.824 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   5: 136.932 us/op
+                 gc.alloc.rate:      2283.335 MB/sec
+                 gc.alloc.rate.norm: 327888.812 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            4.000 ms
+
+
+# Run progress: 28.95% complete, ETA 00:03:40
+# Fork: 2 of 2
+# Warmup Iteration   1: 157.727 us/op
+# Warmup Iteration   2: 141.795 us/op
+# Warmup Iteration   3: 141.061 us/op
+Iteration   1: 138.234 us/op
+                 gc.alloc.rate:      2261.688 MB/sec
+                 gc.alloc.rate.norm: 327888.820 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   2: 138.725 us/op
+                 gc.alloc.rate:      2253.773 MB/sec
+                 gc.alloc.rate.norm: 327888.823 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 139.316 us/op
+                 gc.alloc.rate:      2244.282 MB/sec
+                 gc.alloc.rate.norm: 327888.826 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   4: 141.322 us/op
+                 gc.alloc.rate:      2212.418 MB/sec
+                 gc.alloc.rate.norm: 327888.838 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   5: 143.199 us/op
+                 gc.alloc.rate:      2183.372 MB/sec
+                 gc.alloc.rate.norm: 327888.849 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval":
+  139.608 ±(99.9%) 3.313 us/op [Average]
+  (min, avg, max) = (136.932, 139.608, 143.199), stdev = 2.191
+  CI (99.9%): [136.295, 142.922] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate":
+  2240.029 ±(99.9%) 52.685 MB/sec [Average]
+  (min, avg, max) = (2183.372, 2240.029, 2283.335), stdev = 34.848
+  CI (99.9%): [2187.344, 2292.714] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate.norm":
+  327888.828 ±(99.9%) 0.021 B/op [Average]
+  (min, avg, max) = (327888.812, 327888.828, 327888.852), stdev = 0.014
+  CI (99.9%): [327888.807, 327888.849] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.count":
+  74.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (7.000, 7.400, 8.000), stdev = 0.516
+  CI (99.9%): [74.000, 74.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.time":
+  40.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (3.000, 4.000, 5.000), stdev = 0.471
+  CI (99.9%): [40.000, 40.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval
+# Parameters: (documents = 10000)
+
+# Run progress: 31.58% complete, ETA 00:03:32
+# Fork: 1 of 2
+# Warmup Iteration   1: 5544.680 us/op
+# Warmup Iteration   2: 5056.573 us/op
+# Warmup Iteration   3: 4997.349 us/op
+Iteration   1: 4988.363 us/op
+                 gc.alloc.rate:      867.443 MB/sec
+                 gc.alloc.rate.norm: 4537853.505 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   2: 4996.107 us/op
+                 gc.alloc.rate:      866.102 MB/sec
+                 gc.alloc.rate.norm: 4537853.505 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   3: 5151.399 us/op
+                 gc.alloc.rate:      839.996 MB/sec
+                 gc.alloc.rate.norm: 4537855.265 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   4: 5011.638 us/op
+                 gc.alloc.rate:      863.423 MB/sec
+                 gc.alloc.rate.norm: 4537853.652 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   5: 5035.951 us/op
+                 gc.alloc.rate:      859.228 MB/sec
+                 gc.alloc.rate.norm: 4537853.800 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+
+# Run progress: 34.21% complete, ETA 00:03:24
+# Fork: 2 of 2
+# Warmup Iteration   1: 5517.401 us/op
+# Warmup Iteration   2: 5091.218 us/op
+# Warmup Iteration   3: 5054.618 us/op
+Iteration   1: 5202.401 us/op
+                 gc.alloc.rate:      831.746 MB/sec
+                 gc.alloc.rate.norm: 4537854.722 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   2: 5054.825 us/op
+                 gc.alloc.rate:      856.041 MB/sec
+                 gc.alloc.rate.norm: 4537853.950 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   3: 5055.814 us/op
+                 gc.alloc.rate:      855.874 MB/sec
+                 gc.alloc.rate.norm: 4537854.794 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 5109.102 us/op
+                 gc.alloc.rate:      846.944 MB/sec
+                 gc.alloc.rate.norm: 4537853.929 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   5: 5059.997 us/op
+                 gc.alloc.rate:      855.166 MB/sec
+                 gc.alloc.rate.norm: 4537853.950 B/op
+                 gc.count:           2.000 counts
+                 gc.time:            2.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval":
+  5066.560 ±(99.9%) 104.244 us/op [Average]
+  (min, avg, max) = (4988.363, 5066.560, 5202.401), stdev = 68.951
+  CI (99.9%): [4962.315, 5170.804] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate":
+  854.196 ±(99.9%) 17.407 MB/sec [Average]
+  (min, avg, max) = (831.746, 854.196, 867.443), stdev = 11.514
+  CI (99.9%): [836.790, 871.603] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate.norm":
+  4537854.107 ±(99.9%) 0.915 B/op [Average]
+  (min, avg, max) = (4537853.505, 4537854.107, 4537855.265), stdev = 0.605
+  CI (99.9%): [4537853.192, 4537855.022] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.count":
+  29.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (2.000, 2.900, 3.000), stdev = 0.316
+  CI (99.9%): [29.000, 29.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.time":
+  19.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (1.000, 1.900, 3.000), stdev = 0.568
+  CI (99.9%): [19.000, 19.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection
+# Parameters: (documents = 1000)
+
+# Run progress: 36.84% complete, ETA 00:03:16
+# Fork: 1 of 2
+# Warmup Iteration   1: 78.034 us/op
+# Warmup Iteration   2: 73.534 us/op
+# Warmup Iteration   3: 71.371 us/op
+Iteration   1: 72.045 us/op
+                 gc.alloc.rate:      3156.932 MB/sec
+                 gc.alloc.rate.norm: 238520.428 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   2: 71.039 us/op
+                 gc.alloc.rate:      3201.684 MB/sec
+                 gc.alloc.rate.norm: 238520.421 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   3: 71.415 us/op
+                 gc.alloc.rate:      3184.857 MB/sec
+                 gc.alloc.rate.norm: 238520.423 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   4: 72.439 us/op
+                 gc.alloc.rate:      3139.801 MB/sec
+                 gc.alloc.rate.norm: 238520.430 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   5: 71.977 us/op
+                 gc.alloc.rate:      3159.958 MB/sec
+                 gc.alloc.rate.norm: 238520.434 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            6.000 ms
+
+
+# Run progress: 39.47% complete, ETA 00:03:08
+# Fork: 2 of 2
+# Warmup Iteration   1: 76.015 us/op
+# Warmup Iteration   2: 71.347 us/op
+# Warmup Iteration   3: 70.867 us/op
+Iteration   1: 70.966 us/op
+                 gc.alloc.rate:      3204.951 MB/sec
+                 gc.alloc.rate.norm: 238520.421 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   2: 72.002 us/op
+                 gc.alloc.rate:      3158.906 MB/sec
+                 gc.alloc.rate.norm: 238520.429 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   3: 71.148 us/op
+                 gc.alloc.rate:      3196.773 MB/sec
+                 gc.alloc.rate.norm: 238520.421 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   4: 70.050 us/op
+                 gc.alloc.rate:      3246.925 MB/sec
+                 gc.alloc.rate.norm: 238520.417 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   5: 70.056 us/op
+                 gc.alloc.rate:      3246.645 MB/sec
+                 gc.alloc.rate.norm: 238520.424 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            6.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection":
+  71.314 ±(99.9%) 1.248 us/op [Average]
+  (min, avg, max) = (70.050, 71.314, 72.439), stdev = 0.825
+  CI (99.9%): [70.066, 72.561] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate":
+  3189.743 ±(99.9%) 56.035 MB/sec [Average]
+  (min, avg, max) = (3139.801, 3189.743, 3246.925), stdev = 37.064
+  CI (99.9%): [3133.708, 3245.778] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate.norm":
+  238520.425 ±(99.9%) 0.008 B/op [Average]
+  (min, avg, max) = (238520.417, 238520.425, 238520.434), stdev = 0.005
+  CI (99.9%): [238520.417, 238520.433] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.count":
+  105.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (10.000, 10.500, 11.000), stdev = 0.527
+  CI (99.9%): [105.000, 105.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.time":
+  55.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (5.000, 5.500, 6.000), stdev = 0.527
+  CI (99.9%): [55.000, 55.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection
+# Parameters: (documents = 10000)
+
+# Run progress: 42.11% complete, ETA 00:03:00
+# Fork: 1 of 2
+# Warmup Iteration   1: 1941.306 us/op
+# Warmup Iteration   2: 1821.202 us/op
+# Warmup Iteration   3: 1892.575 us/op
+Iteration   1: 1811.960 us/op
+                 gc.alloc.rate:      1189.525 MB/sec
+                 gc.alloc.rate.norm: 2260362.739 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   2: 1833.096 us/op
+                 gc.alloc.rate:      1175.831 MB/sec
+                 gc.alloc.rate.norm: 2260362.876 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 1805.763 us/op
+                 gc.alloc.rate:      1193.625 MB/sec
+                 gc.alloc.rate.norm: 2260362.700 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   4: 1808.419 us/op
+                 gc.alloc.rate:      1191.881 MB/sec
+                 gc.alloc.rate.norm: 2260362.719 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 1816.659 us/op
+                 gc.alloc.rate:      1186.467 MB/sec
+                 gc.alloc.rate.norm: 2260362.758 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+
+# Run progress: 44.74% complete, ETA 00:02:52
+# Fork: 2 of 2
+# Warmup Iteration   1: 1969.781 us/op
+# Warmup Iteration   2: 1789.220 us/op
+# Warmup Iteration   3: 1781.393 us/op
+Iteration   1: 1776.441 us/op
+                 gc.alloc.rate:      1213.322 MB/sec
+                 gc.alloc.rate.norm: 2260362.530 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 1768.563 us/op
+                 gc.alloc.rate:      1218.732 MB/sec
+                 gc.alloc.rate.norm: 2260362.493 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   3: 1809.328 us/op
+                 gc.alloc.rate:      1191.275 MB/sec
+                 gc.alloc.rate.norm: 2260362.719 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 1831.801 us/op
+                 gc.alloc.rate:      1176.647 MB/sec
+                 gc.alloc.rate.norm: 2260362.856 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   5: 1783.203 us/op
+                 gc.alloc.rate:      1208.735 MB/sec
+                 gc.alloc.rate.norm: 2260362.605 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection":
+  1804.523 ±(99.9%) 33.197 us/op [Average]
+  (min, avg, max) = (1768.563, 1804.523, 1833.096), stdev = 21.957
+  CI (99.9%): [1771.327, 1837.720] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate":
+  1194.604 ±(99.9%) 22.074 MB/sec [Average]
+  (min, avg, max) = (1175.831, 1194.604, 1218.732), stdev = 14.601
+  CI (99.9%): [1172.530, 1216.678] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate.norm":
+  2260362.700 ±(99.9%) 0.190 B/op [Average]
+  (min, avg, max) = (2260362.493, 2260362.700, 2260362.876), stdev = 0.125
+  CI (99.9%): [2260362.510, 2260362.889] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.count":
+  40.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (4.000, 4.000, 4.000), stdev = 0.001
+  CI (99.9%): [40.000, 40.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.time":
+  26.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (2.000, 2.600, 3.000), stdev = 0.516
+  CI (99.9%): [26.000, 26.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached
+# Parameters: (documents = 1000)
+
+# Run progress: 47.37% complete, ETA 00:02:44
+# Fork: 1 of 2
+# Warmup Iteration   1: 0.071 us/op
+# Warmup Iteration   2: 0.072 us/op
+# Warmup Iteration   3: 0.071 us/op
+Iteration   1: 0.072 us/op
+                 gc.alloc.rate:      1793.978 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 0.071 us/op
+                 gc.alloc.rate:      1825.052 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 0.071 us/op
+                 gc.alloc.rate:      1834.189 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 0.071 us/op
+                 gc.alloc.rate:      1819.040 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   5: 0.071 us/op
+                 gc.alloc.rate:      1833.386 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+# Run progress: 50.00% complete, ETA 00:02:35
+# Fork: 2 of 2
+# Warmup Iteration   1: 0.072 us/op
+# Warmup Iteration   2: 0.073 us/op
+# Warmup Iteration   3: 0.071 us/op
+Iteration   1: 0.071 us/op
+                 gc.alloc.rate:      1824.706 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   2: 0.071 us/op
+                 gc.alloc.rate:      1824.729 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 0.071 us/op
+                 gc.alloc.rate:      1828.037 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 0.071 us/op
+                 gc.alloc.rate:      1831.090 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 0.073 us/op
+                 gc.alloc.rate:      1783.189 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached":
+  0.071 ±(99.9%) 0.001 us/op [Average]
+  (min, avg, max) = (0.071, 0.071, 0.073), stdev = 0.001
+  CI (99.9%): [0.070, 0.072] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate":
+  1819.739 ±(99.9%) 26.043 MB/sec [Average]
+  (min, avg, max) = (1783.189, 1819.739, 1834.189), stdev = 17.226
+  CI (99.9%): [1793.697, 1845.782] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate.norm":
+  136.000 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (136.000, 136.000, 136.000), stdev = 0.001
+  CI (99.9%): [136.000, 136.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.count":
+  60.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (6.000, 6.000, 6.000), stdev = 0.001
+  CI (99.9%): [60.000, 60.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.time":
+  32.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (3.000, 3.200, 4.000), stdev = 0.422
+  CI (99.9%): [32.000, 32.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached
+# Parameters: (documents = 10000)
+
+# Run progress: 52.63% complete, ETA 00:02:27
+# Fork: 1 of 2
+# Warmup Iteration   1: 0.075 us/op
+# Warmup Iteration   2: 0.072 us/op
+# Warmup Iteration   3: 0.071 us/op
+Iteration   1: 0.071 us/op
+                 gc.alloc.rate:      1834.054 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 0.071 us/op
+                 gc.alloc.rate:      1817.370 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 0.072 us/op
+                 gc.alloc.rate:      1804.971 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   4: 0.071 us/op
+                 gc.alloc.rate:      1830.176 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 0.071 us/op
+                 gc.alloc.rate:      1825.731 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+# Run progress: 55.26% complete, ETA 00:02:19
+# Fork: 2 of 2
+# Warmup Iteration   1: 0.078 us/op
+# Warmup Iteration   2: 0.072 us/op
+# Warmup Iteration   3: 0.072 us/op
+Iteration   1: 0.071 us/op
+                 gc.alloc.rate:      1820.226 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 0.071 us/op
+                 gc.alloc.rate:      1829.023 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 0.071 us/op
+                 gc.alloc.rate:      1832.531 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   4: 0.071 us/op
+                 gc.alloc.rate:      1831.263 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 0.071 us/op
+                 gc.alloc.rate:      1834.035 MB/sec
+                 gc.alloc.rate.norm: 136.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached":
+  0.071 ±(99.9%) 0.001 us/op [Average]
+  (min, avg, max) = (0.071, 0.071, 0.072), stdev = 0.001
+  CI (99.9%): [0.070, 0.072] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate":
+  1825.938 ±(99.9%) 14.042 MB/sec [Average]
+  (min, avg, max) = (1804.971, 1825.938, 1834.054), stdev = 9.288
+  CI (99.9%): [1811.896, 1839.980] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate.norm":
+  136.000 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (136.000, 136.000, 136.000), stdev = 0.001
+  CI (99.9%): [136.000, 136.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.count":
+  60.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (6.000, 6.000, 6.000), stdev = 0.001
+  CI (99.9%): [60.000, 60.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.time":
+  33.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (3.000, 3.300, 5.000), stdev = 0.675
+  CI (99.9%): [33.000, 33.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached
+# Parameters: (documents = 1000)
+
+# Run progress: 57.89% complete, ETA 00:02:11
+# Fork: 1 of 2
+# Warmup Iteration   1: 307.261 us/op
+# Warmup Iteration   2: 265.296 us/op
+# Warmup Iteration   3: 258.944 us/op
+Iteration   1: 252.567 us/op
+                 gc.alloc.rate:      1155.964 MB/sec
+                 gc.alloc.rate.norm: 306177.501 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   2: 256.642 us/op
+                 gc.alloc.rate:      1137.627 MB/sec
+                 gc.alloc.rate.norm: 306177.524 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   3: 265.238 us/op
+                 gc.alloc.rate:      1100.759 MB/sec
+                 gc.alloc.rate.norm: 306177.579 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   4: 277.611 us/op
+                 gc.alloc.rate:      1051.672 MB/sec
+                 gc.alloc.rate.norm: 306177.647 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   5: 257.297 us/op
+                 gc.alloc.rate:      1134.729 MB/sec
+                 gc.alloc.rate.norm: 306177.525 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+
+# Run progress: 60.53% complete, ETA 00:02:03
+# Fork: 2 of 2
+# Warmup Iteration   1: 294.887 us/op
+# Warmup Iteration   2: 285.699 us/op
+# Warmup Iteration   3: 272.335 us/op
+Iteration   1: 262.383 us/op
+                 gc.alloc.rate:      1112.684 MB/sec
+                 gc.alloc.rate.norm: 306177.539 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   2: 272.818 us/op
+                 gc.alloc.rate:      1070.162 MB/sec
+                 gc.alloc.rate.norm: 306177.620 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   3: 263.550 us/op
+                 gc.alloc.rate:      1107.797 MB/sec
+                 gc.alloc.rate.norm: 306177.563 B/op
+                 gc.count:           3.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   4: 267.710 us/op
+                 gc.alloc.rate:      1090.591 MB/sec
+                 gc.alloc.rate.norm: 306177.587 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   5: 265.351 us/op
+                 gc.alloc.rate:      1100.288 MB/sec
+                 gc.alloc.rate.norm: 306177.580 B/op
+                 gc.count:           4.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached":
+  264.117 ±(99.9%) 11.410 us/op [Average]
+  (min, avg, max) = (252.567, 264.117, 277.611), stdev = 7.547
+  CI (99.9%): [252.707, 275.526] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate":
+  1106.227 ±(99.9%) 47.550 MB/sec [Average]
+  (min, avg, max) = (1051.672, 1106.227, 1155.964), stdev = 31.451
+  CI (99.9%): [1058.677, 1153.777] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate.norm":
+  306177.567 ±(99.9%) 0.069 B/op [Average]
+  (min, avg, max) = (306177.501, 306177.567, 306177.647), stdev = 0.046
+  CI (99.9%): [306177.498, 306177.635] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.count":
+  36.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (3.000, 3.600, 4.000), stdev = 0.516
+  CI (99.9%): [36.000, 36.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.time":
+  21.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (2.000, 2.100, 3.000), stdev = 0.316
+  CI (99.9%): [21.000, 21.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached
+# Parameters: (documents = 10000)
+
+# Run progress: 63.16% complete, ETA 00:01:55
+# Fork: 1 of 2
+# Warmup Iteration   1: 7367.953 us/op
+# Warmup Iteration   2: 6907.015 us/op
+# Warmup Iteration   3: 6671.225 us/op
+Iteration   1: 6776.704 us/op
+                 gc.alloc.rate:      418.044 MB/sec
+                 gc.alloc.rate.norm: 2970928.000 B/op
+                 gc.count:           2.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   2: 6632.874 us/op
+                 gc.alloc.rate:      427.113 MB/sec
+                 gc.alloc.rate.norm: 2970927.211 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   3: 6635.874 us/op
+                 gc.alloc.rate:      426.922 MB/sec
+                 gc.alloc.rate.norm: 2970928.316 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            ≈ 0 ms
+
+Iteration   4: 6609.151 us/op
+                 gc.alloc.rate:      428.649 MB/sec
+                 gc.alloc.rate.norm: 2970926.954 B/op
+                 gc.count:           2.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   5: 6807.638 us/op
+                 gc.alloc.rate:      416.143 MB/sec
+                 gc.alloc.rate.norm: 2970928.270 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            1.000 ms
+
+
+# Run progress: 65.79% complete, ETA 00:01:46
+# Fork: 2 of 2
+# Warmup Iteration   1: 7245.262 us/op
+# Warmup Iteration   2: 6673.559 us/op
+# Warmup Iteration   3: 6702.302 us/op
+Iteration   1: 6680.667 us/op
+                 gc.alloc.rate:      424.056 MB/sec
+                 gc.alloc.rate.norm: 2970927.470 B/op
+                 gc.count:           2.000 counts
+                 gc.time:            2.000 ms
+
+Iteration   2: 6573.444 us/op
+                 gc.alloc.rate:      430.975 MB/sec
+                 gc.alloc.rate.norm: 2970926.954 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            ≈ 0 ms
+
+Iteration   3: 6854.543 us/op
+                 gc.alloc.rate:      413.301 MB/sec
+                 gc.alloc.rate.norm: 2970929.687 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   4: 6745.009 us/op
+                 gc.alloc.rate:      420.012 MB/sec
+                 gc.alloc.rate.norm: 2970927.733 B/op
+                 gc.count:           2.000 counts
+                 gc.time:            1.000 ms
+
+Iteration   5: 6743.378 us/op
+                 gc.alloc.rate:      420.117 MB/sec
+                 gc.alloc.rate.norm: 2970927.733 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            1.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached":
+  6705.928 ±(99.9%) 140.900 us/op [Average]
+  (min, avg, max) = (6573.444, 6705.928, 6854.543), stdev = 93.197
+  CI (99.9%): [6565.028, 6846.828] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate":
+  422.533 ±(99.9%) 8.868 MB/sec [Average]
+  (min, avg, max) = (413.301, 422.533, 430.975), stdev = 5.865
+  CI (99.9%): [413.665, 431.401] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate.norm":
+  2970927.833 ±(99.9%) 1.232 B/op [Average]
+  (min, avg, max) = (2970926.954, 2970927.833, 2970929.687), stdev = 0.815
+  CI (99.9%): [2970926.601, 2970929.065] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.count":
+  14.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (1.000, 1.400, 2.000), stdev = 0.516
+  CI (99.9%): [14.000, 14.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.time":
+  9.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (≈ 0, 0.900, 2.000), stdev = 0.568
+  CI (99.9%): [9.000, 9.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions
+# Parameters: (documents = 1000)
+
+# Run progress: 68.42% complete, ETA 00:01:38
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.167 us/op
+# Warmup Iteration   2: 2.008 us/op
+# Warmup Iteration   3: 2.036 us/op
+Iteration   1: 2.059 us/op
+                 gc.alloc.rate:      4345.309 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   2: 2.036 us/op
+                 gc.alloc.rate:      4396.016 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           15.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.028 us/op
+                 gc.alloc.rate:      4411.589 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   4: 2.026 us/op
+                 gc.alloc.rate:      4417.329 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           15.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   5: 2.028 us/op
+                 gc.alloc.rate:      4413.210 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            6.000 ms
+
+
+# Run progress: 71.05% complete, ETA 00:01:30
+# Fork: 2 of 2
+# Warmup Iteration   1: 2.201 us/op
+# Warmup Iteration   2: 2.046 us/op
+# Warmup Iteration   3: 2.022 us/op
+Iteration   1: 2.055 us/op
+                 gc.alloc.rate:      4353.441 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   2: 2.048 us/op
+                 gc.alloc.rate:      4368.877 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.047 us/op
+                 gc.alloc.rate:      4371.317 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           15.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   4: 2.084 us/op
+                 gc.alloc.rate:      4294.761 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   5: 2.050 us/op
+                 gc.alloc.rate:      4365.075 MB/sec
+                 gc.alloc.rate.norm: 9384.012 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions":
+  2.046 ±(99.9%) 0.027 us/op [Average]
+  (min, avg, max) = (2.026, 2.046, 2.084), stdev = 0.018
+  CI (99.9%): [2.019, 2.073] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate":
+  4373.692 ±(99.9%) 57.347 MB/sec [Average]
+  (min, avg, max) = (4294.761, 4373.692, 4417.329), stdev = 37.932
+  CI (99.9%): [4316.345, 4431.040] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate.norm":
+  9384.012 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (9384.012, 9384.012, 9384.012), stdev = 0.001
+  CI (99.9%): [9384.012, 9384.012] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.count":
+  143.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (14.000, 14.300, 15.000), stdev = 0.483
+  CI (99.9%): [143.000, 143.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.time":
+  71.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (6.000, 7.100, 8.000), stdev = 0.568
+  CI (99.9%): [71.000, 71.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions
+# Parameters: (documents = 10000)
+
+# Run progress: 73.68% complete, ETA 00:01:22
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.451 us/op
+# Warmup Iteration   2: 2.206 us/op
+# Warmup Iteration   3: 2.200 us/op
+Iteration   1: 2.205 us/op
+                 gc.alloc.rate:      4057.881 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   2: 2.272 us/op
+                 gc.alloc.rate:      3938.782 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.215 us/op
+                 gc.alloc.rate:      4040.030 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   4: 2.217 us/op
+                 gc.alloc.rate:      4036.527 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            8.000 ms
+
+Iteration   5: 2.207 us/op
+                 gc.alloc.rate:      4054.587 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            6.000 ms
+
+
+# Run progress: 76.32% complete, ETA 00:01:14
+# Fork: 2 of 2
+# Warmup Iteration   1: 2.436 us/op
+# Warmup Iteration   2: 2.181 us/op
+# Warmup Iteration   3: 2.196 us/op
+Iteration   1: 2.166 us/op
+                 gc.alloc.rate:      4132.075 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   2: 2.168 us/op
+                 gc.alloc.rate:      4128.048 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   3: 2.176 us/op
+                 gc.alloc.rate:      4112.220 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+Iteration   4: 2.183 us/op
+                 gc.alloc.rate:      4099.339 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           13.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   5: 2.198 us/op
+                 gc.alloc.rate:      4071.360 MB/sec
+                 gc.alloc.rate.norm: 9384.013 B/op
+                 gc.count:           14.000 counts
+                 gc.time:            7.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions":
+  2.201 ±(99.9%) 0.047 us/op [Average]
+  (min, avg, max) = (2.166, 2.201, 2.272), stdev = 0.031
+  CI (99.9%): [2.153, 2.248] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate":
+  4067.085 ±(99.9%) 86.416 MB/sec [Average]
+  (min, avg, max) = (3938.782, 4067.085, 4132.075), stdev = 57.159
+  CI (99.9%): [3980.669, 4153.501] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate.norm":
+  9384.013 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (9384.013, 9384.013, 9384.013), stdev = 0.001
+  CI (99.9%): [9384.013, 9384.013] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.count":
+  134.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (13.000, 13.400, 14.000), stdev = 0.516
+  CI (99.9%): [134.000, 134.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.time":
+  67.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (6.000, 6.700, 8.000), stdev = 0.675
+  CI (99.9%): [67.000, 67.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize
+# Parameters: (documents = 1000)
+
+# Run progress: 78.95% complete, ETA 00:01:05
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.456 us/op
+# Warmup Iteration   2: 2.354 us/op
+# Warmup Iteration   3: 2.358 us/op
+Iteration   1: 2.347 us/op
+                 gc.alloc.rate:      1989.375 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 2.372 us/op
+                 gc.alloc.rate:      1968.526 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   3: 2.397 us/op
+                 gc.alloc.rate:      1947.863 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 2.347 us/op
+                 gc.alloc.rate:      1989.577 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   5: 2.351 us/op
+                 gc.alloc.rate:      1985.591 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+# Run progress: 81.58% complete, ETA 00:00:57
+# Fork: 2 of 2
+# Warmup Iteration   1: 2.437 us/op
+# Warmup Iteration   2: 2.367 us/op
+# Warmup Iteration   3: 2.366 us/op
+Iteration   1: 2.370 us/op
+                 gc.alloc.rate:      1969.811 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   2: 2.357 us/op
+                 gc.alloc.rate:      1980.622 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   3: 2.302 us/op
+                 gc.alloc.rate:      2028.074 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   4: 2.327 us/op
+                 gc.alloc.rate:      2006.559 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   5: 2.329 us/op
+                 gc.alloc.rate:      2004.536 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize":
+  2.350 ±(99.9%) 0.040 us/op [Average]
+  (min, avg, max) = (2.302, 2.350, 2.397), stdev = 0.027
+  CI (99.9%): [2.309, 2.390] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate":
+  1987.053 ±(99.9%) 34.182 MB/sec [Average]
+  (min, avg, max) = (1947.863, 1987.053, 2028.074), stdev = 22.609
+  CI (99.9%): [1952.872, 2021.235] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate.norm":
+  4896.014 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (4896.014, 4896.014, 4896.014), stdev = 0.001
+  CI (99.9%): [4896.014, 4896.014] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.count":
+  64.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (6.000, 6.400, 7.000), stdev = 0.516
+  CI (99.9%): [64.000, 64.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.time":
+  34.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (3.000, 3.400, 4.000), stdev = 0.516
+  CI (99.9%): [34.000, 34.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize
+# Parameters: (documents = 10000)
+
+# Run progress: 84.21% complete, ETA 00:00:49
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.653 us/op
+# Warmup Iteration   2: 2.357 us/op
+# Warmup Iteration   3: 2.342 us/op
+Iteration   1: 2.345 us/op
+                 gc.alloc.rate:      1990.965 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   2: 2.320 us/op
+                 gc.alloc.rate:      2012.033 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 2.331 us/op
+                 gc.alloc.rate:      2003.102 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   4: 2.353 us/op
+                 gc.alloc.rate:      1984.387 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 2.332 us/op
+                 gc.alloc.rate:      2002.316 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+
+# Run progress: 86.84% complete, ETA 00:00:41
+# Fork: 2 of 2
+# Warmup Iteration   1: 2.420 us/op
+# Warmup Iteration   2: 2.270 us/op
+# Warmup Iteration   3: 2.265 us/op
+Iteration   1: 2.266 us/op
+                 gc.alloc.rate:      2060.331 MB/sec
+                 gc.alloc.rate.norm: 4896.013 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   2: 2.330 us/op
+                 gc.alloc.rate:      2003.850 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   3: 2.288 us/op
+                 gc.alloc.rate:      2040.268 MB/sec
+                 gc.alloc.rate.norm: 4896.014 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   4: 2.261 us/op
+                 gc.alloc.rate:      2064.897 MB/sec
+                 gc.alloc.rate.norm: 4896.013 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   5: 2.283 us/op
+                 gc.alloc.rate:      2045.206 MB/sec
+                 gc.alloc.rate.norm: 4896.013 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            4.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize":
+  2.311 ±(99.9%) 0.050 us/op [Average]
+  (min, avg, max) = (2.261, 2.311, 2.353), stdev = 0.033
+  CI (99.9%): [2.260, 2.361] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate":
+  2020.736 ±(99.9%) 44.270 MB/sec [Average]
+  (min, avg, max) = (1984.387, 2020.736, 2064.897), stdev = 29.282
+  CI (99.9%): [1976.466, 2065.006] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate.norm":
+  4896.014 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (4896.013, 4896.014, 4896.014), stdev = 0.001
+  CI (99.9%): [4896.013, 4896.014] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.count":
+  67.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (6.000, 6.700, 7.000), stdev = 0.483
+  CI (99.9%): [67.000, 67.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.time":
+  36.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (3.000, 3.600, 4.000), stdev = 0.516
+  CI (99.9%): [36.000, 36.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached
+# Parameters: (documents = 1000)
+
+# Run progress: 89.47% complete, ETA 00:00:32
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.428 us/op
+# Warmup Iteration   2: 2.190 us/op
+# Warmup Iteration   3: 2.227 us/op
+Iteration   1: 2.187 us/op
+                 gc.alloc.rate:      9633.581 MB/sec
+                 gc.alloc.rate.norm: 22096.013 B/op
+                 gc.count:           31.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   2: 2.195 us/op
+                 gc.alloc.rate:      9598.790 MB/sec
+                 gc.alloc.rate.norm: 22096.013 B/op
+                 gc.count:           32.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   3: 2.188 us/op
+                 gc.alloc.rate:      9630.518 MB/sec
+                 gc.alloc.rate.norm: 22096.013 B/op
+                 gc.count:           32.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   4: 2.194 us/op
+                 gc.alloc.rate:      9602.768 MB/sec
+                 gc.alloc.rate.norm: 22096.013 B/op
+                 gc.count:           31.000 counts
+                 gc.time:            15.000 ms
+
+Iteration   5: 2.192 us/op
+                 gc.alloc.rate:      9611.922 MB/sec
+                 gc.alloc.rate.norm: 22096.013 B/op
+                 gc.count:           32.000 counts
+                 gc.time:            16.000 ms
+
+
+# Run progress: 92.11% complete, ETA 00:00:24
+# Fork: 2 of 2
+# Warmup Iteration   1: 1.774 us/op
+# Warmup Iteration   2: 1.564 us/op
+# Warmup Iteration   3: 1.547 us/op
+Iteration   1: 1.549 us/op
+                 gc.alloc.rate:      13620.114 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           45.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   2: 1.560 us/op
+                 gc.alloc.rate:      13517.292 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   3: 1.551 us/op
+                 gc.alloc.rate:      13596.715 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   4: 1.584 us/op
+                 gc.alloc.rate:      13313.245 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   5: 1.587 us/op
+                 gc.alloc.rate:      13292.645 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            22.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached":
+  1.879 ±(99.9%) 0.498 us/op [Average]
+  (min, avg, max) = (1.549, 1.879, 2.195), stdev = 0.330
+  CI (99.9%): [1.380, 2.377] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate":
+  11541.759 ±(99.9%) 3073.778 MB/sec [Average]
+  (min, avg, max) = (9598.790, 11541.759, 13620.114), stdev = 2033.114
+  CI (99.9%): [8467.981, 14615.537] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate.norm":
+  22108.011 ±(99.9%) 19.121 B/op [Average]
+  (min, avg, max) = (22096.013, 22108.011, 22120.009), stdev = 12.647
+  CI (99.9%): [22088.890, 22127.132] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.count":
+  379.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (31.000, 37.900, 45.000), stdev = 6.657
+  CI (99.9%): [379.000, 379.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.time":
+  193.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (15.000, 19.300, 23.000), stdev = 3.335
+  CI (99.9%): [193.000, 193.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.16, OpenJDK 64-Bit Server VM, 17.0.16+8-LTS
+# VM invoker: /Users/aditya/Library/Java/JavaVirtualMachines/ms-17.0.16/Contents/Home/bin/java
+# VM options: -Xms512m -Xmx2g
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached
+# Parameters: (documents = 10000)
+
+# Run progress: 94.74% complete, ETA 00:00:16
+# Fork: 1 of 2
+# Warmup Iteration   1: 2.134 us/op
+# Warmup Iteration   2: 1.853 us/op
+# Warmup Iteration   3: 1.822 us/op
+Iteration   1: 1.850 us/op
+                 gc.alloc.rate:      11427.561 MB/sec
+                 gc.alloc.rate.norm: 22168.011 B/op
+                 gc.count:           38.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   2: 1.847 us/op
+                 gc.alloc.rate:      11446.465 MB/sec
+                 gc.alloc.rate.norm: 22168.011 B/op
+                 gc.count:           37.000 counts
+                 gc.time:            19.000 ms
+
+Iteration   3: 1.826 us/op
+                 gc.alloc.rate:      11578.710 MB/sec
+                 gc.alloc.rate.norm: 22168.011 B/op
+                 gc.count:           39.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   4: 1.829 us/op
+                 gc.alloc.rate:      11558.243 MB/sec
+                 gc.alloc.rate.norm: 22168.011 B/op
+                 gc.count:           38.000 counts
+                 gc.time:            20.000 ms
+
+Iteration   5: 1.822 us/op
+                 gc.alloc.rate:      11603.141 MB/sec
+                 gc.alloc.rate.norm: 22168.011 B/op
+                 gc.count:           38.000 counts
+                 gc.time:            20.000 ms
+
+
+# Run progress: 97.37% complete, ETA 00:00:08
+# Fork: 2 of 2
+# Warmup Iteration   1: 1.808 us/op
+# Warmup Iteration   2: 1.577 us/op
+# Warmup Iteration   3: 1.541 us/op
+Iteration   1: 1.541 us/op
+                 gc.alloc.rate:      13687.051 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            24.000 ms
+
+Iteration   2: 1.539 us/op
+                 gc.alloc.rate:      13707.843 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           46.000 counts
+                 gc.time:            24.000 ms
+
+Iteration   3: 1.554 us/op
+                 gc.alloc.rate:      13572.673 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   4: 1.539 us/op
+                 gc.alloc.rate:      13704.032 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           45.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   5: 1.578 us/op
+                 gc.alloc.rate:      13367.139 MB/sec
+                 gc.alloc.rate.norm: 22120.009 B/op
+                 gc.count:           44.000 counts
+                 gc.time:            22.000 ms
+
+
+
+Result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached":
+  1.692 ±(99.9%) 0.228 us/op [Average]
+  (min, avg, max) = (1.539, 1.692, 1.850), stdev = 0.151
+  CI (99.9%): [1.465, 1.920] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate":
+  12565.286 ±(99.9%) 1669.726 MB/sec [Average]
+  (min, avg, max) = (11427.561, 12565.286, 13707.843), stdev = 1104.420
+  CI (99.9%): [10895.560, 14235.012] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate.norm":
+  22144.010 ±(99.9%) 38.249 B/op [Average]
+  (min, avg, max) = (22120.009, 22144.010, 22168.011), stdev = 25.299
+  CI (99.9%): [22105.761, 22182.259] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.count":
+  413.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (37.000, 41.300, 46.000), stdev = 3.561
+  CI (99.9%): [413.000, 413.000] (assumes normal distribution)
+
+Secondary result "com.aditya.minsearch.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.time":
+  219.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (19.000, 21.900, 25.000), stdev = 2.025
+  CI (99.9%): [219.000, 219.000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:05:12
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                                                              (documents)                (term)  Mode  Cnt         Score       Error   Units
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein                               N/A           distributed  avgt   10       113.198 ±     1.521   ns/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate                 N/A           distributed  avgt   10      7278.505 ±    97.259  MB/sec
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm            N/A           distributed  avgt   10       864.001 ±     0.001    B/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count                      N/A           distributed  avgt   10       238.000              counts
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time                       N/A           distributed  avgt   10       112.000                  ms
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein                               N/A         transactional  avgt   10       119.375 ±     1.649   ns/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate                 N/A         transactional  avgt   10      8052.385 ±   109.737  MB/sec
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm            N/A         transactional  avgt   10      1008.001 ±     0.001    B/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count                      N/A         transactional  avgt   10       265.000              counts
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time                       N/A         transactional  avgt   10       121.000                  ms
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein                               N/A  internationalization  avgt   10       204.472 ±     2.466   ns/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate                 N/A  internationalization  avgt   10      7051.580 ±    84.133  MB/sec
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.alloc.rate.norm            N/A  internationalization  avgt   10      1512.001 ±     0.001    B/op
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.count                      N/A  internationalization  avgt   10       232.000              counts
+c.a.m.autocomplete.application.EditDistanceBenchmark.levenshtein:gc.time                       N/A  internationalization  avgt   10       108.000                  ms
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration                                           1000                   N/A  avgt   10         1.985 ±     0.056   ms/op
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate                             1000                   N/A  avgt   10      3702.355 ±   114.876  MB/sec
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate.norm                        1000                   N/A  avgt   10   7705243.778 ± 25497.958    B/op
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.count                                  1000                   N/A  avgt   10       122.000              counts
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.time                                   1000                   N/A  avgt   10        76.000                  ms
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration                                          10000                   N/A  avgt   10        25.549 ±     0.693   ms/op
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate                            10000                   N/A  avgt   10      2915.812 ±    76.699  MB/sec
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.alloc.rate.norm                       10000                   N/A  avgt   10  78101990.266 ±     3.938    B/op
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.count                                 10000                   N/A  avgt   10        98.000              counts
+c.a.m.benchmark.IndexBuildBenchmark.buildGeneration:gc.time                                  10000                   N/A  avgt   10       160.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval                                     1000                   N/A  avgt   10       139.608 ±     3.313   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate                       1000                   N/A  avgt   10      2240.029 ±    52.685  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate.norm                  1000                   N/A  avgt   10    327888.828 ±     0.021    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.count                            1000                   N/A  avgt   10        74.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.time                             1000                   N/A  avgt   10        40.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval                                    10000                   N/A  avgt   10      5066.560 ±   104.244   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate                      10000                   N/A  avgt   10       854.196 ±    17.407  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.alloc.rate.norm                 10000                   N/A  avgt   10   4537854.107 ±     0.915    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.count                           10000                   N/A  avgt   10        29.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.phraseRetrieval:gc.time                            10000                   N/A  avgt   10        19.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection                                 1000                   N/A  avgt   10        71.314 ±     1.248   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate                   1000                   N/A  avgt   10      3189.743 ±    56.035  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate.norm              1000                   N/A  avgt   10    238520.425 ±     0.008    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.count                        1000                   N/A  avgt   10       105.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.time                         1000                   N/A  avgt   10        55.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection                                10000                   N/A  avgt   10      1804.523 ±    33.197   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate                  10000                   N/A  avgt   10      1194.604 ±    22.074  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.alloc.rate.norm             10000                   N/A  avgt   10   2260362.700 ±     0.190    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.count                       10000                   N/A  avgt   10        40.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.postingIntersection:gc.time                        10000                   N/A  avgt   10        26.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached                                       1000                   N/A  avgt   10         0.071 ±     0.001   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate                         1000                   N/A  avgt   10      1819.739 ±    26.043  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate.norm                    1000                   N/A  avgt   10       136.000 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.count                              1000                   N/A  avgt   10        60.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.time                               1000                   N/A  avgt   10        32.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached                                      10000                   N/A  avgt   10         0.071 ±     0.001   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate                        10000                   N/A  avgt   10      1825.938 ±    14.042  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.alloc.rate.norm                   10000                   N/A  avgt   10       136.000 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.count                             10000                   N/A  avgt   10        60.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingCached:gc.time                              10000                   N/A  avgt   10        33.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached                                     1000                   N/A  avgt   10       264.117 ±    11.410   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate                       1000                   N/A  avgt   10      1106.227 ±    47.550  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate.norm                  1000                   N/A  avgt   10    306177.567 ±     0.069    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.count                            1000                   N/A  avgt   10        36.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.time                             1000                   N/A  avgt   10        21.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached                                    10000                   N/A  avgt   10      6705.928 ±   140.900   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate                      10000                   N/A  avgt   10       422.533 ±     8.868  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.alloc.rate.norm                 10000                   N/A  avgt   10   2970927.833 ±     1.232    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.count                           10000                   N/A  avgt   10        14.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.rankingUncached:gc.time                            10000                   N/A  avgt   10         9.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions                                 1000                   N/A  avgt   10         2.046 ±     0.027   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate                   1000                   N/A  avgt   10      4373.692 ±    57.347  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate.norm              1000                   N/A  avgt   10      9384.012 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.count                        1000                   N/A  avgt   10       143.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.time                         1000                   N/A  avgt   10        71.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions                                10000                   N/A  avgt   10         2.201 ±     0.047   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate                  10000                   N/A  avgt   10      4067.085 ±    86.416  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.alloc.rate.norm             10000                   N/A  avgt   10      9384.013 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.count                       10000                   N/A  avgt   10       134.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.spellingSuggestions:gc.time                        10000                   N/A  avgt   10        67.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize                                            1000                   N/A  avgt   10         2.350 ±     0.040   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate                              1000                   N/A  avgt   10      1987.053 ±    34.182  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate.norm                         1000                   N/A  avgt   10      4896.014 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.count                                   1000                   N/A  avgt   10        64.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.time                                    1000                   N/A  avgt   10        34.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize                                           10000                   N/A  avgt   10         2.311 ±     0.050   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate                             10000                   N/A  avgt   10      2020.736 ±    44.270  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.alloc.rate.norm                        10000                   N/A  avgt   10      4896.014 ±     0.001    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.count                                  10000                   N/A  avgt   10        67.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.tokenize:gc.time                                   10000                   N/A  avgt   10        36.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached                            1000                   N/A  avgt   10         1.879 ±     0.498   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate              1000                   N/A  avgt   10     11541.759 ±  3073.778  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate.norm         1000                   N/A  avgt   10     22108.011 ±    19.121    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.count                   1000                   N/A  avgt   10       379.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.time                    1000                   N/A  avgt   10       193.000                  ms
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached                           10000                   N/A  avgt   10         1.692 ±     0.228   us/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate             10000                   N/A  avgt   10     12565.286 ±  1669.726  MB/sec
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.alloc.rate.norm        10000                   N/A  avgt   10     22144.010 ±    38.249    B/op
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.count                  10000                   N/A  avgt   10       413.000              counts
+c.a.m.benchmark.SearchAlgorithmsBenchmark.trieAutocompleteUncached:gc.time                   10000                   N/A  avgt   10       219.000                  ms
+
+Benchmark result is saved to /Users/aditya/Projects/minsearch/benchmarks/results/2026-10-19/full/jmh.json

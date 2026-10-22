@@ -43,7 +43,7 @@ public class DocumentOutboxService {
                 document.checksum(),
                 document.language(),
                 document.fileType().name(),
-                document.createdAt()));
+                document.createdAt(),document.title()));
     repository.save(
         new DocumentOutboxJpaEntity(UUID.randomUUID(), document.id(), type, payload, occurredAt));
   }

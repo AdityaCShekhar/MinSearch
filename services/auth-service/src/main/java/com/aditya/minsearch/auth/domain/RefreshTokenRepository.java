@@ -5,6 +5,8 @@ import java.util.UUID;
 import java.util.List;
 
 public interface RefreshTokenRepository {
+  /** Serialize rotations and reuse revocation for one family in the surrounding transaction. */
+  default void lockFamily(UUID familyId) {}
 	RefreshToken save(RefreshToken refreshToken);
 
 	Optional<RefreshToken> findById(UUID id);

@@ -39,4 +39,14 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>e2e</id>
+			<modules><module>integration-tests</module></modules>
+		</profile>
+		<profile>
+			<id>benchmarks</id>
+			<modules><module>benchmarks/jmh</module></modules>
+		</profile>
+	</profiles>
 </project>

@@ -1,0 +1,4 @@
+{
+  "exit_code": 0,
+  "version": "Picked up JAVA_TOOL_OPTIONS: -Xms512m -Xmx2304m -XX:+ExitOnOutOfMemoryError\nopenjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n"
+}

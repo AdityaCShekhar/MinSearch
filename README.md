@@ -1,6 +1,6 @@
 # MiniSearch
 
-MiniSearch is a Java 17 / Spring Boot document search engine with separate authentication, document, and search services. It implements a positional inverted index, Boolean and phrase queries, TF-IDF ranking, prefix/fuzzy matching, autocomplete, and spelling suggestions.
+MiniSearch is a Java 17 / Spring Boot document search engine with separate authentication, document, and search services. Each service owns an independent PostgreSQL instance, database credentials, and persistent volume. Services exchange document changes and indexing outcomes through Kafka; they never read another service's tables. It implements a positional inverted index, Boolean and phrase queries, TF-IDF ranking, prefix/fuzzy matching, autocomplete, and spelling suggestions.
 
 Document uploads commit metadata and an outbox event to PostgreSQL. A background publisher delivers events to Kafka; the search service extracts and tokenizes the stored file, persists the latest index mutation and an outcome event in one transaction, and atomically publishes the index with its owner metadata. Completion feedback marks the matching document version `INDEXED`; terminal failures expose `INDEX_FAILED` with an error. Updates replace a document's searchable version, and deletions leave durable index tombstones before a retryable cleanup worker removes the file and marks it `DELETED`. Startup rebuilds the in-memory index from persisted tokens.
 
@@ -52,11 +52,29 @@ Owners can poll `GET /api/v1/documents/{id}/status` with their bearer token. It 
 ./mvnw package
 ```
 
+## Reproducible Benchmarks
+
+The [benchmark guide](./benchmarks/README.md) provides deterministic corpora, JMH microbenchmarks with allocation profiling, and isolated authenticated HTTP workloads. It separates real uploads with 100 client workers from search/recovery fixtures at 10,000 and 100,000 documents. Cold, warm, and mixed cache regimes are checked against server counters; raw samples, checksums, environment details, and reports are retained in [reference results](./benchmarks/results/2026-10-19/README.md).
+
+```shell
+make bench-api
+make bench-jmh
+```
+
+Run these separately on an otherwise idle machine. Results describe the documented synthetic corpus and local resource budgets.
+
+The [subsequent profiling results](./benchmarks/results/2026-10-20/README.md) cover
+incremental mutations, primitive posting storage, ranking, writer contention, and
+verified Kafka dead-letter replay. See the [replay guide](./docs/DOCKER.md#replay-one-dead-letter-record)
+for exact-offset recovery commands.
+
 ## Local Development Notes
 
-- [Docker Compose](./infrastructure/docker/docker-compose.yml) starts PostgreSQL, Kafka, topic initialization, and all three services. Search caching defaults to local Caffeine; Redis is optional and is not started by this stack.
-- Services listen on ports 8081 (auth), 8082 (documents), and 8083 (search).
+- [Docker Compose](./infrastructure/docker/docker-compose.yml) starts three PostgreSQL instances, Kafka, Redis, topic initialization, and all three services. Compose enables Redis caching; host processes default to local Caffeine.
+- Services listen on ports 8081 (auth), 8082 (documents), and 8083 (search). Their PostgreSQL instances use host ports 5432, 5433, and 5434 respectively.
 - Document and search APIs accept bearer access tokens issued by the auth service. Owner IDs come from the token subject; `X-User-Id` and `X-Owner-Id` do not establish identity.
+- Deletion is immediate in document APIs and becomes visible in search/autocomplete/suggestions after the versioned Kafka deletion event is applied.
+- Existing shared-database installations require an explicit data migration; the new database volumes start empty. See [upgrade notes](./docs/DOCKER.md#moving-from-the-shared-database).
 - The document service writes a shared document volume; the search service mounts it read-only. Kafka delivery is enabled by Compose and can be enabled for host processes with `MINSEARCH_MESSAGING_ENABLED=true`.
 - Testcontainers-based integration tests run during the normal Maven test lifecycle when Docker is available.
 - See [Docker setup and delivery behavior](./docs/DOCKER.md) for topic names, retries, persistence, and the current deployment limits.

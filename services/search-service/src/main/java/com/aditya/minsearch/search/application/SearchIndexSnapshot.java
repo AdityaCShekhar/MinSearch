@@ -19,7 +19,7 @@ public record SearchIndexSnapshot(IndexGeneration generation, Map<UUID, SearchDo
   public IndexGeneration generationForOwner(UUID owner) {
     var visible =
         documents.entrySet().stream()
-            .filter(entry -> owner.equals(entry.getValue().ownerId()))
+            .filter(entry -> owner==null || owner.equals(entry.getValue().ownerId()))
             .map(Map.Entry::getKey)
             .collect(java.util.stream.Collectors.toSet());
     var postings = new java.util.HashMap<String, PostingList>();

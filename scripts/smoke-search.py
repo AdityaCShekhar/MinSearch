@@ -148,7 +148,7 @@ def main():
     verify_removed(document["storageKey"])
     print("PASS: deletion removes search results and reaches DELETED after file cleanup")
 
-    body, headers = multipart({"language": "en"}, ("invalid.pdf", b"This is not a valid PDF."))
+    body, headers = multipart({"language": "en"}, ("invalid.pdf", b"%PDF-1.7\nMalformed body for terminal extraction test."))
     status, failed = request(args.document_url, "/api/v1/documents", "POST", token, body=body, headers=headers)
     assert status == 202
     failed_status = wait_status(failed["id"], 1, "INDEX_FAILED")

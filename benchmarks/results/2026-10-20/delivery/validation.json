@@ -1,0 +1,83 @@
+{
+  "git_commit": "261a18175aeaeef200bf62c7edddb20ac9022411",
+  "git_status": "M .dockerignore\n M .gitignore\n M Makefile\n M README.md\n M docs/BUILD.md\n M docs/DOCKER.md\n M docs/TASKS.md\n M pom.xml\n M services/search-service/Dockerfile\n M services/search-service/pom.xml\n M services/search-service/src/main/java/com/aditya/minsearch/autocomplete/application/AutocompleteService.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java\n M services/search-service/src/test/java/com/aditya/minsearch/search/application/DocumentIndexingServiceTest.java\n M services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java\n M services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/KafkaIndexingConfigurationTest.java\n?? benchmarks/\n?? services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/DeadLetterReplay.java\n?? services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfiguration.java\n?? services/search-service/src/test/java/com/aditya/minsearch/index/application/PostingLookupTest.java\n?? services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/DeadLetterReplayTest.java\n?? services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfigurationTest.java",
+  "application_source_sha256": "8bb193cfdddbcf82dda9944d9d83be0fe551a6491f4888169760f653bcd87834",
+  "utc": "2026-10-19T18:40:27.498383+00:00",
+  "checks": [
+    {
+      "topic": "document.uploaded.DLT",
+      "receipts": [
+        {
+          "eventId": "4efa684a-5c36-46f2-b183-300a3ddcd326",
+          "sourceTopic": "document.uploaded.DLT",
+          "partition": 2,
+          "sourceOffset": 0,
+          "targetTopic": "document.uploaded",
+          "execute": false
+        },
+        {
+          "eventId": "4efa684a-5c36-46f2-b183-300a3ddcd326",
+          "sourceTopic": "document.uploaded.DLT",
+          "partition": 2,
+          "sourceOffset": 0,
+          "targetTopic": "document.uploaded",
+          "execute": true,
+          "targetOffset": 1
+        },
+        {
+          "eventId": "4efa684a-5c36-46f2-b183-300a3ddcd326",
+          "sourceTopic": "document.uploaded.DLT",
+          "partition": 2,
+          "sourceOffset": 0,
+          "targetTopic": "document.uploaded",
+          "execute": true,
+          "targetOffset": 2
+        }
+      ]
+    },
+    {
+      "check": "terminal failure repaired; duplicate replay creates one completion",
+      "passed": true
+    },
+    {
+      "topic": "index.completed.DLT",
+      "receipts": [
+        {
+          "eventId": "017b4af4-b059-3d67-acd3-e3ee6e8d5641",
+          "partition": 2,
+          "sourceTopic": "index.completed.DLT",
+          "sourceOffset": 0,
+          "targetTopic": "index.completed",
+          "execute": false
+        },
+        {
+          "eventId": "017b4af4-b059-3d67-acd3-e3ee6e8d5641",
+          "partition": 2,
+          "sourceTopic": "index.completed.DLT",
+          "sourceOffset": 0,
+          "targetTopic": "index.completed",
+          "execute": true,
+          "targetOffset": 2
+        },
+        {
+          "eventId": "017b4af4-b059-3d67-acd3-e3ee6e8d5641",
+          "partition": 2,
+          "sourceTopic": "index.completed.DLT",
+          "sourceOffset": 0,
+          "targetTopic": "index.completed",
+          "execute": true,
+          "targetOffset": 3
+        }
+      ]
+    },
+    {
+      "check": "outcome transaction recovered; duplicate replay is idempotent",
+      "passed": true
+    },
+    {
+      "check": "outbox retries an unavailable broker and recovers",
+      "passed": true
+    }
+  ],
+  "valid": true
+}

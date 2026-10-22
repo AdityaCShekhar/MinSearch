@@ -16,7 +16,9 @@ public class AuthenticationRateLimiter {
 	private static final Duration WINDOW = Duration.ofMinutes(1);
 
 	private final Clock clock;
-	private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
+	private final java.util.concurrent.ConcurrentMap<String, Bucket> buckets =
+			com.github.benmanes.caffeine.cache.Caffeine.newBuilder().maximumSize(100_000)
+				.expireAfterAccess(Duration.ofMinutes(2)).<String, Bucket>build().asMap();
 
 	public AuthenticationRateLimiter(Clock clock) {
 		this.clock = clock;
@@ -25,12 +27,14 @@ public class AuthenticationRateLimiter {
 	public void enforce(String key) {
 		Bucket bucket = buckets.computeIfAbsent(key, ignored -> new Bucket(clock.instant(), new AtomicInteger()));
 		Instant now = clock.instant();
-		if (Duration.between(bucket.windowStart(), now).compareTo(WINDOW) > 0) {
-			bucket.windowStart(now);
-			bucket.attempts().set(0);
-		}
-		if (bucket.attempts().incrementAndGet() > MAX_ATTEMPTS) {
-			throw new TooManyAuthenticationAttemptsException();
+		synchronized (bucket) {
+			if (Duration.between(bucket.windowStart(), now).compareTo(WINDOW) >= 0) {
+				bucket.windowStart(now);
+				bucket.attempts().set(0);
+			}
+			if (bucket.attempts().incrementAndGet() > MAX_ATTEMPTS) {
+				throw new TooManyAuthenticationAttemptsException();
+			}
 		}
 	}
 

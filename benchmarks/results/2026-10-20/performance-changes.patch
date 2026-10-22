@@ -1,0 +1,585 @@
+--- a/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java
+@@ -12,11 +12,12 @@
+ import java.util.UUID;
+ 
+ public final class IndexGenerationBuilder {
++  private final Map<String, PostingList> source;
+   private final Map<String, List<Posting>> postings = new HashMap<>();
+   private final Map<UUID, IndexedDocument> documents = new HashMap<>();
+ 
+   public IndexGenerationBuilder(IndexGeneration source) {
+-    source.postings().forEach((term, list) -> postings.put(term, new ArrayList<>(list.postings())));
++    this.source = source.postings();
+     documents.putAll(source.documents());
+   }
+ 
+@@ -24,16 +25,32 @@
+     // New documents cannot have old postings. Avoid scanning the whole index during recovery.
+     if (documents.containsKey(id)) remove(id);
+     Map<String, List<Integer>> positions = new HashMap<>();
+-    for (TextToken token : tokens) positions.computeIfAbsent(token.term(), ignored -> new ArrayList<>()).add(token.position());
+-    positions.forEach((term, values) -> postings.computeIfAbsent(term, ignored -> new ArrayList<>())
+-        .add(new Posting(id, version, values)));
+-    documents.put(id, new IndexedDocument(id, version, new HashSet<>(tokens.stream().map(TextToken::position).toList()).size(), false));
++    for (TextToken token : tokens)
++      positions.computeIfAbsent(token.term(), ignored -> new ArrayList<>()).add(token.position());
++    positions.forEach(
++        (term, values) -> mutablePostings(term).add(new Posting(id, version, values)));
++    documents.put(
++        id,
++        new IndexedDocument(
++            id,
++            version,
++            new HashSet<>(tokens.stream().map(TextToken::position).toList()).size(),
++            false));
+     return this;
+   }
+ 
+   public IndexGenerationBuilder remove(UUID id) {
++    IndexedDocument previous = documents.get(id);
++    if (previous == null || previous.deleted()) {
++      documents.remove(id);
++      return this;
++    }
++    // Copy only lists containing the replaced document; all other lists remain immutable shares.
++    source.forEach(
++        (term, list) -> {
++          if (!postings.containsKey(term) && list.forDocument(id) != null) mutablePostings(term);
++        });
+     postings.values().forEach(list -> list.removeIf(posting -> posting.documentId().equals(id)));
+-    postings.entrySet().removeIf(entry -> entry.getValue().isEmpty());
+     documents.remove(id);
+     return this;
+   }
+@@ -45,8 +62,21 @@
+   }
+ 
+   public IndexGeneration build(long generation) {
+-    Map<String, PostingList> result = new HashMap<>();
+-    postings.forEach((term, list) -> result.put(term, new PostingList(list)));
++    Map<String, PostingList> result = new HashMap<>(source);
++    postings.forEach(
++        (term, list) -> {
++          if (list.isEmpty()) result.remove(term);
++          else result.put(term, new PostingList(list));
++        });
+     return new IndexGeneration(generation, result, documents);
+   }
++
++  private List<Posting> mutablePostings(String term) {
++    return postings.computeIfAbsent(
++        term,
++        key -> {
++          PostingList original = source.get(key);
++          return original == null ? new ArrayList<>() : new ArrayList<>(original.postings());
++        });
++  }
+ }
+--- a/services/search-service/src/main/java/com/aditya/minsearch/index/domain/IndexGeneration.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/index/domain/IndexGeneration.java
+@@ -5,23 +5,60 @@
+ import java.util.UUID;
+ 
+ public final class IndexGeneration {
++  private static final PostingList EMPTY_POSTINGS = new PostingList(java.util.List.of());
+   private final long generation;
+   private final Map<String, PostingList> postings;
+   private final Map<UUID, IndexedDocument> documents;
++  private final int documentCount;
++  private volatile java.util.List<String> vocabulary;
+ 
+-  public IndexGeneration(long generation, Map<String, PostingList> postings,
+-      Map<UUID, IndexedDocument> documents) {
++  public IndexGeneration(
++      long generation, Map<String, PostingList> postings, Map<UUID, IndexedDocument> documents) {
+     this.generation = generation;
+     this.postings = Map.copyOf(postings);
+     this.documents = Map.copyOf(documents);
++    this.documentCount = documents.values().stream().mapToInt(d -> d.deleted() ? 0 : 1).sum();
+   }
+ 
+-  public static IndexGeneration empty() { return new IndexGeneration(0, Map.of(), Map.of()); }
+-  public long generation() { return generation; }
+-  public Map<String, PostingList> postings() { return Collections.unmodifiableMap(postings); }
+-  public Map<UUID, IndexedDocument> documents() { return Collections.unmodifiableMap(documents); }
+-  public PostingList postingsFor(String term) { return postings.getOrDefault(term, new PostingList(java.util.List.of())); }
+-  public IndexedDocument document(UUID id) { return documents.get(id); }
+-  public int documentCount() { return documents.values().stream().mapToInt(d -> d.deleted() ? 0 : 1).sum(); }
+-  public int termCount() { return postings.size(); }
++  public static IndexGeneration empty() {
++    return new IndexGeneration(0, Map.of(), Map.of());
++  }
++
++  public long generation() {
++    return generation;
++  }
++
++  public Map<String, PostingList> postings() {
++    return Collections.unmodifiableMap(postings);
++  }
++
++  public Map<UUID, IndexedDocument> documents() {
++    return Collections.unmodifiableMap(documents);
++  }
++
++  public PostingList postingsFor(String term) {
++    return postings.getOrDefault(term, EMPTY_POSTINGS);
++  }
++
++  public IndexedDocument document(UUID id) {
++    return documents.get(id);
++  }
++
++  public int documentCount() {
++    return documentCount;
++  }
++
++  public int termCount() {
++    return postings.size();
++  }
++
++  /** Benign duplicate computation on first use keeps generation reads free of locks. */
++  public java.util.List<String> vocabulary() {
++    var cached = vocabulary;
++    if (cached == null) {
++      cached = postings.keySet().stream().sorted().toList();
++      vocabulary = cached;
++    }
++    return cached;
++  }
+ }
+--- a/services/search-service/src/main/java/com/aditya/minsearch/index/domain/Posting.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/index/domain/Posting.java
+@@ -5,12 +5,56 @@
+ 
+ public record Posting(UUID documentId, long documentVersion, List<Integer> positions) {
+   public Posting {
+-    positions = List.copyOf(positions);
++    // JDK single/pair lists avoid an extra array; larger lists benefit from primitive storage.
++    positions = positions.size() <= 2 ? List.copyOf(positions) : new Positions(positions);
+     if (positions.isEmpty()) throw new IllegalArgumentException("A posting needs a position");
+     for (int i = 1; i < positions.size(); i++) {
+-      if (positions.get(i) <= positions.get(i - 1)) throw new IllegalArgumentException("Positions must be sorted");
++      if (positions.get(i) <= positions.get(i - 1))
++        throw new IllegalArgumentException("Positions must be sorted");
+     }
+   }
+ 
+-  public int termFrequency() { return positions.size(); }
++  public int termFrequency() {
++    return positions.size();
++  }
++
++  public int positionAt(int index) {
++    return positions instanceof Positions packed ? packed.values[index] : positions.get(index);
++  }
++
++  public boolean hasPosition(int position) {
++    if (positions instanceof Positions packed)
++      return java.util.Arrays.binarySearch(packed.values, position) >= 0;
++    for (int i = 0; i < positions.size(); i++) {
++      if (positions.get(i) == position) return true;
++    }
++    return false;
++  }
++
++  /** Immutable primitive storage; the List API keeps snapshots and callers compatible. */
++  private static final class Positions extends java.util.AbstractList<Integer>
++      implements java.util.RandomAccess {
++    private final int[] values;
++
++    Positions(List<Integer> source) {
++      values = new int[source.size()];
++      for (int i = 0; i < values.length; i++) values[i] = source.get(i);
++    }
++
++    @Override
++    public Integer get(int index) {
++      return values[index];
++    }
++
++    @Override
++    public int size() {
++      return values.length;
++    }
++
++    @Override
++    public boolean contains(Object value) {
++      return value instanceof Integer position
++          && java.util.Arrays.binarySearch(values, position) >= 0;
++    }
++  }
+ }
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java
+@@ -47,15 +47,16 @@
+     IndexGenerationBuilder builder = new IndexGenerationBuilder(IndexGeneration.empty());
+     var documents = new HashMap<java.util.UUID, SearchDocument>();
+     long[] revision = {0};
+-    store.forEach(stored -> {
+-      var mutation = stored.mutation();
+-      if (mutation.deleted()) builder.delete(mutation.documentId(), mutation.version());
+-      else {
+-        builder.replace(mutation.documentId(), mutation.version(), mutation.tokens());
+-        documents.put(mutation.documentId(), mutation.document());
+-      }
+-      revision[0] = Math.max(revision[0], stored.revision());
+-    });
++    store.forEach(
++        stored -> {
++          var mutation = stored.mutation();
++          if (mutation.deleted()) builder.delete(mutation.documentId(), mutation.version());
++          else {
++            builder.replace(mutation.documentId(), mutation.version(), mutation.tokens());
++            documents.put(mutation.documentId(), mutation.document());
++          }
++          revision[0] = Math.max(revision[0], stored.revision());
++        });
+     published.set(new SearchIndexSnapshot(builder.build(revision[0]), documents));
+   }
+ 
+@@ -63,12 +64,10 @@
+     return published.get();
+   }
+ 
+-  public synchronized void apply(DomainEvent event, DocumentIndexPayload payload)
+-      throws IOException {
++  public void apply(DomainEvent event, DocumentIndexPayload payload) throws IOException {
+     if (!EVENT_TYPES.contains(event.eventType()))
+       throw new IllegalArgumentException("Unsupported document event type");
+-    SearchIndexSnapshot current = published.get();
+-    var previous = current.generation().document(payload.documentId());
++    var previous = published.get().generation().document(payload.documentId());
+     // Persisted versions, including deletion tombstones, also deduplicate after a restart.
+     if (previous != null && previous.documentVersion() >= payload.version()) return;
+     boolean deleted = event.eventType().equals("document.deleted");
+@@ -80,34 +79,41 @@
+             payload.language(),
+             payload.fileType().toLowerCase(Locale.ROOT),
+             payload.uploadedAt());
+-    IndexGenerationBuilder builder = new IndexGenerationBuilder(current.generation());
+-    var documents = new HashMap<>(current.documents());
+-    if (deleted) {
+-      builder.delete(payload.documentId(), payload.version());
+-      documents.remove(payload.documentId());
+-    } else {
+-      builder.replace(payload.documentId(), payload.version(), tokens);
+-      documents.put(payload.documentId(), metadata);
++    // Independent extraction can run concurrently; recheck versions under the publication lock.
++    synchronized (this) {
++      SearchIndexSnapshot current = published.get();
++      previous = current.generation().document(payload.documentId());
++      if (previous != null && previous.documentVersion() >= payload.version()) return;
++      IndexGenerationBuilder builder = new IndexGenerationBuilder(current.generation());
++      var documents = new HashMap<>(current.documents());
++      if (deleted) {
++        builder.delete(payload.documentId(), payload.version());
++        documents.remove(payload.documentId());
++      } else {
++        builder.replace(payload.documentId(), payload.version(), tokens);
++        documents.put(payload.documentId(), metadata);
++      }
++      // Prepare before persistence, then publish only after the projection transaction commits.
++      IndexGeneration candidate = builder.build(current.generation().generation() + 1);
++      OptionalLong revision =
++          store.save(
++              new SearchIndexStore.Mutation(
++                  event.eventId(),
++                  payload.documentId(),
++                  payload.version(),
++                  deleted,
++                  metadata,
++                  tokens));
++      if (revision.isEmpty()) {
++        recover();
++        return;
++      }
++      published.set(
++          new SearchIndexSnapshot(
++              new IndexGeneration(
++                  revision.getAsLong(), candidate.postings(), candidate.documents()),
++              documents));
+     }
+-    // Prepare before persistence, then publish only after the projection transaction commits.
+-    IndexGeneration candidate = builder.build(current.generation().generation() + 1);
+-    OptionalLong revision =
+-        store.save(
+-            new SearchIndexStore.Mutation(
+-                event.eventId(),
+-                payload.documentId(),
+-                payload.version(),
+-                deleted,
+-                metadata,
+-                tokens));
+-    if (revision.isEmpty()) {
+-      recover();
+-      return;
+-    }
+-    published.set(
+-        new SearchIndexSnapshot(
+-            new IndexGeneration(revision.getAsLong(), candidate.postings(), candidate.documents()),
+-            documents));
+   }
+ 
+   private List<TextToken> extract(DocumentIndexPayload payload) throws IOException {
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java
+@@ -1,9 +1,9 @@
+ package com.aditya.minsearch.search.application;
+ 
++import com.aditya.minsearch.index.application.TextToken;
++import com.aditya.minsearch.index.application.TextTokenizer;
+ import com.aditya.minsearch.index.domain.IndexGeneration;
+ import com.aditya.minsearch.index.domain.Posting;
+-import com.aditya.minsearch.index.application.TextToken;
+-import com.aditya.minsearch.index.application.TextTokenizer;
+ import com.aditya.minsearch.search.domain.BooleanNode;
+ import com.aditya.minsearch.search.domain.FilterNode;
+ import com.aditya.minsearch.search.domain.FuzzyNode;
+@@ -27,25 +27,36 @@
+   private static final int MAX_FUZZY_DISTANCE = 2;
+   private final TextTokenizer tokenizer = new TextTokenizer();
+ 
+-  public Set<UUID> evaluate(QueryNode query, IndexGeneration generation,
+-      Map<UUID, SearchDocument> documents, UUID authorizedOwner) {
+-    Set<UUID> universe = new HashSet<>(documents.keySet());
+-    Map<UUID, SearchDocument> visible = documents.entrySet().stream()
+-        .filter(entry -> authorizedOwner == null || authorizedOwner.equals(entry.getValue().ownerId()))
+-        .collect(java.util.stream.Collectors.toUnmodifiableMap(Map.Entry::getKey, Map.Entry::getValue));
+-    universe.retainAll(visible.keySet());
+-    if (query instanceof NotNode) throw new QuerySyntaxException("Standalone NOT is not supported", 0);
+-    Set<UUID> result = evaluate(query, generation, visible, universe);
+-    result.retainAll(visible.keySet());
++  public Set<UUID> evaluate(
++      QueryNode query,
++      IndexGeneration generation,
++      Map<UUID, SearchDocument> documents,
++      UUID authorizedOwner) {
++    if (query instanceof NotNode)
++      throw new QuerySyntaxException("Standalone NOT is not supported", 0);
++    Set<UUID> result = evaluate(query, generation, documents, documents.keySet());
++    result.removeIf(
++        id -> {
++          SearchDocument document = documents.get(id);
++          return document == null
++              || (authorizedOwner != null && !authorizedOwner.equals(document.ownerId()));
++        });
+     return result;
+   }
+ 
+-  private Set<UUID> evaluate(QueryNode node, IndexGeneration generation,
+-      Map<UUID, SearchDocument> documents, Set<UUID> universe) {
+-    if (node instanceof TermNode term) return postings(generation, tokenizer.normalize(term.term()));
+-    if (node instanceof PrefixNode prefix) return expansions(generation, tokenizer.normalize(prefix.prefix()), true);
+-    if (node instanceof FuzzyNode fuzzy) return expansions(generation, tokenizer.normalize(fuzzy.term()), false);
+-    if (node instanceof PhraseNode phrase) return phrase(generation, tokenizer.tokenize(phrase.phrase()));
++  private Set<UUID> evaluate(
++      QueryNode node,
++      IndexGeneration generation,
++      Map<UUID, SearchDocument> documents,
++      Set<UUID> universe) {
++    if (node instanceof TermNode term)
++      return postings(generation, tokenizer.normalize(term.term()));
++    if (node instanceof PrefixNode prefix)
++      return expansions(generation, tokenizer.normalize(prefix.prefix()), true);
++    if (node instanceof FuzzyNode fuzzy)
++      return expansions(generation, tokenizer.normalize(fuzzy.term()), false);
++    if (node instanceof PhraseNode phrase)
++      return phrase(generation, tokenizer.tokenize(phrase.phrase()));
+     if (node instanceof FilterNode filter) return filter(filter, documents);
+     if (node instanceof NotNode not) {
+       Set<UUID> result = new HashSet<>(universe);
+@@ -55,15 +66,23 @@
+     BooleanNode binary = (BooleanNode) node;
+     Set<UUID> left = evaluate(binary.left(), generation, documents, universe);
+     Set<UUID> right = evaluate(binary.right(), generation, documents, universe);
+-    if (binary.operator() == BooleanNode.Operator.OR) { left.addAll(right); return left; }
+-    if (binary.operator() == BooleanNode.Operator.NOT) { left.removeAll(right); return left; }
+-    left.retainAll(right); return left;
++    if (binary.operator() == BooleanNode.Operator.OR) {
++      left.addAll(right);
++      return left;
++    }
++    if (binary.operator() == BooleanNode.Operator.NOT) {
++      left.removeAll(right);
++      return left;
++    }
++    left.retainAll(right);
++    return left;
+   }
+ 
+   private Set<UUID> postings(IndexGeneration generation, String term) {
+     Set<UUID> result = new HashSet<>();
+     if (generation.postings().containsKey(term)) {
+-      for (Posting posting : generation.postingsFor(term).postings()) result.add(posting.documentId());
++      for (Posting posting : generation.postingsFor(term).postings())
++        result.add(posting.documentId());
+     }
+     return result;
+   }
+@@ -71,8 +90,14 @@
+   private Set<UUID> expansions(IndexGeneration generation, String value, boolean prefix) {
+     Set<UUID> result = new HashSet<>();
+     int expanded = 0;
+-    for (String term : generation.postings().keySet().stream().sorted().toList()) {
+-      if ((prefix && term.startsWith(value)) || (!prefix && distanceAtMost(term, value, MAX_FUZZY_DISTANCE))) {
++    List<String> vocabulary = generation.vocabulary();
++    int first = prefix ? java.util.Collections.binarySearch(vocabulary, value) : 0;
++    if (first < 0) first = -first - 1;
++    for (int i = first; i < vocabulary.size(); i++) {
++      String term = vocabulary.get(i);
++      if (prefix && !term.startsWith(value)) break;
++      if ((prefix && term.startsWith(value))
++          || (!prefix && distanceAtMost(term, value, MAX_FUZZY_DISTANCE))) {
+         result.addAll(postings(generation, term));
+         if (++expanded >= (prefix ? MAX_PREFIX_EXPANSIONS : MAX_FUZZY_EXPANSIONS)) break;
+       }
+@@ -81,19 +106,24 @@
+   }
+ 
+   private Set<UUID> phrase(IndexGeneration generation, List<TextToken> terms) {
+-    if (terms.isEmpty()) return Set.of();
++    if (terms.isEmpty()) return new HashSet<>();
+     Set<UUID> candidates = new HashSet<>(postings(generation, terms.get(0).term()));
+-    for (int index = 1; index < terms.size(); index++) candidates.retainAll(postings(generation, terms.get(index).term()));
++    for (int index = 1; index < terms.size(); index++)
++      candidates.retainAll(postings(generation, terms.get(index).term()));
+     Set<UUID> result = new HashSet<>();
+     for (UUID id : candidates) {
+       boolean match = false;
+       Posting first = generation.postingsFor(terms.get(0).term()).forDocument(id);
+       if (first != null) {
+-        for (int start : first.positions()) {
++        for (int position = 0; position < first.termFrequency(); position++) {
++          int start = first.positionAt(position);
+           match = true;
+           for (int index = 1; index < terms.size(); index++) {
+             Posting posting = generation.postingsFor(terms.get(index).term()).forDocument(id);
+-            if (posting == null || !posting.positions().contains(start + index)) { match = false; break; }
++            if (posting == null || !posting.hasPosition(start + index)) {
++              match = false;
++              break;
++            }
+           }
+           if (match) break;
+         }
+@@ -104,27 +134,55 @@
+   }
+ 
+   private Set<UUID> filter(FilterNode filter, Map<UUID, SearchDocument> documents) {
+-    return documents.values().stream().filter(document -> switch (filter.field().toLowerCase()) {
+-      case "owner" -> document.ownerId().toString().equalsIgnoreCase(filter.value());
+-      case "language" -> document.language() != null && document.language().equalsIgnoreCase(filter.value());
+-      case "type" -> document.type().equalsIgnoreCase(filter.value());
+-      case "from" -> !document.uploadedAt().isBefore(LocalDate.parse(filter.value()).atStartOfDay(java.time.ZoneOffset.UTC).toInstant());
+-      case "to" -> document.uploadedAt().isBefore(LocalDate.parse(filter.value()).plusDays(1).atStartOfDay(java.time.ZoneOffset.UTC).toInstant());
+-      default -> false;
+-    }).map(SearchDocument::id).collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
++    return documents.values().stream()
++        .filter(
++            document ->
++                switch (filter.field().toLowerCase()) {
++                  case "owner" -> document.ownerId().toString().equalsIgnoreCase(filter.value());
++                  case "language" ->
++                      document.language() != null
++                          && document.language().equalsIgnoreCase(filter.value());
++                  case "type" -> document.type().equalsIgnoreCase(filter.value());
++                  case "from" ->
++                      !document
++                          .uploadedAt()
++                          .isBefore(
++                              LocalDate.parse(filter.value())
++                                  .atStartOfDay(java.time.ZoneOffset.UTC)
++                                  .toInstant());
++                  case "to" ->
++                      document
++                          .uploadedAt()
++                          .isBefore(
++                              LocalDate.parse(filter.value())
++                                  .plusDays(1)
++                                  .atStartOfDay(java.time.ZoneOffset.UTC)
++                                  .toInstant());
++                  default -> false;
++                })
++        .map(SearchDocument::id)
++        .collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
+   }
+ 
+   private boolean distanceAtMost(String left, String right, int limit) {
+     if (Math.abs(left.length() - right.length()) > limit) return false;
+     int[] previous = new int[right.length() + 1];
++    int[] current = new int[right.length() + 1];
+     for (int index = 0; index <= right.length(); index++) previous[index] = index;
+     for (int row = 1; row <= left.length(); row++) {
+-      int[] current = new int[right.length() + 1]; current[0] = row;
++      current[0] = row;
++      int minimum = row;
+       for (int column = 1; column <= right.length(); column++) {
+-        current[column] = Math.min(Math.min(current[column - 1] + 1, previous[column] + 1),
+-            previous[column - 1] + (left.charAt(row - 1) == right.charAt(column - 1) ? 0 : 1));
++        current[column] =
++            Math.min(
++                Math.min(current[column - 1] + 1, previous[column] + 1),
++                previous[column - 1] + (left.charAt(row - 1) == right.charAt(column - 1) ? 0 : 1));
++        minimum = Math.min(minimum, current[column]);
+       }
++      if (minimum > limit) return false;
++      int[] swap = previous;
+       previous = current;
++      current = swap;
+     }
+     return previous[right.length()] <= limit;
+   }
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchService.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchService.java
+@@ -90,6 +90,9 @@
+       int size) {
+     QueryNode ast = new QueryParser().parse(query);
+     var matching = evaluator.evaluate(ast, generation, documents, authorizedOwner);
++    long offset = (long) page * size;
++    if (offset >= matching.size())
++      return new SearchPage(List.of(), page, size, matching.size(), generation.generation());
+     Map<UUID, Double> scores = new HashMap<>();
+     for (String term : terms(ast)) {
+       String normalized = new TextTokenizer().normalize(term);
+@@ -100,23 +103,33 @@
+           scores.merge(posting.documentId(), posting.termFrequency() * idf, Double::sum);
+       }
+     }
+-    List<SearchResult> ordered = new ArrayList<>();
+-    matching.forEach(id -> ordered.add(new SearchResult(id, scores.getOrDefault(id, 0.0))));
+-    ordered.sort(
++    Comparator<SearchResult> order =
+         Comparator.comparingDouble(SearchResult::score)
+             .reversed()
+             .thenComparing(
+                 Comparator.comparing(
+                         (SearchResult result) -> documents.get(result.documentId()).uploadedAt())
+                     .reversed())
+-            .thenComparing(SearchResult::documentId));
+-    int from = Math.min(page * size, ordered.size());
++            .thenComparing(SearchResult::documentId);
++    int limit = (int) Math.min(offset + size, matching.size());
++    var best = new java.util.PriorityQueue<SearchResult>(Math.min(limit, 128), order.reversed());
++    for (UUID id : matching) {
++      var result = new SearchResult(id, scores.getOrDefault(id, 0.0));
++      if (best.size() < limit) best.add(result);
++      else if (order.compare(result, best.peek()) < 0) {
++        best.poll();
++        best.add(result);
++      }
++    }
++    List<SearchResult> ordered = new ArrayList<>(best);
++    ordered.sort(order);
++    int from = (int) offset;
+     int to = Math.min(from + size, ordered.size());
+     return new SearchPage(
+         List.copyOf(ordered.subList(from, to)),
+         page,
+         size,
+-        ordered.size(),
++        matching.size(),
+         generation.generation());
+   }
+ 

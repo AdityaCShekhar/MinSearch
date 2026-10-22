@@ -2,6 +2,7 @@ package com.aditya.minsearch.shared.infrastructure.web;
 
 import com.aditya.minsearch.shared.domain.error.ApiErrorCode;
 import com.aditya.minsearch.shared.domain.error.ApiProblem;
+import com.aditya.minsearch.shared.domain.error.PositionedError;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import java.util.Objects;
@@ -19,6 +20,19 @@ import org.slf4j.LoggerFactory;
 public class ApiExceptionHandler {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ApiExceptionHandler.class);
+
+  @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+  public ResponseEntity<ProblemDetail> malformedJson(HttpServletRequest request) {
+    return ResponseEntity.badRequest().body(ApiProblem.create(ApiErrorCode.VALIDATION_FAILED,
+        "Malformed JSON request", request.getRequestURI(), resolveCorrelationId(request)));
+  }
+
+  @ExceptionHandler(org.springframework.web.multipart.MaxUploadSizeExceededException.class)
+  public ResponseEntity<ProblemDetail> oversizedUpload(HttpServletRequest request) {
+    ProblemDetail problem = ProblemDetail.forStatusAndDetail(org.springframework.http.HttpStatus.PAYLOAD_TOO_LARGE, "Upload exceeds the configured size limit");
+    problem.setProperty("code", "UPLOAD_TOO_LARGE");
+    return ResponseEntity.status(413).body(problem);
+  }
 
   @ExceptionHandler({
     BindException.class,
@@ -43,11 +57,10 @@ public class ApiExceptionHandler {
   public ResponseEntity<ProblemDetail> handleUnexpected(
       Exception exception, HttpServletRequest request) {
     LOGGER.error(
-        "Unhandled API exception correlationId={} method={} path={}",
+        "Unhandled API exception correlationId={} method={} exceptionClass={}",
         resolveCorrelationId(request),
         request.getMethod(),
-        request.getRequestURI(),
-        exception);
+        exception.getClass().getName());
     ProblemDetail problemDetail =
         ApiProblem.create(
             ApiErrorCode.GENERIC_INTERNAL_ERROR,
@@ -88,6 +101,8 @@ public class ApiExceptionHandler {
   }
 
   private static java.util.Optional<Integer> resolvePosition(Exception exception) {
+    // Search exceptions expose their safe source position through a shared interface.
+    if (exception instanceof PositionedError positioned) return java.util.Optional.of(positioned.position());
     if (exception instanceof BindException bindException) {
       return bindException.getFieldErrors().stream()
           .map(ApiExceptionHandler::positionFromFieldError)

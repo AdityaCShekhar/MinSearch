@@ -34,7 +34,7 @@ class DocumentUploadServiceTest {
     assertThatThrownBy(() -> service.upload(UUID.randomUUID(), file, null, "en"))
         .isInstanceOf(IllegalStateException.class).hasMessage("database unavailable");
 
-    verify(storage).delete(argThat(key -> key.startsWith("documents/") && key.endsWith("-notes.txt")));
+    verify(storage).delete(argThat(key -> key.startsWith("documents/") && key.endsWith(".bin") && !key.contains("notes.txt")));
     verifyNoInteractions(outbox);
   }
 

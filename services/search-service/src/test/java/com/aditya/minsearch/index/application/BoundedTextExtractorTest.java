@@ -14,6 +14,27 @@ import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.junit.jupiter.api.Test;
 
 class BoundedTextExtractorTest {
+  @Test void rejectsMalformedUtf8AndEmbeddedBinary() {
+    var extractor = new BoundedTextExtractor(100, 10);
+    assertThatThrownBy(() -> extractor.extract(new ByteArrayInputStream(new byte[]{(byte)0xc3, 0x28}), SupportedFileType.TXT))
+        .isInstanceOf(java.io.IOException.class);
+    assertThatThrownBy(() -> extractor.extract(stream("a\0b"), SupportedFileType.TXT))
+        .isInstanceOf(TextExtractionException.class);
+  }
+  @Test void pdfWorkerEnforcesOutputAndTimeBudgets() throws Exception {
+    var extractor = new BoundedTextExtractor(3, 10);
+    assertThatThrownBy(() -> extractor.extract(new ByteArrayInputStream(pdf("more than three")), SupportedFileType.PDF))
+        .isInstanceOf(TextExtractionException.class).hasMessage("Extracted text limit exceeded");
+    String previous = System.getProperty("minsearch.pdf.timeout-seconds");
+    try {
+      System.setProperty("minsearch.pdf.timeout-seconds", "0");
+      assertThatThrownBy(() -> extractor.extract(new ByteArrayInputStream(pdf("test")), SupportedFileType.PDF))
+          .isInstanceOf(TextExtractionException.class).hasMessage("PDF extraction time limit exceeded");
+    } finally {
+      if (previous == null) System.clearProperty("minsearch.pdf.timeout-seconds");
+      else System.setProperty("minsearch.pdf.timeout-seconds", previous);
+    }
+  }
   @Test
   void extractsUtf8TextAndMarkdownWithoutChangingContent() throws Exception {
     BoundedTextExtractor extractor = new BoundedTextExtractor(100, 10);

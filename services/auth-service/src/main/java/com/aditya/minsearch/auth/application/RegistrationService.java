@@ -28,6 +28,8 @@ public class RegistrationService {
 
 	@Transactional
 	public UserAccount register(String email, String password) {
+		if (password == null || password.length() < 8 || password.getBytes(java.nio.charset.StandardCharsets.UTF_8).length > 72)
+			throw new IllegalArgumentException("Password must contain at least 8 characters and at most 72 UTF-8 bytes");
 		String normalizedEmail = normalizeEmail(email);
 		if (userAccountRepository.findByNormalizedEmail(normalizedEmail).isPresent()) {
 			throw new IllegalArgumentException("Email is already registered");
@@ -47,7 +49,7 @@ public class RegistrationService {
 
 	static String normalizeEmail(String email) {
 		String value = Objects.requireNonNull(email, "email must not be null").trim();
-		if (value.isEmpty()) {
+		if (value.isEmpty() || value.length() > 254) {
 			throw new IllegalArgumentException("Email must not be blank");
 		}
 		return value.toLowerCase(Locale.ROOT);

@@ -23,6 +23,16 @@ public final class PostingList {
   public List<Posting> postings() { return postings; }
 
   public Posting forDocument(UUID id) {
-    return postings.stream().filter(posting -> posting.documentId().equals(id)).findFirst().orElse(null);
+    if (id == null) return null;
+    int low = 0, high = postings.size() - 1;
+    while (low <= high) {
+      int middle = (low + high) >>> 1;
+      Posting posting = postings.get(middle);
+      int compared = posting.documentId().compareTo(id);
+      if (compared == 0) return posting;
+      if (compared < 0) low = middle + 1;
+      else high = middle - 1;
+    }
+    return null;
   }
 }

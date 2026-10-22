@@ -1,0 +1,142 @@
+[
+  {
+    "ok": true,
+    "latency_ms": 46.79908300000335,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 7.94379199999895,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.8024999999990428,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.03212500000194,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.8065419999995243,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.918582999998478,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 5.323165999996604,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 6.414667000001373,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.9990410000001475,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.047833000001333,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.6812089999997966,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 8.174584000002483,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.4425409999983003,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 21.713208000001316,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.857416999998975,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.933917000004783,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.374916000005612,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.785208000001262,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.453333000003056,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.570958000002179,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 5.495709000001625,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.4942089999958625,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.1112079999999764,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.427667000001634,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.220332999999243,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 4.10595799999669,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 5.747040999999342,
+    "status": 200
+  },
+  {
+    "ok": true,
+    "latency_ms": 3.2394999999993956,
+    "status": 200
+  }
+]

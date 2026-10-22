@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public final class SpellingSuggestionService {
   public Optional<String> suggest(String input, IndexGeneration generation) {
+    if (input != null && input.length() > 256) throw new IllegalArgumentException("Suggestion term limit exceeded");
     String term = new TextTokenizer().normalize(input == null ? "" : input);
     if (term.isBlank()) return Optional.empty();
     if (generation.postings().containsKey(term)) return Optional.of(term);

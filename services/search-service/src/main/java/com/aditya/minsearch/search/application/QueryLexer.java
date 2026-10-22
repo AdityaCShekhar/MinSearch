@@ -5,13 +5,18 @@ import java.util.List;
 import java.util.Locale;
 
 public final class QueryLexer {
+  private final QueryLimits limits;
+  public QueryLexer() { this(QueryLimits.defaults()); }
+  public QueryLexer(QueryLimits limits) { this.limits = limits; }
   public List<QueryToken> lex(String query) {
     if (query == null) throw new QuerySyntaxException("Query must not be null", 0);
+    if (query.length() > limits.maxLength()) throw new QuerySyntaxException("Query length limit exceeded", limits.maxLength());
     List<QueryToken> tokens = new ArrayList<>();
     int cursor = 0;
     while (cursor < query.length()) {
       char current = query.charAt(cursor);
       if (Character.isWhitespace(current)) { cursor++; continue; }
+      if (tokens.size() >= limits.maxTokens()) throw new QuerySyntaxException("Query token limit exceeded", cursor);
       if (current == '"') {
         int start = cursor++;
         StringBuilder phrase = new StringBuilder();

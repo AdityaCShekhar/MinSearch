@@ -19,7 +19,14 @@ public class LocalFilesystemDocumentStorage implements DocumentStorage {
   public String store(String storageKey, InputStream content) throws IOException {
     Path resolvedPath = resolve(storageKey);
     Files.createDirectories(resolvedPath.getParent());
-    Files.copy(content, resolvedPath, StandardCopyOption.REPLACE_EXISTING);
+    Path temporary=Files.createTempFile(resolvedPath.getParent(), ".upload-", ".tmp");
+    try {
+      try (var channel=java.nio.channels.FileChannel.open(temporary,java.nio.file.StandardOpenOption.WRITE)) {
+        content.transferTo(java.nio.channels.Channels.newOutputStream(channel));
+        channel.force(true);
+      }
+      Files.move(temporary,resolvedPath,StandardCopyOption.ATOMIC_MOVE,StandardCopyOption.REPLACE_EXISTING);
+    } finally { Files.deleteIfExists(temporary); }
     return storageKey;
   }
 

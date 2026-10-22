@@ -52,7 +52,7 @@ phase also exercises the application startup path:
 ./mvnw verify
 ```
 
-Performance test commands will be added when that test suite is introduced.
+For deterministic corpora, isolated HTTP load runs, and JMH allocation profiling, see the [benchmark guide](../benchmarks/README.md). `make bench-api` runs the default HTTP matrix; `make bench-jmh` builds and runs the microbenchmarks. Generated data stays in the ignored `benchmarks/output` directory.
 
 ## Current pipeline verification
 

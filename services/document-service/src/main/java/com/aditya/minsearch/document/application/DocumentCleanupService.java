@@ -66,7 +66,9 @@ public class DocumentCleanupService {
     }
     try {
       // delete() is idempotent if a crash removed the file before this transaction committed.
+      var versions=jdbc.queryForList("SELECT DISTINCT storage_key FROM document_versions WHERE document_id=?", String.class, documentId);
       storage.delete(job.storageKey());
+      for (String key : versions) storage.delete(key);
     } catch (Exception failure) {
       LOG.warn("Cleanup failed for document {} version {}", documentId, version, failure);
       long delay = Math.min(60, 1L << Math.min(6, job.attempts()));

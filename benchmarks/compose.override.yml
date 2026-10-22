@@ -1,0 +1,60 @@
+# Used only with a fresh minsearch-bench-* project, never the development project.
+services:
+  redis:
+    cpus: 0.25
+    mem_limit: 128m
+  kafka-volume-init:
+    image: apache/kafka:4.1.0
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-ec", "chown -R 1000:1000 /data"]
+    volumes:
+      - kafka-data:/data
+  auth-postgres:
+    ports: !override []
+    cpus: 1.0
+    mem_limit: 512m
+  document-postgres:
+    ports: !override []
+    cpus: 1.0
+    mem_limit: 512m
+  search-postgres:
+    ports: !override []
+    cpus: 1.0
+    mem_limit: 512m
+  kafka:
+    depends_on:
+      kafka-volume-init:
+        condition: service_completed_successfully
+    ports: !override []
+    cpus: 1.0
+    mem_limit: 768m
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://localhost:19092
+      KAFKA_HEAP_OPTS: -Xms256m -Xmx512m
+  auth-service:
+    image: minsearch-benchmark-auth:local
+    ports: !override ["127.0.0.1:18081:8080"]
+    cpus: 0.5
+    mem_limit: 512m
+    environment:
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: "1000000"
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx256m -XX:+ExitOnOutOfMemoryError
+  document-service:
+    image: minsearch-benchmark-document:local
+    ports: !override ["127.0.0.1:18082:8080"]
+    cpus: 1.0
+    mem_limit: 768m
+    environment:
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: "1000000"
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m -XX:+ExitOnOutOfMemoryError
+  search-service:
+    image: minsearch-benchmark-search:local
+    ports: !override ["127.0.0.1:18083:8080"]
+    cpus: 2.0
+    mem_limit: 3g
+    environment:
+      MINSEARCH_CACHE_REDIS_ENABLED: "false"
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: "1000000"
+      JAVA_TOOL_OPTIONS: -Xms512m -Xmx2304m -XX:+ExitOnOutOfMemoryError
+      MANAGEMENT_METRICS_DISTRIBUTION_PERCENTILES_MINSEARCH_HTTP_REQUEST: 0.5,0.95,0.99
+      MANAGEMENT_METRICS_DISTRIBUTION_PERCENTILESHISTOGRAM_MINSEARCH_HTTP_REQUEST: "true"

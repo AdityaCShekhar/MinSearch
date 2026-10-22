@@ -9,6 +9,14 @@ import java.util.regex.Pattern;
 
 public final class TextTokenizer {
   private static final Pattern TOKEN = Pattern.compile("[\\p{L}\\p{N}\\p{M}]+");
+  private final int maximumTokens;
+  private final int maximumTermLength;
+  public TextTokenizer() { this(Integer.MAX_VALUE, Integer.MAX_VALUE); }
+  public TextTokenizer(int maximumTokens, int maximumTermLength) {
+    if (maximumTokens < 1 || maximumTermLength < 1) throw new IllegalArgumentException("Token limits must be positive");
+    this.maximumTokens = maximumTokens;
+    this.maximumTermLength = maximumTermLength;
+  }
 
   public String normalize(String text) {
     if (text == null || text.isEmpty()) {
@@ -23,6 +31,8 @@ public final class TextTokenizer {
     List<TextToken> tokens = new ArrayList<>();
     int position = 0;
     while (matcher.find()) {
+      if (tokens.size() >= maximumTokens || matcher.end() - matcher.start() > maximumTermLength)
+        throw new IllegalArgumentException("Document token or term-length limit exceeded");
       tokens.add(new TextToken(matcher.group(), position++, matcher.start(), matcher.end()));
     }
     return List.copyOf(tokens);

@@ -1,0 +1,21 @@
+{
+  "git_commit": "261a18175aeaeef200bf62c7edddb20ac9022411",
+  "git_status": "M .dockerignore\n M .gitignore\n M Makefile\n M README.md\n M docs/BUILD.md\n M docs/DOCKER.md\n M docs/TASKS.md\n M pom.xml\n M services/search-service/Dockerfile\n M services/search-service/pom.xml\n M services/search-service/src/main/java/com/aditya/minsearch/autocomplete/application/AutocompleteService.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java\n M services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java\n?? benchmarks/\n?? services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfiguration.java\n?? services/search-service/src/test/java/com/aditya/minsearch/index/application/PostingLookupTest.java\n?? services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfigurationTest.java",
+  "application_source_sha256": "c3694a0e14ec92f348e126691a11aab6c35434684339e8ee1c9cb023da373ab3",
+  "utc": "2026-10-18T20:21:46.198052+00:00",
+  "artifact_sha256": "7e96b8397e355044ca87542777bdd16d3bb011e38aa156b73ffa013bdface04c",
+  "java": "openjdk version \"17.0.16\" 2025-07-15 LTS\nOpenJDK Runtime Environment Microsoft-11926164 (build 17.0.16+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-11926164 (build 17.0.16+8-LTS, mixed mode, sharing)\n",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "command": [
+    "java",
+    "-jar",
+    "/Users/aditya/Projects/minsearch/benchmarks/jmh/target/benchmarks.jar",
+    "-prof",
+    "gc",
+    "-rf",
+    "json",
+    "-rff",
+    "/Users/aditya/Projects/minsearch/benchmarks/results/2026-10-19/full/jmh.json"
+  ]
+}

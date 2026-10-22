@@ -47,7 +47,8 @@ class JdbcSearchIndexStoreTest {
             postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword());
     new ResourceDatabasePopulator(
             new ClassPathResource("db/migration/V4__durable_search_index.sql"),
-            new ClassPathResource("db/migration/V5__index_outcome_outbox.sql"))
+            new ClassPathResource("db/migration/V5__index_outcome_outbox.sql"),
+            new ClassPathResource("db/migration/V7__search_content.sql"))
         .execute(dataSource);
   }
 
@@ -78,6 +79,9 @@ class JdbcSearchIndexStoreTest {
     long revision = store.save(first).orElseThrow();
     assertThat(store.save(first)).isEmpty();
     assertThat(store.load()).hasSize(1);
+    var streamed = new java.util.ArrayList<SearchIndexStore.StoredMutation>();
+    store.forEach(streamed::add);
+    assertThat(streamed).containsExactlyElementsOf(store.load());
     assertThat(jdbc.queryForObject("SELECT count(*) FROM index_outbox", Integer.class)).isOne();
 
     var restarted = new DocumentIndexingService(store, "/unused-during-recovery");
@@ -188,5 +192,56 @@ class JdbcSearchIndexStoreTest {
             jdbc.queryForObject(
                 "SELECT count(*) FROM index_outbox WHERE event_type='index.failed'", Integer.class))
         .isOne();
+  }
+
+  @Test
+  void concurrentDurableVersionsConvergeWithoutLosingTheirCompletionOutcomes() throws Exception {
+    UUID id = UUID.randomUUID();
+    var metadata = new SearchDocument(id, UUID.randomUUID(), "en", "txt", Instant.EPOCH);
+    var pool = java.util.concurrent.Executors.newFixedThreadPool(8);
+    var start = new java.util.concurrent.CountDownLatch(1);
+    try {
+      var jobs = new java.util.ArrayList<java.util.concurrent.Future<?>>();
+      for (int version = 1; version <= 32; version++) {
+        var mutation =
+            new Mutation(
+                UUID.randomUUID(),
+                id,
+                version,
+                version == 32,
+                metadata,
+                version == 32 ? List.of() : List.of(new TextToken("version" + version, 0, 0, 1)));
+        jobs.add(
+            pool.submit(
+                () -> {
+                  start.await();
+                  return store.save(mutation);
+                }));
+      }
+      start.countDown();
+      for (var job : jobs) job.get(15, java.util.concurrent.TimeUnit.SECONDS);
+      assertThat(store.load())
+          .singleElement()
+          .satisfies(
+              row -> {
+                assertThat(row.mutation().version()).isEqualTo(32);
+                assertThat(row.mutation().deleted()).isTrue();
+                assertThat(row.mutation().tokens()).isEmpty();
+              });
+      long revision = store.load().get(0).revision();
+      assertThat(
+              jdbc.queryForObject(
+                  "SELECT count(*) FROM index_outbox WHERE required_generation = ?",
+                  Integer.class,
+                  revision))
+          .isOne();
+      var recovered = new DocumentIndexingService(store, "/unused");
+      recovered.recover();
+      assertThat(recovered.current().generation().document(id).deleted()).isTrue();
+      assertThat(recovered.current().generation().postings()).isEmpty();
+    } finally {
+      start.countDown();
+      pool.shutdownNow();
+    }
   }
 }

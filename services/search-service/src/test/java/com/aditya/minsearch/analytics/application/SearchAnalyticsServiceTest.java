@@ -17,5 +17,6 @@ class SearchAnalyticsServiceTest {
     service.recordAsync(UUID.randomUUID(),"  Hello   WORLD ",3,12,true);
     try { assertThat(attempted.await(2,TimeUnit.SECONDS)).isTrue(); }
     catch (InterruptedException interrupted) { Thread.currentThread().interrupt(); throw new AssertionError(interrupted); }
+    finally { service.close(); }
   }
 }

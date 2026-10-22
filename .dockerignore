@@ -3,8 +3,12 @@
 .vscode
 .env
 target
+**/target
 build
 *.iml
 *.log
 docs
 HELP.md
+benchmarks/output
+benchmarks/results
+**/__pycache__

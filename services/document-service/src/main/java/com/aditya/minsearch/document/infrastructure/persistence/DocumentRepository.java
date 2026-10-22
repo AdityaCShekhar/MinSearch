@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 interface DocumentRepository extends JpaRepository<DocumentJpaEntity, UUID> {
+  org.springframework.data.domain.Page<DocumentJpaEntity> findAllByDeletedAtIsNull(org.springframework.data.domain.Pageable page);
+  org.springframework.data.domain.Page<DocumentJpaEntity> findAllByOwnerIdAndDeletedAtIsNull(UUID owner, org.springframework.data.domain.Pageable page);
   @Lock(LockModeType.PESSIMISTIC_WRITE)
   @Query("select document from DocumentJpaEntity document where document.id = :id")
   Optional<DocumentJpaEntity> findByIdForUpdate(@Param("id") UUID id);

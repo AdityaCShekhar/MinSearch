@@ -1,18 +1,60 @@
 name: minsearch
 
 services:
-  postgres:
+  redis:
+    image: redis:7-alpine
+    environment:
+      REDISCLI_AUTH: ${MINSEARCH_REDIS_PASSWORD:-minsearch_dev_cache_password}
+    command: ["/bin/sh", "-ec", "exec redis-server --appendonly no --requirepass \"$$REDISCLI_AUTH\""]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  auth-postgres:
     image: postgres:17-alpine
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-minsearch}
-      POSTGRES_USER: ${POSTGRES_USER:-minsearch}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
+      POSTGRES_DB: ${AUTH_POSTGRES_DB:-minsearch_auth}
+      POSTGRES_USER: ${AUTH_POSTGRES_USER:-minsearch_auth}
+      POSTGRES_PASSWORD: ${AUTH_POSTGRES_PASSWORD:-minsearch_auth_dev_password}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${AUTH_POSTGRES_PORT:-5432}:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - auth-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-minsearch} -d ${POSTGRES_DB:-minsearch}"]
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  document-postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${DOCUMENT_POSTGRES_DB:-minsearch_document}
+      POSTGRES_USER: ${DOCUMENT_POSTGRES_USER:-minsearch_document}
+      POSTGRES_PASSWORD: ${DOCUMENT_POSTGRES_PASSWORD:-minsearch_document_dev_password}
+    ports:
+      - "${DOCUMENT_POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - document-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  search-postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${SEARCH_POSTGRES_DB:-minsearch_search}
+      POSTGRES_USER: ${SEARCH_POSTGRES_USER:-minsearch_search}
+      POSTGRES_PASSWORD: ${SEARCH_POSTGRES_PASSWORD:-minsearch_search_dev_password}
+    ports:
+      - "${SEARCH_POSTGRES_PORT:-5434}:5432"
+    volumes:
+      - search-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
       interval: 5s
       timeout: 3s
       retries: 20
@@ -59,45 +101,57 @@ services:
         done
 
   auth-service:
+    stop_grace_period: 90s
     build:
       context: ../../
       dockerfile: services/auth-service/Dockerfile
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-minsearch}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
-      MINSEARCH_DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      MINSEARCH_DATABASE_USERNAME: ${POSTGRES_USER:-minsearch}
-      MINSEARCH_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://auth-postgres:5432/${AUTH_POSTGRES_DB:-minsearch_auth}
+      SPRING_DATASOURCE_USERNAME: ${AUTH_POSTGRES_USER:-minsearch_auth}
+      SPRING_DATASOURCE_PASSWORD: ${AUTH_POSTGRES_PASSWORD:-minsearch_auth_dev_password}
+      MINSEARCH_DATABASE_URL: jdbc:postgresql://auth-postgres:5432/${AUTH_POSTGRES_DB:-minsearch_auth}
+      MINSEARCH_DATABASE_USERNAME: ${AUTH_POSTGRES_USER:-minsearch_auth}
+      MINSEARCH_DATABASE_PASSWORD: ${AUTH_POSTGRES_PASSWORD:-minsearch_auth_dev_password}
       MINSEARCH_SECURITY_JWT_SECRET: ${MINSEARCH_SECURITY_JWT_SECRET:-local-only-change-this-minsearch-secret-key}
+      MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET: ${MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET:-}
+      LOGGING_STRUCTURED_FORMAT_CONSOLE: ecs
+      MINSEARCH_DEPLOYMENT_MODE: ${MINSEARCH_DEPLOYMENT_MODE:-development}
+      MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS: ${MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS:-}
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: ${MINSEARCH_SECURITY_REQUESTS_PER_MINUTE:-1200}
       SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
       SPRING_FLYWAY_BASELINE_VERSION: "0"
     depends_on:
-      postgres:
+      auth-postgres:
         condition: service_healthy
     ports:
       - "${AUTH_PORT:-8081}:8080"
 
   document-service:
+    stop_grace_period: 90s
     build:
       context: ../../
       dockerfile: services/document-service/Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-minsearch}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
-      MINSEARCH_DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      MINSEARCH_DATABASE_USERNAME: ${POSTGRES_USER:-minsearch}
-      MINSEARCH_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://document-postgres:5432/${DOCUMENT_POSTGRES_DB:-minsearch_document}
+      SPRING_DATASOURCE_USERNAME: ${DOCUMENT_POSTGRES_USER:-minsearch_document}
+      SPRING_DATASOURCE_PASSWORD: ${DOCUMENT_POSTGRES_PASSWORD:-minsearch_document_dev_password}
+      MINSEARCH_DATABASE_URL: jdbc:postgresql://document-postgres:5432/${DOCUMENT_POSTGRES_DB:-minsearch_document}
+      MINSEARCH_DATABASE_USERNAME: ${DOCUMENT_POSTGRES_USER:-minsearch_document}
+      MINSEARCH_DATABASE_PASSWORD: ${DOCUMENT_POSTGRES_PASSWORD:-minsearch_document_dev_password}
       MINSEARCH_SECURITY_JWT_SECRET: ${MINSEARCH_SECURITY_JWT_SECRET:-local-only-change-this-minsearch-secret-key}
+      MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET: ${MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET:-}
+      LOGGING_STRUCTURED_FORMAT_CONSOLE: ecs
+      MINSEARCH_DEPLOYMENT_MODE: ${MINSEARCH_DEPLOYMENT_MODE:-development}
+      MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS: ${MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS:-}
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: ${MINSEARCH_SECURITY_REQUESTS_PER_MINUTE:-1200}
       MINSEARCH_MESSAGING_ENABLED: "true"
       MINSEARCH_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       MINSEARCH_STORAGE_DOCUMENTS_ROOT: /data/documents
     volumes:
       - documents-data:/data/documents
     depends_on:
-      postgres:
+      document-postgres:
         condition: service_healthy
       kafka-init:
         condition: service_completed_successfully
@@ -105,24 +159,36 @@ services:
       - "${DOCUMENT_PORT:-8082}:8080"
 
   search-service:
+    stop_grace_period: 90s
     build:
       context: ../../
       dockerfile: services/search-service/Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-minsearch}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
-      MINSEARCH_DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-minsearch}
-      MINSEARCH_DATABASE_USERNAME: ${POSTGRES_USER:-minsearch}
-      MINSEARCH_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-minsearch_dev_password}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://search-postgres:5432/${SEARCH_POSTGRES_DB:-minsearch_search}
+      SPRING_DATASOURCE_USERNAME: ${SEARCH_POSTGRES_USER:-minsearch_search}
+      SPRING_DATASOURCE_PASSWORD: ${SEARCH_POSTGRES_PASSWORD:-minsearch_search_dev_password}
+      MINSEARCH_DATABASE_URL: jdbc:postgresql://search-postgres:5432/${SEARCH_POSTGRES_DB:-minsearch_search}
+      MINSEARCH_DATABASE_USERNAME: ${SEARCH_POSTGRES_USER:-minsearch_search}
+      MINSEARCH_DATABASE_PASSWORD: ${SEARCH_POSTGRES_PASSWORD:-minsearch_search_dev_password}
       MINSEARCH_SECURITY_JWT_SECRET: ${MINSEARCH_SECURITY_JWT_SECRET:-local-only-change-this-minsearch-secret-key}
+      MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET: ${MINSEARCH_SECURITY_JWT_PREVIOUS_SECRET:-}
+      LOGGING_STRUCTURED_FORMAT_CONSOLE: ecs
+      MINSEARCH_DEPLOYMENT_MODE: ${MINSEARCH_DEPLOYMENT_MODE:-development}
+      MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS: ${MINSEARCH_SECURITY_CORS_ALLOWED_ORIGINS:-}
+      MINSEARCH_SECURITY_REQUESTS_PER_MINUTE: ${MINSEARCH_SECURITY_REQUESTS_PER_MINUTE:-1200}
       MINSEARCH_MESSAGING_ENABLED: "true"
       MINSEARCH_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       MINSEARCH_STORAGE_DOCUMENTS_ROOT: /data/documents
+      MINSEARCH_CACHE_REDIS_ENABLED: ${MINSEARCH_CACHE_REDIS_ENABLED:-true}
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_PASSWORD: ${MINSEARCH_REDIS_PASSWORD:-minsearch_dev_cache_password}
     volumes:
       - documents-data:/data/documents:ro
     depends_on:
-      postgres:
+      redis:
+        condition: service_started
+      search-postgres:
         condition: service_healthy
       kafka-init:
         condition: service_completed_successfully
@@ -130,6 +196,8 @@ services:
       - "${SEARCH_PORT:-8083}:8080"
 
 volumes:
-  postgres-data:
+  auth-postgres-data:
+  document-postgres-data:
+  search-postgres-data:
   kafka-data:
   documents-data:

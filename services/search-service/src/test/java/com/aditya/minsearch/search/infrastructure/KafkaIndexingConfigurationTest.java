@@ -24,6 +24,32 @@ import org.springframework.kafka.support.SendResult;
 class KafkaIndexingConfigurationTest {
   @Test
   @SuppressWarnings({"unchecked", "rawtypes"})
+  void failedDeadLetterSendDoesNotRecoverOrRecordTerminalFailure() {
+    KafkaTemplate<String, String> kafka = mock(KafkaTemplate.class);
+    ProducerFactory<String, String> producer = mock(ProducerFactory.class);
+    when(kafka.getProducerFactory()).thenReturn(producer);
+    when(producer.getConfigurationProperties()).thenReturn(Map.of("delivery.timeout.ms", 1000));
+    when(kafka.send(any(ProducerRecord.class)))
+        .thenReturn(CompletableFuture.failedFuture(new IllegalStateException("broker down")));
+    var failures = mock(IndexingFailureRecorder.class);
+    var handler = new KafkaIndexingConfiguration().indexingErrorHandler(kafka, failures);
+    handler.addNotRetryableExceptions(IllegalArgumentException.class);
+    Consumer<String, String> consumer = mock(Consumer.class);
+    when(consumer.partitionsFor(anyString(), any()))
+        .thenReturn(
+            List.of(new PartitionInfo("document.uploaded.DLT", 2, null, new Node[0], new Node[0])));
+    assertThat(
+            handler.handleOne(
+                new IllegalArgumentException("terminal"),
+                new ConsumerRecord<>("document.uploaded", 2, 1, "id", "body"),
+                consumer,
+                mock(MessageListenerContainer.class)))
+        .isFalse();
+    verifyNoInteractions(failures);
+  }
+
+  @Test
+  @SuppressWarnings({"unchecked", "rawtypes"})
   void terminalRecoveryUsesTheProvisionedTopicAndRetainsThePartition() {
     KafkaTemplate<String, String> kafka = mock(KafkaTemplate.class);
     ProducerFactory<String, String> producer = mock(ProducerFactory.class);

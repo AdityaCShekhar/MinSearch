@@ -1,0 +1,174 @@
+{
+  "event_counts": {
+    "jdk.ObjectAllocationSample": 2924,
+    "jdk.ExecutionSample": 7007,
+    "jdk.JavaMonitorEnter": 592,
+    "jdk.GarbageCollection": 277,
+    "jdk.ThreadPark": 7
+  },
+  "cpu_application_frames": [
+    [
+      "<runtime>",
+      2640
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService.lambda$compute$3",
+      1476
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService.compute",
+      598
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.postings",
+      366
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.evaluate",
+      342
+    ],
+    [
+      "com.aditya.minsearch.index.domain.PostingList.<init>",
+      338
+    ],
+    [
+      "com.aditya.minsearch.index.domain.PostingList.forDocument",
+      300
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.phrase",
+      259
+    ],
+    [
+      "com.aditya.minsearch.index.domain.IndexGeneration.postingsFor",
+      116
+    ],
+    [
+      "com.aditya.minsearch.index.domain.IndexGeneration.<init>",
+      114
+    ],
+    [
+      "com.aditya.minsearch.index.application.IndexGenerationBuilder.lambda$remove$5",
+      92
+    ],
+    [
+      "com.aditya.minsearch.search.application.DocumentIndexingService.apply",
+      84
+    ],
+    [
+      "com.aditya.minsearch.index.application.IndexGenerationBuilder.lambda$remove$4",
+      74
+    ],
+    [
+      "com.aditya.minsearch.index.application.IndexGenerationBuilder.<init>",
+      69
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService$$Lambda$34+0x000000f001016d00.1299641336.apply",
+      49
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchIndexSnapshot.<init>",
+      36
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService.lambda$compute$2",
+      27
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.expansions",
+      12
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator$$Lambda$18+0x000000f00100f7a0.1851691492.apply",
+      9
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.distanceAtMost",
+      4
+    ]
+  ],
+  "allocation_sample_weight_by_application_frame": [
+    [
+      "<runtime>",
+      25818418808
+    ],
+    [
+      "com.aditya.minsearch.index.domain.PostingList.<init>",
+      25671689808
+    ],
+    [
+      "com.aditya.minsearch.index.application.IndexGenerationBuilder.lambda$new$0",
+      15571187488
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.postings",
+      4444803872
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService.compute",
+      3192780984
+    ],
+    [
+      "com.aditya.minsearch.index.domain.IndexGeneration.<init>",
+      2470550464
+    ],
+    [
+      "com.aditya.minsearch.index.application.IndexGenerationBuilder.<init>",
+      1967746784
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService.lambda$compute$2",
+      1869703536
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchService$$Lambda$28+0x000000f001016220.2052001577.apply",
+      1500725064
+    ],
+    [
+      "com.aditya.minsearch.index.domain.IndexGeneration.postingsFor",
+      1480726128
+    ],
+    [
+      "com.aditya.minsearch.search.application.SearchIndexSnapshot.<init>",
+      873012784
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.phrase",
+      566471552
+    ],
+    [
+      "com.aditya.minsearch.search.application.DocumentIndexingService.apply",
+      379211952
+    ],
+    [
+      "com.aditya.minsearch.index.application.BoundedTextExtractor.extractPlainText",
+      330422192
+    ],
+    [
+      "com.aditya.minsearch.search.application.QueryEvaluator.distanceAtMost",
+      196097576
+    ],
+    [
+      "com.aditya.minsearch.index.application.TextTokenizer.tokenize",
+      40022024
+    ],
+    [
+      "com.aditya.minsearch.search.application.DocumentIndexingService.extract",
+      37204544
+    ]
+  ],
+  "contended_monitors_over_1ms": [
+    [
+      "com.aditya.minsearch.search.application.DocumentIndexingService",
+      592
+    ]
+  ],
+  "recorded_monitor_wait_ms": {
+    "total": 19994.633704000014,
+    "max": 497.543209,
+    "p50": 11.161709,
+    "p95": 142.526792
+  },
+  "note": "JFR CPU counts and allocation weights are samples, not exact method time or allocated bytes. Monitor events omit waits below 1 ms."
+}

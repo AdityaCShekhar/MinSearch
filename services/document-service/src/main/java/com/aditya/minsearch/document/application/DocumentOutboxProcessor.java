@@ -10,6 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DocumentOutboxProcessor {
+  private com.aditya.minsearch.shared.infrastructure.WorkerCoordinator workers =
+      new com.aditya.minsearch.shared.infrastructure.WorkerCoordinator(java.time.Duration.ofSeconds(25));
+  @org.springframework.beans.factory.annotation.Autowired
+  void workers(com.aditya.minsearch.shared.infrastructure.WorkerCoordinator workers) { this.workers=workers; }
+
   private final DocumentOutboxRepository outbox;
   private final ProcessedEventRepository processed;
   private final DomainEventPublisher publisher;
@@ -22,8 +27,13 @@ public class DocumentOutboxProcessor {
 
   @Transactional
   public int publishPending() {
+    try (var lease=workers.acquire()) { return publishAdmitted(); }
+  }
+
+  private int publishAdmitted() {
     int published = 0;
     for (DocumentOutboxJpaEntity entry : outbox.findTop100ByPublishedAtIsNullOrderByOccurredAtAsc()) {
+      if (workers.stopping()) break;
       if (processed.existsById(entry.eventId())) { entry.markPublished(clock.instant()); outbox.save(entry); continue; }
       try {
         publisher.publish(new DomainEvent(entry.eventId(), entry.eventType(), entry.occurredAt(), entry.payload()));

@@ -4,9 +4,9 @@
 | --- | --- |
 | Status | Draft for implementation |
 | Version | 1.0.0 |
-| Last updated | 2026-07-14 |
+| Last updated | 2026-10-23 |
 | Target runtime | Java 17, Spring Boot 4.1 |
-| Initial deployment | Modular monolith with asynchronous workers |
+| Initial deployment | Auth, document, and search services with independent databases |
 
 Implementation progress is tracked in the ordered [task ledger](./TASKS.md).
 
@@ -14,7 +14,7 @@ Implementation progress is tracked in the ordered [task ledger](./TASKS.md).
 
 MiniSearch is a backend-focused document search engine that indexes `txt`, `md`, and `pdf` files into a custom positional inverted index. It provides authenticated document management, asynchronous indexing, ranked and filtered search, highlighted snippets, autocomplete, spelling suggestions, and search analytics.
 
-The initial release is production-inspired rather than production-distributed. It runs as one deployable Spring Boot application whose modules communicate through explicit interfaces and events. PostgreSQL, Kafka, and Redis remain replaceable infrastructure boundaries so that the indexer and search path can later be deployed independently without rewriting domain logic.
+The reference deployment runs three Spring Boot services: auth, document, and search. Each owns an independent PostgreSQL instance, credentials, migrations, and persistent volume. Document lifecycle events and index outcomes cross service boundaries through Kafka transactional outboxes. Search owns the indexer and query engine; the deployment currently supports one search instance. Document owns original content and mounts source storage read-only into search.
 
 ## 2. Goals and non-goals
 
@@ -25,7 +25,7 @@ The initial release is production-inspired rather than production-distributed. I
 - Provide stable search results while concurrent index updates occur.
 - Support at least 100,000 indexed documents and 100 concurrent uploads on the reference environment.
 - Make behavior measurable with repeatable correctness, concurrency, and performance tests.
-- Establish module boundaries suitable for later service extraction and index sharding.
+- Maintain service and data ownership boundaries suitable for future index sharding.
 
 ### 2.2 Non-goals for version 1
 
@@ -100,7 +100,7 @@ UPLOADED -> INDEXING -> INDEXED
                 +-> INDEX_FAILED -> INDEXING (retry/reindex)
 ```
 
-Only `INDEXED` documents are searchable. An update makes the new version `UPLOADED`; the last successfully indexed version remains searchable until the replacement snapshot is atomically published. A deletion hides all versions immediately.
+Only `INDEXED` documents are searchable. An update makes the new version `UPLOADED`; the last successfully indexed version remains searchable until the replacement snapshot is atomically published. A deletion hides all versions immediately from document APIs; search, autocomplete, and spelling suggestions reflect deletion when the Kafka event is applied.
 
 ### 5.2 Indexing pipeline
 
@@ -328,21 +328,20 @@ Errors follow RFC 9457 Problem Details using `application/problem+json`.
 
 ```mermaid
 flowchart TD
-    C[Client] --> API[Spring Boot API]
-    API --> AUTH[Auth module]
-    API --> DOC[Document module]
-    API --> SEARCH[Search module]
-    API --> ANALYTICS[Analytics module]
-    DOC --> PG[(PostgreSQL)]
-    DOC --> FS[(Object/File storage)]
-    DOC --> OUTBOX[Transactional outbox]
-    OUTBOX --> BROKER[Kafka or local durable event adapter]
-    BROKER --> WORKER[Indexer worker]
-    WORKER --> TEXT[Text processing engine]
-    TEXT --> INDEX[(Index repository)]
-    SEARCH --> INDEX
+    C[Client] --> AUTH[Auth service]
+    C --> DOC[Document service]
+    C --> SEARCH[Search service]
+    AUTH --> AUTHDB[(Auth PostgreSQL)]
+    DOC --> DOCDB[(Document PostgreSQL and outbox)]
+    DOC --> FS[(Source file storage)]
+    DOCDB --> BROKER[Kafka]
+    BROKER --> SEARCH
+    FS -->|read-only| SEARCH
+    SEARCH --> SEARCHDB[(Search PostgreSQL and outcome outbox)]
+    SEARCHDB --> BROKER
+    BROKER --> DOC
+    SEARCH --> INDEX[In-memory positional index]
     SEARCH --> CACHE[(Redis or local cache)]
-    SEARCH --> ANALYTICS
 ```
 
 ### 7.2 Modules
@@ -362,15 +361,15 @@ Package layout follows package-by-feature. Each feature uses `api`, `application
 
 ### 7.3 Deployment evolution
 
-1. **Local/test:** one process, PostgreSQL, local filesystem, in-process durable outbox poller, Caffeine cache.
-2. **Reference deployment:** one API process plus one or more worker instances, PostgreSQL, Kafka, Redis, shared object storage, durable index repository.
+1. **Local/test:** independently launched auth, document, and search processes; a separate PostgreSQL database per service; local source storage; Caffeine cache by default.
+2. **Reference deployment:** three application containers, three PostgreSQL instances, Kafka, Redis, a shared source volume, and a durable search projection. One search instance consumes all index mutations; adding replicas requires a fan-out or sharding design.
 3. **Scale-out:** partition events and index shards by stable document-ID hash; route queries to shards and merge top-K results.
 
 ## 8. Data design
 
 ### 8.1 PostgreSQL schema
 
-All schema changes use ordered migrations. Table and column names use `snake_case`.
+All schema changes use ordered migrations within the owning service database. Auth owns accounts and tokens; document owns source metadata, versions, lifecycle, and cleanup; search owns search history, index projection, extracted text, and index outcomes. No service queries another service's database. Table and column names use `snake_case`.
 
 #### `users`
 
@@ -719,14 +718,14 @@ Version 1 is done when all required requirements and milestone gates are satisfi
 
 The following decisions resolve ambiguities in the initial brief and are normative for version 1:
 
-- The initial codebase is a modular monolith, designed for later service extraction.
+- Auth, document, and search are separate services with independent PostgreSQL instances and credentials. Cross-service data propagation uses versioned Kafka events.
 - Search is authenticated and owner-scoped for users; admins can search all documents.
 - Unquoted adjacent terms imply `AND`.
 - Prefix search syntax in the search endpoint is `prefix*`; bare prefixes belong to autocomplete.
 - Fuzzy search syntax is `term~`; `/suggest` also supports correction without query execution.
 - `NOT` is binary and cannot be used alone.
 - Updating a document preserves the last indexed version until the new version is atomically published.
-- Deletion hides a document synchronously and removes postings asynchronously.
+- Deletion hides a document synchronously in document APIs; search, autocomplete, and suggestions hide it after the versioned deletion event is applied. Physical source cleanup follows the matching index deletion acknowledgement.
 - English analysis includes stop-word removal and stemming first; unsupported languages receive Unicode normalization and tokenization without stemming.
 - Files are limited to 10 MiB by default and scanned PDFs are not OCR-processed.
 - TF-IDF is mandatory for version 1; BM25, recency scoring, synonyms, semantic search, sharding, replicas, tracing, dashboards, Kubernetes, and crawling remain stretch goals.

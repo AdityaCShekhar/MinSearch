@@ -1,0 +1,425 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] MiniSearch                                                         [pom]
+[INFO] minsearch-shared                                                   [jar]
+[INFO] minsearch-search-service                                           [jar]
+[INFO] minsearch-benchmarks                                               [jar]
+[INFO] 
+[INFO] ------------------------< com.aditya:minsearch >------------------------
+[INFO] Building MiniSearch 0.0.1-SNAPSHOT                                 [1/4]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ minsearch ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ minsearch ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] -------------------------< com.aditya:shared >--------------------------
+[INFO] Building minsearch-shared 0.0.1-SNAPSHOT                           [2/4]
+[INFO]   from shared/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ shared ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ shared ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ shared ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ shared ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ shared ---
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ shared ---
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ shared ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.aditya.minsearch.BuildVerificationIT
+00:27:01.683 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.aditya.minsearch.BuildVerificationIT]: BuildVerificationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:27:01.720 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.aditya.minsearch.TestApplication for test class com.aditya.minsearch.BuildVerificationIT
+00:27:01.743 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.aditya.minsearch.BuildVerificationIT]: BuildVerificationIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:27:01.745 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.aditya.minsearch.TestApplication for test class com.aditya.minsearch.BuildVerificationIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-10-20T00:27:01.842+05:30  INFO 7132 --- [           main] c.aditya.minsearch.BuildVerificationIT   : Starting BuildVerificationIT using Java 17.0.16 with PID 7132 (started by aditya in /Users/aditya/Projects/minsearch/shared)
+2026-10-20T00:27:01.842+05:30  INFO 7132 --- [           main] c.aditya.minsearch.BuildVerificationIT   : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T00:27:02.135+05:30  INFO 7132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-10-20T00:27:02.136+05:30  INFO 7132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-20T00:27:02.162+05:30  INFO 7132 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+2026-10-20T00:27:02.325+05:30  INFO 7132 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-20T00:27:02.330+05:30  INFO 7132 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-20T00:27:02.330+05:30  INFO 7132 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-10-20T00:27:02.348+05:30  INFO 7132 --- [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 499 ms
+2026-10-20T00:27:02.651+05:30  WARN 7132 --- [           main] i.n.r.d.DnsServerAddressStreamProviders  : Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+2026-10-20T00:27:02.850+05:30  INFO 7132 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-20T00:27:02.891+05:30  INFO 7132 --- [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 51499 (http) with context path '/'
+2026-10-20T00:27:02.897+05:30  INFO 7132 --- [           main] c.aditya.minsearch.BuildVerificationIT   : Started BuildVerificationIT in 1.135 seconds (process running for 1.507)
+2026-10-20T00:27:02.912+05:30  WARN 7132 --- [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-20T00:27:02.912+05:30  WARN 7132 --- [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.575 s -- in com.aditya.minsearch.BuildVerificationIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ shared ---
+[INFO] 
+[INFO] ---------------------< com.aditya:search-service >----------------------
+[INFO] Building minsearch-search-service 0.0.1-SNAPSHOT                   [3/4]
+[INFO]   from services/search-service/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ search-service ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ search-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 60 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ search-service ---
+[INFO] Copying 0 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ search-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 23 source files with javac [debug parameters release 17] to target/test-classes
+[INFO] /Users/aditya/Projects/minsearch/services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java: /Users/aditya/Projects/minsearch/services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java uses or overrides a deprecated API.
+[INFO] /Users/aditya/Projects/minsearch/services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ search-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.aditya.minsearch.index.application.IndexMutationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in com.aditya.minsearch.index.application.IndexMutationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ search-service ---
+[INFO] Building jar: /Users/aditya/Projects/minsearch/services/search-service/target/search-service-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.0:repackage (repackage) @ search-service ---
+[INFO] Attaching repackaged archive /Users/aditya/Projects/minsearch/services/search-service/target/search-service-0.0.1-SNAPSHOT-exec.jar with classifier exec
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ search-service ---
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ search-service ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] ------------------< com.aditya:minsearch-benchmarks >-------------------
+[INFO] Building minsearch-benchmarks 0.0.1-SNAPSHOT                       [4/4]
+[INFO]   from benchmarks/jmh/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ minsearch-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/aditya/Projects/minsearch/benchmarks/jmh/src/main/resources
+[INFO] skip non existing resourceDirectory /Users/aditya/Projects/minsearch/benchmarks/jmh/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ minsearch-benchmarks ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ minsearch-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/aditya/Projects/minsearch/benchmarks/jmh/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ minsearch-benchmarks ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ minsearch-benchmarks ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ minsearch-benchmarks ---
+[INFO] Building jar: /Users/aditya/Projects/minsearch/benchmarks/jmh/target/benchmarks.jar
+[INFO] 
+[INFO] --- shade:3.6.0:shade (default) @ minsearch-benchmarks ---
+[INFO] Including com.aditya:search-service:jar:0.0.1-SNAPSHOT in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-kafka:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-logging:jar:4.1.0 in the shaded jar.
+[INFO] Including ch.qos.logback:logback-classic:jar:1.5.34 in the shaded jar.
+[INFO] Including ch.qos.logback:logback-core:jar:1.5.34 in the shaded jar.
+[INFO] Including org.apache.logging.log4j:log4j-to-slf4j:jar:2.25.4 in the shaded jar.
+[INFO] Including org.apache.logging.log4j:log4j-api:jar:2.25.4 in the shaded jar.
+[INFO] Including org.slf4j:jul-to-slf4j:jar:2.0.18 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-autoconfigure:jar:4.1.0 in the shaded jar.
+[INFO] Including jakarta.annotation:jakarta.annotation-api:jar:3.0.0 in the shaded jar.
+[INFO] Including org.yaml:snakeyaml:jar:2.6 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-kafka:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-context:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-transaction:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-persistence:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-tx:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.kafka:spring-kafka:jar:4.1.0 in the shaded jar.
+[INFO] Including org.apache.kafka:kafka-clients:jar:4.2.1 in the shaded jar.
+[INFO] Including com.github.luben:zstd-jni:jar:1.5.6-10 in the shaded jar.
+[INFO] Including at.yawk.lz4:lz4-java:jar:1.10.1 in the shaded jar.
+[INFO] Including org.xerial.snappy:snappy-java:jar:1.1.10.7 in the shaded jar.
+[INFO] Including com.github.spotbugs:spotbugs-annotations:jar:4.9.8 in the shaded jar.
+[INFO] Including com.google.code.findbugs:jsr305:jar:3.0.2 in the shaded jar.
+[INFO] Including com.aditya:shared:jar:0.0.1-SNAPSHOT in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-oauth2-resource-server:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-security-oauth2-resource-server:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-oauth2-jose:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-core:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-crypto:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-oauth2-core:jar:7.1.0 in the shaded jar.
+[INFO] Including com.nimbusds:nimbus-jose-jwt:jar:10.9 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-oauth2-resource-server:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-security:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-security:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-config:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework.security:spring-security-web:jar:7.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-aop:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-data-jpa:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-jdbc:jar:4.1.0 in the shaded jar.
+[INFO] Including com.zaxxer:HikariCP:jar:7.0.2 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-data-jpa:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-hibernate:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-jpa:jar:4.1.0 in the shaded jar.
+[INFO] Including jakarta.persistence:jakarta.persistence-api:jar:3.2.0 in the shaded jar.
+[INFO] Including org.hibernate.orm:hibernate-core:jar:7.4.1.Final in the shaded jar.
+[INFO] Including jakarta.transaction:jakarta.transaction-api:jar:2.0.1 in the shaded jar.
+[INFO] Including org.hibernate.models:hibernate-models:jar:1.1.1 in the shaded jar.
+[INFO] Including net.bytebuddy:byte-buddy:jar:1.18.10 in the shaded jar.
+[INFO] Including org.glassfish.jaxb:jaxb-runtime:jar:4.0.9 in the shaded jar.
+[INFO] Including org.glassfish.jaxb:jaxb-core:jar:4.0.9 in the shaded jar.
+[INFO] Including org.eclipse.angus:angus-activation:jar:2.0.3 in the shaded jar.
+[INFO] Including org.glassfish.jaxb:txw2:jar:4.0.9 in the shaded jar.
+[INFO] Including com.sun.istack:istack-commons-runtime:jar:4.1.2 in the shaded jar.
+[INFO] Including jakarta.inject:jakarta.inject-api:jar:2.0.1 in the shaded jar.
+[INFO] Including org.springframework:spring-orm:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.data:spring-data-jpa:jar:4.1.0 in the shaded jar.
+[INFO] Including org.antlr:antlr4-runtime:jar:4.13.2 in the shaded jar.
+[INFO] Including org.springframework:spring-aspects:jar:7.0.8 in the shaded jar.
+[INFO] Including org.aspectj:aspectjweaver:jar:1.9.25.1 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-jdbc:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-sql:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-jdbc:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-flyway:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-flyway:jar:4.1.0 in the shaded jar.
+[INFO] Including org.flywaydb:flyway-database-postgresql:jar:12.4.0 in the shaded jar.
+[INFO] Including org.flywaydb:flyway-core:jar:12.4.0 in the shaded jar.
+[INFO] Including tools.jackson.core:jackson-databind:jar:3.1.4 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-annotations:jar:2.21 in the shaded jar.
+[INFO] Including tools.jackson.core:jackson-core:jar:3.1.4 in the shaded jar.
+[INFO] Including org.postgresql:postgresql:jar:42.7.11 in the shaded jar.
+[INFO] Including com.github.ben-manes.caffeine:caffeine:jar:3.2.4 in the shaded jar.
+[INFO] Including org.jspecify:jspecify:jar:1.0.0 in the shaded jar.
+[INFO] Including com.google.errorprone:error_prone_annotations:jar:2.49.0 in the shaded jar.
+[INFO] Including org.springdoc:springdoc-openapi-starter-webmvc-ui:jar:3.0.3 in the shaded jar.
+[INFO] Including org.springdoc:springdoc-openapi-starter-webmvc-api:jar:3.0.3 in the shaded jar.
+[INFO] Including org.springdoc:springdoc-openapi-starter-common:jar:3.0.3 in the shaded jar.
+[INFO] Including io.swagger.core.v3:swagger-core-jakarta:jar:2.2.47 in the shaded jar.
+[INFO] Including org.apache.commons:commons-lang3:jar:3.20.0 in the shaded jar.
+[INFO] Including io.swagger.core.v3:swagger-annotations-jakarta:jar:2.2.47 in the shaded jar.
+[INFO] Including io.swagger.core.v3:swagger-models-jakarta:jar:2.2.47 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-databind:jar:2.21.4 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-core:jar:2.21.4 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.21.4 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.21.4 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-web-server:jar:4.1.0 in the shaded jar.
+[INFO] Including org.webjars:swagger-ui:jar:5.32.2 in the shaded jar.
+[INFO] Including org.webjars:webjars-locator-lite:jar:1.1.3 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-webmvc:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-jackson:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-jackson:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-tomcat:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-tomcat-runtime:jar:4.1.0 in the shaded jar.
+[INFO] Including org.apache.tomcat.embed:tomcat-embed-core:jar:11.0.22 in the shaded jar.
+[INFO] Including org.apache.tomcat.embed:tomcat-embed-websocket:jar:11.0.22 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-tomcat:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-http-converter:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-web:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-webmvc:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-servlet:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-webmvc:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework:spring-expression:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-actuator:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-micrometer-metrics:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-micrometer-metrics:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-micrometer-observation:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-actuator-autoconfigure:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-actuator:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-health:jar:4.1.0 in the shaded jar.
+[INFO] Including io.micrometer:micrometer-observation:jar:1.17.0 in the shaded jar.
+[INFO] Including io.micrometer:micrometer-commons:jar:1.17.0 in the shaded jar.
+[INFO] Including io.micrometer:micrometer-jakarta9:jar:1.17.0 in the shaded jar.
+[INFO] Including io.micrometer:micrometer-core:jar:1.17.0 in the shaded jar.
+[INFO] Including org.hdrhistogram:HdrHistogram:jar:2.2.2 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-validation:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-validation:jar:4.1.0 in the shaded jar.
+[INFO] Including org.apache.tomcat.embed:tomcat-embed-el:jar:11.0.22 in the shaded jar.
+[INFO] Including org.hibernate.validator:hibernate-validator:jar:9.1.0.Final in the shaded jar.
+[INFO] Including jakarta.validation:jakarta.validation-api:jar:3.1.1 in the shaded jar.
+[INFO] Including org.jboss.logging:jboss-logging:jar:3.6.3.Final in the shaded jar.
+[INFO] Including com.fasterxml:classmate:jar:1.7.3 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-starter-data-redis:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-data-redis:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-data-commons:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.data:spring-data-commons:jar:4.1.0 in the shaded jar.
+[INFO] Including io.lettuce:lettuce-core:jar:7.5.2.RELEASE in the shaded jar.
+[INFO] Including redis.clients.authentication:redis-authx-core:jar:0.1.1-beta2 in the shaded jar.
+[INFO] Including io.netty:netty-common:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-handler:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-resolver:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-buffer:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-transport-native-unix-common:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-base:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-transport:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.projectreactor:reactor-core:jar:3.8.6 in the shaded jar.
+[INFO] Including org.reactivestreams:reactive-streams:jar:1.0.4 in the shaded jar.
+[INFO] Including io.netty:netty-resolver-dns:jar:4.2.15.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-dns:jar:4.2.15.Final in the shaded jar.
+[INFO] Including org.springframework.data:spring-data-redis:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework.data:spring-data-keyvalue:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-oxm:jar:7.0.8 in the shaded jar.
+[INFO] Including jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.5 in the shaded jar.
+[INFO] Including jakarta.activation:jakarta.activation-api:jar:2.1.4 in the shaded jar.
+[INFO] Including org.springframework:spring-context-support:jar:7.0.8 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-api:jar:2.0.18 in the shaded jar.
+[INFO] Including org.springframework.boot:spring-boot-netty:jar:4.1.0 in the shaded jar.
+[INFO] Including org.springframework:spring-messaging:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework:spring-beans:jar:7.0.8 in the shaded jar.
+[INFO] Including org.springframework:spring-core:jar:7.0.8 in the shaded jar.
+[INFO] Including org.apache.pdfbox:pdfbox:jar:3.0.5 in the shaded jar.
+[INFO] Including org.apache.pdfbox:pdfbox-io:jar:3.0.5 in the shaded jar.
+[INFO] Including org.apache.pdfbox:fontbox:jar:3.0.5 in the shaded jar.
+[INFO] Including commons-logging:commons-logging:jar:1.3.6 in the shaded jar.
+[INFO] Including org.openjdk.jmh:jmh-core:jar:1.37 in the shaded jar.
+[INFO] Including net.sf.jopt-simple:jopt-simple:jar:5.0.4 in the shaded jar.
+[INFO] Including org.apache.commons:commons-math3:jar:3.6.1 in the shaded jar.
+[WARNING] postgresql-42.7.11.jar, reactor-core-3.8.6.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/versions/11/OSGI-INF/MANIFEST.MF
+[WARNING] flyway-core-12.4.0.jar, flyway-database-postgresql-12.4.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/org.flywaydb.core.extensibility.Plugin
+[WARNING] spring-aop-7.0.8.jar, spring-boot-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-keyvalue-4.1.0.jar, spring-data-redis-4.1.0.jar, springdoc-openapi-starter-common-3.0.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring.factories
+[WARNING] spring-aop-7.0.8.jar, spring-beans-7.0.8.jar, spring-boot-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, spring-context-7.0.8.jar, spring-context-support-7.0.8.jar, spring-core-7.0.8.jar, spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-keyvalue-4.1.0.jar, spring-data-redis-4.1.0.jar, spring-jdbc-7.0.8.jar, spring-kafka-4.1.0.jar, spring-messaging-7.0.8.jar, spring-orm-7.0.8.jar, spring-security-config-7.1.0.jar, spring-security-core-7.1.0.jar, spring-security-web-7.1.0.jar, spring-tx-7.0.8.jar, spring-web-7.0.8.jar, springdoc-openapi-starter-common-3.0.3.jar, springdoc-openapi-starter-webmvc-api-3.0.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring/aot.factories
+[WARNING] jackson-core-2.21.4.jar, jackson-core-3.1.4.jar define 3 overlapping resources: 
+[WARNING]   - META-INF/FastDoubleParser-LICENSE
+[WARNING]   - META-INF/FastDoubleParser-ThirdParty-LICENSE
+[WARNING]   - META-INF/Schubfach-LICENSE
+[WARNING] spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring-autoconfigure-metadata.properties
+[WARNING] HdrHistogram-2.2.2.jar, HikariCP-7.0.2.jar, angus-activation-2.0.3.jar, antlr4-runtime-4.13.2.jar, aspectjweaver-1.9.25.1.jar, benchmarks.jar, byte-buddy-1.18.10.jar, caffeine-3.2.4.jar, classmate-1.7.3.jar, commons-lang3-3.20.0.jar, commons-logging-1.3.6.jar, commons-math3-3.6.1.jar, error_prone_annotations-2.49.0.jar, flyway-core-12.4.0.jar, flyway-database-postgresql-12.4.0.jar, fontbox-3.0.5.jar, hibernate-core-7.4.1.Final.jar, hibernate-models-1.1.1.jar, hibernate-validator-9.1.0.Final.jar, istack-commons-runtime-4.1.2.jar, jackson-annotations-2.21.jar, jackson-core-2.21.4.jar, jackson-core-3.1.4.jar, jackson-databind-2.21.4.jar, jackson-databind-3.1.4.jar, jackson-dataformat-yaml-2.21.4.jar, jackson-datatype-jsr310-2.21.4.jar, jakarta.activation-api-2.1.4.jar, jakarta.annotation-api-3.0.0.jar, jakarta.inject-api-2.0.1.jar, jakarta.persistence-api-3.2.0.jar, jakarta.transaction-api-2.0.1.jar, jakarta.validation-api-3.1.1.jar, jakarta.xml.bind-api-4.0.5.jar, jaxb-core-4.0.9.jar, jaxb-runtime-4.0.9.jar, jboss-logging-3.6.3.Final.jar, jmh-core-1.37.jar, jopt-simple-5.0.4.jar, jspecify-1.0.0.jar, jsr305-3.0.2.jar, jul-to-slf4j-2.0.18.jar, kafka-clients-4.2.1.jar, lettuce-core-7.5.2.RELEASE.jar, log4j-api-2.25.4.jar, log4j-to-slf4j-2.25.4.jar, logback-classic-1.5.34.jar, logback-core-1.5.34.jar, lz4-java-1.10.1.jar, micrometer-commons-1.17.0.jar, micrometer-core-1.17.0.jar, micrometer-jakarta9-1.17.0.jar, micrometer-observation-1.17.0.jar, netty-buffer-4.2.15.Final.jar, netty-codec-base-4.2.15.Final.jar, netty-codec-dns-4.2.15.Final.jar, netty-common-4.2.15.Final.jar, netty-handler-4.2.15.Final.jar, netty-resolver-4.2.15.Final.jar, netty-resolver-dns-4.2.15.Final.jar, netty-transport-4.2.15.Final.jar, netty-transport-native-unix-common-4.2.15.Final.jar, nimbus-jose-jwt-10.9.jar, pdfbox-3.0.5.jar, pdfbox-io-3.0.5.jar, postgresql-42.7.11.jar, reactive-streams-1.0.4.jar, reactor-core-3.8.6.jar, redis-authx-core-0.1.1-beta2.jar, search-service-0.0.1-SNAPSHOT.jar, shared-0.0.1-SNAPSHOT.jar, slf4j-api-2.0.18.jar, snakeyaml-2.6.jar, snappy-java-1.1.10.7.jar, spotbugs-annotations-4.9.8.jar, spring-aop-7.0.8.jar, spring-aspects-7.0.8.jar, spring-beans-7.0.8.jar, spring-boot-4.1.0.jar, spring-boot-actuator-4.1.0.jar, spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-starter-4.1.0.jar, spring-boot-starter-actuator-4.1.0.jar, spring-boot-starter-data-jpa-4.1.0.jar, spring-boot-starter-data-redis-4.1.0.jar, spring-boot-starter-flyway-4.1.0.jar, spring-boot-starter-jackson-4.1.0.jar, spring-boot-starter-jdbc-4.1.0.jar, spring-boot-starter-kafka-4.1.0.jar, spring-boot-starter-logging-4.1.0.jar, spring-boot-starter-micrometer-metrics-4.1.0.jar, spring-boot-starter-oauth2-resource-server-4.1.0.jar, spring-boot-starter-security-4.1.0.jar, spring-boot-starter-tomcat-4.1.0.jar, spring-boot-starter-tomcat-runtime-4.1.0.jar, spring-boot-starter-validation-4.1.0.jar, spring-boot-starter-webmvc-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, spring-context-7.0.8.jar, spring-context-support-7.0.8.jar, spring-core-7.0.8.jar, spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-keyvalue-4.1.0.jar, spring-data-redis-4.1.0.jar, spring-expression-7.0.8.jar, spring-jdbc-7.0.8.jar, spring-kafka-4.1.0.jar, spring-messaging-7.0.8.jar, spring-orm-7.0.8.jar, spring-oxm-7.0.8.jar, spring-security-config-7.1.0.jar, spring-security-core-7.1.0.jar, spring-security-crypto-7.1.0.jar, spring-security-oauth2-core-7.1.0.jar, spring-security-oauth2-jose-7.1.0.jar, spring-security-oauth2-resource-server-7.1.0.jar, spring-security-web-7.1.0.jar, spring-tx-7.0.8.jar, spring-web-7.0.8.jar, spring-webmvc-7.0.8.jar, springdoc-openapi-starter-common-3.0.3.jar, springdoc-openapi-starter-webmvc-api-3.0.3.jar, springdoc-openapi-starter-webmvc-ui-3.0.3.jar, swagger-annotations-jakarta-2.2.47.jar, swagger-core-jakarta-2.2.47.jar, swagger-models-jakarta-2.2.47.jar, swagger-ui-5.32.2.jar, tomcat-embed-core-11.0.22.jar, tomcat-embed-el-11.0.22.jar, tomcat-embed-websocket-11.0.22.jar, txw2-4.0.9.jar, webjars-locator-lite-1.1.3.jar, zstd-jni-1.5.6-10.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] angus-activation-2.0.3.jar, jakarta.activation-api-2.1.4.jar, jakarta.annotation-api-3.0.0.jar, jakarta.persistence-api-3.2.0.jar, jakarta.transaction-api-2.0.1.jar, jakarta.xml.bind-api-4.0.5.jar, jaxb-core-4.0.9.jar, jaxb-runtime-4.0.9.jar, txw2-4.0.9.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE.md
+[WARNING] spring-boot-security-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring/org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration.imports
+[WARNING] netty-buffer-4.2.15.Final.jar, netty-codec-base-4.2.15.Final.jar, netty-codec-dns-4.2.15.Final.jar, netty-common-4.2.15.Final.jar, netty-handler-4.2.15.Final.jar, netty-resolver-4.2.15.Final.jar, netty-resolver-dns-4.2.15.Final.jar, netty-transport-4.2.15.Final.jar, netty-transport-native-unix-common-4.2.15.Final.jar define 2 overlapping class and resource: 
+[WARNING]   - META-INF.versions.11.module-info
+[WARNING]   - META-INF/io.netty.versions.properties
+[WARNING] springdoc-openapi-starter-common-3.0.3.jar, springdoc-openapi-starter-webmvc-api-3.0.3.jar, springdoc-openapi-starter-webmvc-ui-3.0.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/COPYRIGHT
+[WARNING] jackson-core-2.21.4.jar, jackson-dataformat-yaml-2.21.4.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/com.fasterxml.jackson.core.JsonFactory
+[WARNING] logback-classic-1.5.34.jar, spring-web-7.0.8.jar, tomcat-embed-websocket-11.0.22.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/jakarta.servlet.ServletContainerInitializer
+[WARNING] spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-keyvalue-4.1.0.jar, spring-data-redis-4.1.0.jar define 2 overlapping resources: 
+[WARNING]   - license.txt
+[WARNING]   - notice.txt
+[WARNING] jackson-databind-2.21.4.jar, jackson-dataformat-yaml-2.21.4.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/com.fasterxml.jackson.core.ObjectCodec
+[WARNING] byte-buddy-1.18.10.jar, classmate-1.7.3.jar, fontbox-3.0.5.jar, jackson-annotations-2.21.jar, jackson-core-2.21.4.jar, jackson-core-3.1.4.jar, jackson-databind-2.21.4.jar, jackson-databind-3.1.4.jar, jackson-dataformat-yaml-2.21.4.jar, jackson-datatype-jsr310-2.21.4.jar, log4j-api-2.25.4.jar, log4j-to-slf4j-2.25.4.jar, micrometer-commons-1.17.0.jar, micrometer-core-1.17.0.jar, micrometer-jakarta9-1.17.0.jar, micrometer-observation-1.17.0.jar, pdfbox-3.0.5.jar, pdfbox-io-3.0.5.jar, swagger-annotations-jakarta-2.2.47.jar, swagger-core-jakarta-2.2.47.jar, swagger-models-jakarta-2.2.47.jar, tomcat-embed-core-11.0.22.jar, tomcat-embed-el-11.0.22.jar, tomcat-embed-websocket-11.0.22.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE
+[WARNING] spring-aop-7.0.8.jar, spring-beans-7.0.8.jar, spring-context-7.0.8.jar, spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-redis-4.1.0.jar, spring-jdbc-7.0.8.jar, spring-oxm-7.0.8.jar, spring-tx-7.0.8.jar, spring-webmvc-7.0.8.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring.tooling
+[WARNING] spring-web-7.0.8.jar, tomcat-embed-el-11.0.22.jar, tomcat-embed-websocket-11.0.22.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/web-fragment.xml
+[WARNING] spring-aop-7.0.8.jar, spring-aspects-7.0.8.jar, spring-beans-7.0.8.jar, spring-context-7.0.8.jar, spring-context-support-7.0.8.jar, spring-core-7.0.8.jar, spring-expression-7.0.8.jar, spring-jdbc-7.0.8.jar, spring-kafka-4.1.0.jar, spring-messaging-7.0.8.jar, spring-orm-7.0.8.jar, spring-oxm-7.0.8.jar, spring-tx-7.0.8.jar, spring-web-7.0.8.jar, spring-webmvc-7.0.8.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/notice.txt
+[WARNING] fontbox-3.0.5.jar, log4j-api-2.25.4.jar, log4j-to-slf4j-2.25.4.jar, pdfbox-3.0.5.jar, pdfbox-io-3.0.5.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/DEPENDENCIES
+[WARNING] byte-buddy-1.18.10.jar, caffeine-3.2.4.jar, classmate-1.7.3.jar, fontbox-3.0.5.jar, hibernate-models-1.1.1.jar, jackson-annotations-2.21.jar, jackson-core-2.21.4.jar, jackson-core-3.1.4.jar, jackson-databind-2.21.4.jar, jackson-databind-3.1.4.jar, jackson-dataformat-yaml-2.21.4.jar, jackson-datatype-jsr310-2.21.4.jar, lettuce-core-7.5.2.RELEASE.jar, log4j-api-2.25.4.jar, log4j-to-slf4j-2.25.4.jar, micrometer-commons-1.17.0.jar, micrometer-core-1.17.0.jar, micrometer-jakarta9-1.17.0.jar, micrometer-observation-1.17.0.jar, pdfbox-3.0.5.jar, pdfbox-io-3.0.5.jar, postgresql-42.7.11.jar, reactor-core-3.8.6.jar, springdoc-openapi-starter-common-3.0.3.jar, springdoc-openapi-starter-webmvc-api-3.0.3.jar, springdoc-openapi-starter-webmvc-ui-3.0.3.jar, swagger-annotations-jakarta-2.2.47.jar, swagger-core-jakarta-2.2.47.jar, swagger-models-jakarta-2.2.47.jar, tomcat-embed-core-11.0.22.jar, tomcat-embed-el-11.0.22.jar, tomcat-embed-websocket-11.0.22.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE
+[WARNING] spring-boot-tomcat-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring/org.springframework.boot.web.server.test.AutoConfigureWebServer.imports
+[WARNING] commons-lang3-3.20.0.jar, commons-logging-1.3.6.jar, commons-math3-3.6.1.jar, spring-boot-4.1.0.jar, spring-boot-actuator-4.1.0.jar, spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-starter-4.1.0.jar, spring-boot-starter-actuator-4.1.0.jar, spring-boot-starter-data-jpa-4.1.0.jar, spring-boot-starter-data-redis-4.1.0.jar, spring-boot-starter-flyway-4.1.0.jar, spring-boot-starter-jackson-4.1.0.jar, spring-boot-starter-jdbc-4.1.0.jar, spring-boot-starter-kafka-4.1.0.jar, spring-boot-starter-logging-4.1.0.jar, spring-boot-starter-micrometer-metrics-4.1.0.jar, spring-boot-starter-oauth2-resource-server-4.1.0.jar, spring-boot-starter-security-4.1.0.jar, spring-boot-starter-tomcat-4.1.0.jar, spring-boot-starter-tomcat-runtime-4.1.0.jar, spring-boot-starter-validation-4.1.0.jar, spring-boot-starter-webmvc-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] spring-data-jpa-4.1.0.jar, spring-data-redis-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/jakarta.enterprise.inject.spi.Extension
+[WARNING] byte-buddy-1.18.10.jar, commons-lang3-3.20.0.jar, commons-logging-1.3.6.jar, error_prone_annotations-2.49.0.jar, jackson-core-2.21.4.jar, jackson-databind-2.21.4.jar, jackson-dataformat-yaml-2.21.4.jar, jackson-datatype-jsr310-2.21.4.jar, jspecify-1.0.0.jar, jul-to-slf4j-2.0.18.jar, nimbus-jose-jwt-10.9.jar, slf4j-api-2.0.18.jar, snakeyaml-2.6.jar define 1 overlapping classes: 
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] hibernate-validator-9.1.0.Final.jar, spring-aop-7.0.8.jar, spring-aspects-7.0.8.jar, spring-beans-7.0.8.jar, spring-context-7.0.8.jar, spring-context-support-7.0.8.jar, spring-core-7.0.8.jar, spring-expression-7.0.8.jar, spring-jdbc-7.0.8.jar, spring-messaging-7.0.8.jar, spring-orm-7.0.8.jar, spring-oxm-7.0.8.jar, spring-tx-7.0.8.jar, spring-web-7.0.8.jar, spring-webmvc-7.0.8.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/license.txt
+[WARNING] micrometer-observation-1.17.0.jar, spring-security-core-7.1.0.jar, spring-security-web-7.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/io.micrometer.context.ThreadLocalAccessor
+[WARNING] spring-aop-7.0.8.jar, spring-beans-7.0.8.jar, spring-context-7.0.8.jar, spring-data-commons-4.1.0.jar, spring-data-jpa-4.1.0.jar, spring-data-redis-4.1.0.jar, spring-jdbc-7.0.8.jar, spring-oxm-7.0.8.jar, spring-security-config-7.1.0.jar, spring-tx-7.0.8.jar, spring-webmvc-7.0.8.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/spring.handlers
+[WARNING]   - META-INF/spring.schemas
+[WARNING] spring-boot-4.1.0.jar, spring-boot-actuator-4.1.0.jar, spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/additional-spring-configuration-metadata.json
+[WARNING] jmh-core-1.37.jar, kafka-clients-4.2.1.jar define 1 overlapping resource: 
+[WARNING]   - LICENSE
+[WARNING] spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, springdoc-openapi-starter-common-3.0.3.jar, springdoc-openapi-starter-webmvc-api-3.0.3.jar, springdoc-openapi-starter-webmvc-ui-3.0.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
+[WARNING] spring-boot-4.1.0.jar, spring-boot-actuator-4.1.0.jar, spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, springdoc-openapi-starter-common-3.0.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring-configuration-metadata.json
+[WARNING] netty-common-4.2.15.Final.jar, reactor-core-3.8.6.jar, spring-core-7.0.8.jar, spring-web-7.0.8.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/reactor.blockhound.integration.BlockHoundIntegration
+[WARNING] HdrHistogram-2.2.2.jar, commons-lang3-3.20.0.jar, commons-logging-1.3.6.jar, commons-math3-3.6.1.jar, flyway-core-12.4.0.jar, hibernate-core-7.4.1.Final.jar, jakarta.inject-api-2.0.1.jar, jul-to-slf4j-2.0.18.jar, slf4j-api-2.0.18.jar, spring-boot-4.1.0.jar, spring-boot-actuator-4.1.0.jar, spring-boot-actuator-autoconfigure-4.1.0.jar, spring-boot-autoconfigure-4.1.0.jar, spring-boot-data-commons-4.1.0.jar, spring-boot-data-jpa-4.1.0.jar, spring-boot-data-redis-4.1.0.jar, spring-boot-flyway-4.1.0.jar, spring-boot-health-4.1.0.jar, spring-boot-hibernate-4.1.0.jar, spring-boot-http-converter-4.1.0.jar, spring-boot-jackson-4.1.0.jar, spring-boot-jdbc-4.1.0.jar, spring-boot-jpa-4.1.0.jar, spring-boot-kafka-4.1.0.jar, spring-boot-micrometer-metrics-4.1.0.jar, spring-boot-micrometer-observation-4.1.0.jar, spring-boot-netty-4.1.0.jar, spring-boot-persistence-4.1.0.jar, spring-boot-security-4.1.0.jar, spring-boot-security-oauth2-resource-server-4.1.0.jar, spring-boot-servlet-4.1.0.jar, spring-boot-sql-4.1.0.jar, spring-boot-starter-4.1.0.jar, spring-boot-starter-actuator-4.1.0.jar, spring-boot-starter-data-jpa-4.1.0.jar, spring-boot-starter-data-redis-4.1.0.jar, spring-boot-starter-flyway-4.1.0.jar, spring-boot-starter-jackson-4.1.0.jar, spring-boot-starter-jdbc-4.1.0.jar, spring-boot-starter-kafka-4.1.0.jar, spring-boot-starter-logging-4.1.0.jar, spring-boot-starter-micrometer-metrics-4.1.0.jar, spring-boot-starter-oauth2-resource-server-4.1.0.jar, spring-boot-starter-security-4.1.0.jar, spring-boot-starter-tomcat-4.1.0.jar, spring-boot-starter-tomcat-runtime-4.1.0.jar, spring-boot-starter-validation-4.1.0.jar, spring-boot-starter-webmvc-4.1.0.jar, spring-boot-tomcat-4.1.0.jar, spring-boot-transaction-4.1.0.jar, spring-boot-validation-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar, spring-security-config-7.1.0.jar, spring-security-core-7.1.0.jar, spring-security-crypto-7.1.0.jar, spring-security-oauth2-core-7.1.0.jar, spring-security-oauth2-jose-7.1.0.jar, spring-security-oauth2-resource-server-7.1.0.jar, spring-security-web-7.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING] spring-boot-autoconfigure-4.1.0.jar, spring-boot-web-server-4.1.0.jar, spring-boot-webmvc-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/spring-devtools.properties
+[WARNING] log4j-api-2.25.4.jar, spring-boot-4.1.0.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/services/org.apache.logging.log4j.util.PropertySource
+[WARNING] angus-activation-2.0.3.jar, jakarta.activation-api-2.1.4.jar, jakarta.annotation-api-3.0.0.jar, jakarta.inject-api-2.0.1.jar, jakarta.persistence-api-3.2.0.jar, jakarta.transaction-api-2.0.1.jar, jakarta.xml.bind-api-4.0.5.jar, jaxb-core-4.0.9.jar, jaxb-runtime-4.0.9.jar, txw2-4.0.9.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE.md
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/aditya/Projects/minsearch/benchmarks/jmh/target/benchmarks.jar with /Users/aditya/Projects/minsearch/benchmarks/jmh/target/minsearch-benchmarks-0.0.1-SNAPSHOT-shaded.jar
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ minsearch-benchmarks ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ minsearch-benchmarks ---
+[INFO] No tests to run.
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for MiniSearch 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] MiniSearch ......................................... SUCCESS [  0.103 s]
+[INFO] minsearch-shared ................................... SUCCESS [  2.382 s]
+[INFO] minsearch-search-service ........................... SUCCESS [  1.666 s]
+[INFO] minsearch-benchmarks ............................... SUCCESS [  5.501 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.772 s
+[INFO] Finished at: 2026-10-20T00:27:10+05:30
+[INFO] ------------------------------------------------------------------------

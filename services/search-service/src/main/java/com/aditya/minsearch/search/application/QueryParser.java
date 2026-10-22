@@ -11,12 +11,19 @@ import com.aditya.minsearch.search.domain.TermNode;
 import java.util.List;
 
 public final class QueryParser {
+  private final QueryLimits limits;
+  public QueryParser() { this(QueryLimits.defaults()); }
+  public QueryParser(QueryLimits limits) { this.limits = limits; }
   private List<QueryToken> tokens;
   private int cursor;
+  private int depth;
+  private int endPosition;
 
   public QueryNode parse(String query) {
-    tokens = new QueryLexer().lex(query);
+    tokens = new QueryLexer(limits).lex(query);
+    endPosition = query.length();
     cursor = 0;
+    depth = 0;
     if (tokens.isEmpty()) throw new QuerySyntaxException("Query must not be empty", 0);
     QueryNode node = parseOr();
     if (cursor != tokens.size()) throw error("Unexpected token", tokens.get(cursor));
@@ -41,14 +48,18 @@ public final class QueryParser {
   }
 
   private QueryNode parseUnary() {
-    if (match(QueryToken.Type.NOT)) return new NotNode(parseUnary());
+    if (match(QueryToken.Type.NOT)) {
+      throw error("NOT requires a left expression",tokens.get(cursor-1));
+    }
     return parsePrimary();
   }
 
   private QueryNode parsePrimary() {
     if (match(QueryToken.Type.LPAREN)) {
+      enter();
       QueryNode node = parseOr();
       require(QueryToken.Type.RPAREN, "Missing closing parenthesis");
+      depth--;
       return node;
     }
     QueryToken token = requireAny("Expected a term, phrase, or parenthesized expression");
@@ -56,6 +67,13 @@ public final class QueryParser {
     if (token.type() != QueryToken.Type.TERM) throw error("Expected a term", token);
     if (match(QueryToken.Type.COLON)) {
       QueryToken value = require(QueryToken.Type.TERM, "Expected filter value");
+      String field = token.lexeme().toLowerCase(java.util.Locale.ROOT);
+      if (!java.util.Set.of("owner", "language", "type", "from", "to").contains(field))
+        throw error("Unknown filter", token);
+      try {
+        if (field.equals("from") || field.equals("to")) java.time.LocalDate.parse(value.lexeme());
+        if (field.equals("owner")) java.util.UUID.fromString(value.lexeme());
+      } catch (RuntimeException invalid) { throw error("Invalid filter value", value); }
       return new FilterNode(token.lexeme(), value.lexeme());
     }
     if (match(QueryToken.Type.STAR)) return new PrefixNode(token.lexeme());
@@ -67,6 +85,11 @@ public final class QueryParser {
     return type == QueryToken.Type.TERM || type == QueryToken.Type.PHRASE || type == QueryToken.Type.LPAREN;
   }
 
+  private void enter() {
+    if (++depth > limits.maxDepth())
+      throw new QuerySyntaxException("Query nesting limit exceeded", cursor == 0 ? 0 : tokens.get(cursor - 1).start());
+  }
+
   private boolean match(QueryToken.Type type) {
     if (cursor < tokens.size() && tokens.get(cursor).type() == type) { cursor++; return true; }
     return false;
@@ -74,13 +97,13 @@ public final class QueryParser {
 
   private QueryToken require(QueryToken.Type type, String message) {
     if (cursor >= tokens.size() || tokens.get(cursor).type() != type) {
-      throw new QuerySyntaxException(message, cursor >= tokens.size() ? -1 : tokens.get(cursor).start());
+      throw new QuerySyntaxException(message, cursor >= tokens.size() ? endPosition : tokens.get(cursor).start());
     }
     return tokens.get(cursor++);
   }
 
   private QueryToken requireAny(String message) {
-    if (cursor >= tokens.size()) throw new QuerySyntaxException(message, -1);
+    if (cursor >= tokens.size()) throw new QuerySyntaxException(message, endPosition);
     return tokens.get(cursor++);
   }
 

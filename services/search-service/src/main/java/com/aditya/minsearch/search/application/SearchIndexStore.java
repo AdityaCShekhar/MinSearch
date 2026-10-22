@@ -12,13 +12,20 @@ public interface SearchIndexStore {
 
   List<StoredMutation> load();
 
+  default void forEach(java.util.function.Consumer<StoredMutation> consumer) {
+    load().forEach(consumer);
+  }
+
   record Mutation(
       UUID eventId,
       UUID documentId,
       long version,
       boolean deleted,
       SearchDocument document,
-      List<TextToken> tokens) {
+      List<TextToken> tokens, String text) {
+    public Mutation(UUID eventId, UUID documentId, long version, boolean deleted, SearchDocument document, List<TextToken> tokens) {
+      this(eventId,documentId,version,deleted,document,tokens,null);
+    }
     public Mutation {
       tokens = List.copyOf(tokens);
     }

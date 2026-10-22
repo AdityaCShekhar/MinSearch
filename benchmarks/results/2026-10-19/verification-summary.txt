@@ -1,0 +1,53 @@
+$ ./mvnw verify
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in com.aditya.minsearch.cache.infrastructure.CaffeineCacheStoreTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.aditya.minsearch.shared.infrastructure.metrics.MinsearchMetricsConfigurationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in com.aditya.minsearch.shared.infrastructure.web.CorrelationIdFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.aditya.minsearch.shared.infrastructure.web.RequestMetricsFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.567 s -- in com.aditya.minsearch.shared.infrastructure.web.ObservabilityEndpointsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s -- in com.aditya.minsearch.shared.infrastructure.web.ApiExceptionHandlerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.861 s -- in com.aditya.minsearch.shared.infrastructure.persistence.DatabaseMigrationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.aditya.minsearch.shared.infrastructure.event.InProcessDomainEventBusTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.803 s -- in com.aditya.minsearch.ArchitectureTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.591 s -- in com.aditya.minsearch.BuildVerificationIT
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.389 s -- in com.aditya.minsearch.auth.api.AuthRegistrationControllerTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.999 s -- in com.aditya.minsearch.auth.application.AuthCommandServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.122 s -- in com.aditya.minsearch.auth.application.RegistrationServiceTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.324 s -- in com.aditya.minsearch.auth.infrastructure.persistence.AuthPersistenceTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.384 s -- in com.aditya.minsearch.document.application.DocumentQueryServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s -- in com.aditya.minsearch.document.application.DocumentUploadServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.aditya.minsearch.document.application.DocumentUploadValidatorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.067 s -- in com.aditya.minsearch.document.application.DocumentOutboxProcessorTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.098 s -- in com.aditya.minsearch.document.application.DocumentOutboxServiceTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.480 s -- in com.aditya.minsearch.document.application.DocumentIndexOutcomeServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.aditya.minsearch.document.application.DocumentLifecycleServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.aditya.minsearch.document.infrastructure.storage.LocalFilesystemDocumentStorageTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s -- in com.aditya.minsearch.document.infrastructure.messaging.KafkaOutcomeConfigurationTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in com.aditya.minsearch.autocomplete.application.SpellingSuggestionServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.aditya.minsearch.autocomplete.application.AutocompleteServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.aditya.minsearch.search.application.QueryParserTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.379 s -- in com.aditya.minsearch.search.application.DocumentIndexingServiceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.aditya.minsearch.search.application.SnippetRendererTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.aditya.minsearch.search.application.QueryLexerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.aditya.minsearch.search.application.QueryEvaluatorTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.aditya.minsearch.search.application.SearchServiceTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.aditya.minsearch.search.infrastructure.SearchMetricsConfigurationTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.505 s -- in com.aditya.minsearch.search.infrastructure.JdbcSearchIndexStoreTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s -- in com.aditya.minsearch.search.infrastructure.KafkaIndexingConfigurationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.aditya.minsearch.search.infrastructure.IndexingFailureRecorderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.aditya.minsearch.index.application.PostingLookupTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.aditya.minsearch.index.application.LanguageAwareTokenProcessorTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in com.aditya.minsearch.index.application.BoundedTextExtractorTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.aditya.minsearch.index.application.IndexPublicationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.aditya.minsearch.index.application.IndexWorkerTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.aditya.minsearch.index.application.IndexGenerationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.aditya.minsearch.index.application.IndexSnapshotStoreTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.aditya.minsearch.index.application.TextTokenizerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.aditya.minsearch.analytics.application.SearchAnalyticsServiceTest
+[INFO] Tests run: 49, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  20.797 s
+[INFO] Finished at: 2026-10-19T01:23:56+05:30

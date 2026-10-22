@@ -1,0 +1,10 @@
+{
+  "git_commit": "261a18175aeaeef200bf62c7edddb20ac9022411",
+  "git_status": "M .dockerignore\n M .gitignore\n M docs/TASKS.md\n M pom.xml\n M services/search-service/Dockerfile\n M services/search-service/pom.xml\n M services/search-service/src/main/java/com/aditya/minsearch/autocomplete/application/AutocompleteService.java\n?? benchmarks/\n?? services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfiguration.java",
+  "application_source_sha256": "c4e15065e38ced878dd2303a4343b9d93f90af68eab5af59c15632bf9fd63099",
+  "utc": "2026-10-18T19:48:31.087395+00:00",
+  "artifact_sha256": "99f3ee40eac75f6c330800118445efff65eae295db30b465e6ca66753fbe1357",
+  "java": "openjdk version \"17.0.16\" 2025-07-15 LTS\nOpenJDK Runtime Environment Microsoft-11926164 (build 17.0.16+8-LTS)\nOpenJDK 64-Bit Server VM Microsoft-11926164 (build 17.0.16+8-LTS, mixed mode, sharing)\n",
+  "command": "java -jar benchmarks/jmh/target/benchmarks.jar .*IndexBuildBenchmark.buildGeneration|.*SearchAlgorithmsBenchmark.phraseRetrieval -p documents=1000,10000 -wi 2 -w 500ms -i 3 -r 500ms -f 2 -prof gc -rf json",
+  "description": "Before new-document bulk-build guard, binary posting lookup, phrase matching, and streaming recovery changes."
+}

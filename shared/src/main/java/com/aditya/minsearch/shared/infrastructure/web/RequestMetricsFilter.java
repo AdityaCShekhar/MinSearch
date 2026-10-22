@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
-@Order(Ordered.LOWEST_PRECEDENCE - 10)
+@Order(Ordered.HIGHEST_PRECEDENCE + 10)
 public class RequestMetricsFilter extends OncePerRequestFilter {
 
   private final MeterRegistry meterRegistry;
@@ -34,7 +34,7 @@ public class RequestMetricsFilter extends OncePerRequestFilter {
     } finally {
       long durationNanos = System.nanoTime() - startNanos;
       String route = routeTag(request);
-      String method = request.getMethod();
+      String method = java.util.Set.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD").contains(request.getMethod()) ? request.getMethod() : "OTHER";
       String status = Integer.toString(response.getStatus());
 
       Timer.builder("minsearch.http.request")
@@ -52,13 +52,20 @@ public class RequestMetricsFilter extends OncePerRequestFilter {
           .tag("status", status)
           .register(meterRegistry)
           .increment();
+      if (route.startsWith("/api/v1/auth/")) {
+        meterRegistry.counter("minsearch.auth.requests", "operation", route.substring(route.lastIndexOf('/') + 1),
+            "outcome", response.getStatus() < 400 ? "success" : "rejected").increment();
+      }
+      if (response.getStatus() == 429) meterRegistry.counter("minsearch.security.rate.rejected").increment();
     }
   }
 
   private static String routeTag(HttpServletRequest request) {
-    String servletPath = request.getServletPath();
-    String pathInfo = request.getPathInfo();
-    String route = (servletPath == null ? "" : servletPath) + (pathInfo == null ? "" : pathInfo);
-    return route.isBlank() ? "UNKNOWN" : route;
+    Object pattern = request.getAttribute(org.springframework.web.servlet.HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
+    if (pattern != null) return pattern.toString();
+    String uri = request.getRequestURI();
+    if (java.util.Set.of("/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/refresh", "/api/v1/auth/logout",
+        "/api/v1/search", "/api/v1/documents", "/api/v1/autocomplete", "/api/v1/suggest").contains(uri)) return uri;
+    return "UNMATCHED";
   }
 }

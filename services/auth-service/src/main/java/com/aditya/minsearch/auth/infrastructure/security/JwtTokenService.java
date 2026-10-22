@@ -29,10 +29,16 @@ public class JwtTokenService implements TokenService {
 	private final String issuer;
 
 	public JwtTokenService(@Value("${minsearch.security.jwt.secret}") String secret) {
+		this(secret, "");
+	}
+
+	@org.springframework.beans.factory.annotation.Autowired
+	public JwtTokenService(@Value("${minsearch.security.jwt.secret}") String secret,
+			@Value("${minsearch.security.jwt.previous-secret:}") String previous) {
 		this.issuer = "minsearch";
 		SecretKey secretKey = new SecretKeySpec(normalizeSecret(secret), "HmacSHA256");
 		this.jwtEncoder = NimbusJwtEncoder.withSecretKey(secretKey).algorithm(MacAlgorithm.HS256).build();
-		this.jwtDecoder = NimbusJwtDecoder.withSecretKey(secretKey).macAlgorithm(MacAlgorithm.HS256).build();
+		this.jwtDecoder = com.aditya.minsearch.shared.infrastructure.security.JwtKeys.decoder(secret, previous);
 	}
 
 	@Bean
@@ -74,7 +80,7 @@ public class JwtTokenService implements TokenService {
 				UUID.fromString(jwt.getId()),
 				jwt.getIssuedAt(),
 				jwt.getExpiresAt(),
-				jwt.getIssuer().toString());
+				jwt.getClaimAsString("iss"));
 	}
 
 	@Override

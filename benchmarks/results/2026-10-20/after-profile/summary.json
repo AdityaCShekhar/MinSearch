@@ -1,0 +1,1 @@
+{"requestedSeconds":20,"scope":"Synthetic variable-length postings; uncached queries on a fixed generation and two synchronized real indexing writers; no database or Kafka","readers":4,"queries":56054,"writers":2,"documents":10000,"elapsedSeconds":20.016813584,"mutations":5070,"retainedHeapBytes":19896816}

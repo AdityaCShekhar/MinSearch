@@ -18,6 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 @EnableScheduling
 @ConditionalOnProperty(name = "minsearch.messaging.enabled", havingValue = "true")
 public class IndexOutcomeRelay {
+  private com.aditya.minsearch.shared.infrastructure.WorkerCoordinator workers =
+      new com.aditya.minsearch.shared.infrastructure.WorkerCoordinator(java.time.Duration.ofSeconds(25));
+  @org.springframework.beans.factory.annotation.Autowired
+  void workers(com.aditya.minsearch.shared.infrastructure.WorkerCoordinator workers) { this.workers=workers; }
+
   private static final Logger LOG = LoggerFactory.getLogger(IndexOutcomeRelay.class);
   private final JdbcTemplate jdbc;
   private final KafkaTemplate<String, String> kafka;
@@ -33,6 +38,10 @@ public class IndexOutcomeRelay {
   @Scheduled(fixedDelayString = "${minsearch.messaging.outcome-delay-ms:1000}")
   @Transactional
   public void publishPending() {
+    try (var lease=workers.acquire()) { publishAdmitted(); }
+  }
+
+  private void publishAdmitted() {
     var events =
         jdbc.query(
             """
@@ -49,6 +58,7 @@ public class IndexOutcomeRelay {
                     row.getInt("attempts")),
             indexing.current().generation().generation());
     for (var event : events) {
+      if (workers.stopping()) break;
       try {
         kafka
             .send(event.type(), event.documentId().toString(), event.body())

@@ -7,13 +7,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DocumentPersistenceAdapter {
   private final DocumentRepository repository;
+  private final org.springframework.jdbc.core.JdbcTemplate jdbc;
 
   public DocumentPersistenceAdapter(DocumentRepository repository) {
-    this.repository = repository;
+    this(repository, null);
+  }
+  @org.springframework.beans.factory.annotation.Autowired
+  public DocumentPersistenceAdapter(DocumentRepository repository, org.springframework.jdbc.core.JdbcTemplate jdbc) {
+    this.repository=repository; this.jdbc=jdbc;
   }
 
   public Document save(Document document) {
-    return repository.save(new DocumentJpaEntity(document)).toDomain();
+    var saved=repository.saveAndFlush(new DocumentJpaEntity(document)).toDomain();
+    if (jdbc!=null) {
+      jdbc.update("INSERT INTO document_versions(id,document_id,version,storage_key,checksum,size_bytes,title,language,created_at) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(document_id,version) DO NOTHING",
+          UUID.randomUUID(), saved.id(), saved.currentVersion(), saved.storageKey(), saved.checksum(), saved.sizeBytes(), saved.title(), saved.language(), java.sql.Timestamp.from(saved.updatedAt()));
+    }
+    return saved;
   }
 
   public java.util.Optional<Document> findById(UUID id) {
@@ -28,5 +38,13 @@ public class DocumentPersistenceAdapter {
     return repository.findAllByOwnerIdAndDeletedAtIsNullOrderByCreatedAtDesc(ownerId).stream()
         .map(DocumentJpaEntity::toDomain)
         .toList();
+  }
+
+  public java.util.List<Document> list(UUID owner, boolean admin, int page, int size) {
+    if (page<0 || size<1 || size>100) throw new IllegalArgumentException("Invalid pagination");
+    var request=org.springframework.data.domain.PageRequest.of(page,size,
+        org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Order.desc("createdAt"), org.springframework.data.domain.Sort.Order.asc("id")));
+    return (admin ? repository.findAllByDeletedAtIsNull(request) : repository.findAllByOwnerIdAndDeletedAtIsNull(owner,request))
+        .stream().map(DocumentJpaEntity::toDomain).toList();
   }
 }

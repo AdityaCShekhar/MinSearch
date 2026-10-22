@@ -1,6 +1,7 @@
 package com.aditya.minsearch.auth.infrastructure.persistence;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.aditya.minsearch.auth.domain.RefreshToken;
 import com.aditya.minsearch.auth.domain.RefreshTokenRepository;
@@ -34,6 +35,42 @@ class AuthPersistenceTest {
   @Autowired private UserAccountRepository userAccountRepository;
 
   @Autowired private RefreshTokenRepository refreshTokenRepository;
+  @Autowired private com.aditya.minsearch.auth.application.AuthCommandService commands;
+  @Autowired private com.aditya.minsearch.auth.application.RegistrationService registration;
+  @Autowired private com.aditya.minsearch.auth.application.TokenService tokens;
+
+  @Test void reuseRevocationCommitsDespiteRejectedRequest() {
+    String email = UUID.randomUUID() + "@example.com";
+    registration.register(email, "valid-password");
+    var initial = commands.login(email, "valid-password");
+    var rotated = commands.refresh(initial.refreshToken());
+    assertThatThrownBy(() -> commands.refresh(initial.refreshToken()))
+        .isInstanceOf(com.aditya.minsearch.auth.domain.InvalidCredentialsException.class);
+    assertThatThrownBy(() -> commands.refresh(rotated.refreshToken()))
+        .isInstanceOf(com.aditya.minsearch.auth.domain.InvalidCredentialsException.class);
+    assertThat(refreshTokenRepository.findByFamilyId(tokens.decodeRefreshToken(initial.refreshToken()).familyId()))
+        .allSatisfy(token -> assertThat(token.revokedAt()).isNotNull());
+  }
+
+  @Test void concurrentRefreshAllowsOneRotationThenRevokesReusedFamily() throws Exception {
+    String email = UUID.randomUUID() + "@example.com";
+    registration.register(email, "valid-password");
+    var initial = commands.login(email, "valid-password");
+    var executor = java.util.concurrent.Executors.newFixedThreadPool(2);
+    var start = new java.util.concurrent.CountDownLatch(1);
+    java.util.concurrent.Callable<Boolean> refresh = () -> {
+      start.await();
+      try { commands.refresh(initial.refreshToken()); return true; }
+      catch (com.aditya.minsearch.auth.domain.InvalidCredentialsException rejected) { return false; }
+    };
+    try {
+      var first = executor.submit(refresh); var second = executor.submit(refresh); start.countDown();
+      assertThat(java.util.List.of(first.get(15, java.util.concurrent.TimeUnit.SECONDS), second.get(15, java.util.concurrent.TimeUnit.SECONDS)))
+          .containsExactlyInAnyOrder(true, false);
+      assertThat(refreshTokenRepository.findByFamilyId(tokens.decodeRefreshToken(initial.refreshToken()).familyId()))
+          .hasSize(2).allSatisfy(token -> assertThat(token.revokedAt()).isNotNull());
+    } finally { executor.shutdownNow(); }
+  }
 
   @Test
   void savesAndLoadsUserAccountsAndRefreshTokens() {

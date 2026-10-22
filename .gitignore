@@ -36,3 +36,7 @@ build/
 .env
 .env.*
 !.env.example
+
+### Reproducible benchmark working data ###
+benchmarks/output/
+**/__pycache__/

@@ -13,11 +13,15 @@ This file is the source of truth for implementation progress. Tasks are complete
 
 Deferred stretch goals are excluded from these counts.
 
+**Paused at the user's request on October 20, 2026.** Resume with [the session handoff](./SESSION-HANDOFF.md).
+PROD-002 through PROD-006 passed their relevant verification before the release-audit edits.
+REL-001 is the current resumption point; its newest changes are unverified and the working tree is not currently confirmed green.
+
 | State | Count |
 | --- | ---: |
-| Done | 61 |
+| Done | 72 |
 | In progress | 1 |
-| Pending | 14 |
+| Pending | 2 |
 | Blocked | 0 |
 
 ## Phase 0: Specification
@@ -195,7 +199,7 @@ Exit gate: SNIP, AUTO, SUGG, and ANALYTICS requirements pass; cache failure cann
 
 ## Phase 7: Production adapters and hardening
 
-- [>] **PROD-001** Add Kafka event adapters with partitioning, retry, and dead-letter behavior.
+- [x] **PROD-001** Add Kafka event adapters with partitioning, retry, and dead-letter behavior.
   - Connected document upload/update/delete outbox events to the search service through Kafka, keyed by document ID, with acknowledged producer sends, polling retries, bounded consumer retries, and dead-letter topics.
   - Added a versioned event payload carrying ownership, storage, checksum, type, language, and upload time; JSON serialization handles quoted filenames safely.
   - Added a PostgreSQL token projection and deletion tombstones for durable version checks and startup reconstruction. Index and authorization metadata are published together.
@@ -204,23 +208,51 @@ Exit gate: SNIP, AUTO, SUGG, and ANALYTICS requirements pass; cache failure cann
   - Added owner-scoped processing-status polling, including `INDEX_FAILED` error descriptions and deletion progress. Cleanup retries storage failures and ignores obsolete jobs; status and event deduplication commit together.
   - Repaired shared test fixtures and isolated auth persistence tests; the full Maven test suite passes without exclusions. Failsafe now runs startup integration checks during `verify`.
   - Verified `./mvnw verify`: 87 tests passed with no failures or skips. Live Docker checks passed indexed status, owner isolation, metadata updates, restart recovery, physical cleanup, and terminal PDF failure. Explicit `.DLT` routing is covered by regression tests for both consumers.
-  - Remaining: dead-letter replay tooling and broader failure/concurrency hardening; the production exit gate is still open.
-- [ ] **PROD-002** Add deployed Redis configuration and serialization compatibility checks.
-- [ ] **PROD-003** Complete upload/parser security limits, CORS, headers, secrets, and audit logging.
-- [ ] **PROD-004** Complete Prometheus metrics and operational health behavior.
-- [ ] **PROD-005** Add graceful worker shutdown and startup recovery tests.
-- [ ] **PROD-006** Add Testcontainers end-to-end coverage for PostgreSQL, Kafka, and Redis.
+  - Completed exact-offset dead-letter replay with preview, identity/schema validation, acknowledged sends, unchanged event IDs/partitions, and JSON receipts. Documented operation for document and outcome topics without changing consumer-group offsets.
+  - Verified 101 Java tests without failures/skips, including simultaneous durable versions, deletion ordering, complete reader snapshots during blocked persistence, and failed dead-letter sends. The isolated real-Kafka rehearsal passed missing-file repair, document and outcome replay twice, one completion per version, transactional outcome recovery, and outbox recovery after a broker outage. Other production tasks and the production exit gate remain pending.
+- [x] **PROD-002** Add deployed Redis configuration and serialization compatibility checks.
+  - Deployed a password-protected internal Redis service, bounded search connection/command timeouts, optional-cache health behavior, and an explicit Caffeine benchmark override.
+  - Replaced the incompatible Jackson 2 dependency with the services' Jackson 3 mapper. Added versioned cache envelopes, hashed namespaced keys, typed cross-process reads, and autocomplete cache reads/injection.
+  - Verified real Redis DTO/list round-trips across adapter instances, TTL, eviction, malformed/unknown-schema misses, deployment bean selection, and fail-open behavior; search/autocomplete regression tests pass.
+- [x] **PROD-003** Complete upload/parser security limits, CORS, headers, secrets, and audit logging.
+  - Added content inspection, opaque storage keys, streamed checksums, strict UTF-8, bounded query/token handling, and heap/time-isolated PDF extraction. Added explicit CORS, security headers, bounded request bodies/rate buckets, production secret checks, current/previous JWT key rotation, and durable admin/deletion audit records.
+  - Fixed refresh-family reuse rollback and concurrent rotation using committed revocation and PostgreSQL family/row locks. Verified real PostgreSQL concurrent reuse, real HTTP security/CORS/headers, randomized parser inputs, upload rejection, and PDF budgets; the full Maven test suite passes without failures/skips. See [security operation](./SECURITY.md).
+- [x] **PROD-004** Complete Prometheus metrics and operational health behavior.
+  - Added the real Prometheus registry, authenticated metrics scraping, route-template labels including security rejection paths, cache errors/evictions, search/index/upload duration and size measurements, retry/dead-letter metrics, durable queue gauges, and published-index gauges.
+  - Readiness requires PostgreSQL plus writable document storage or complete search recovery; Redis remains optional. Compose emits ECS JSON logs. Verified full Maven `verify`, real authenticated Prometheus HTTP responses, bounded URL labels, and recovery health failure behavior. See [operations](./OPERATIONS.md).
+- [x] **PROD-005** Add graceful worker shutdown and startup recovery tests.
+  - Added shared worker admission/drain leases, stop-between-items durable pollers, graceful HTTP/Kafka/scheduler settings, a 90-second container stop budget, and a bounded managed analytics queue with drain/drop behavior.
+  - Verified stop rejects new work while active persistence/publication drains, readers retain complete generations, a failed recovery cursor cannot publish partial state, source-free durable recovery preserves tombstones, checksum corruption is rejected, and PostgreSQL projection tests pass. Packaged-service restart coverage follows in PROD-006.
+- [x] **PROD-006** Add Testcontainers end-to-end coverage for PostgreSQL, Kafka, and Redis.
+  - Added optional `-Pe2e` reactor module running freshly packaged services in Java 17 containers with real PostgreSQL/Kafka/Redis, isolated storage/network, production secret checks, and JSON logs.
+  - Verified authenticated upload/search/update/delete, owner isolation, cache hits/outage, packaged PDF child JVM, terminal parser failure, cleanup/audit persistence, search restart/tombstones, broker outbox recovery, and database readiness/liveness. Both platform scenarios pass without failures/skips. Fixed the real JDBC analytics timestamp conversion found by these checks.
+  - The harness refreshes Docker host ports after restart, retains service logs, and fails explicitly when Docker is unavailable. See [end-to-end commands](../integration-tests/README.md).
 
 Exit gate: reference infrastructure flow passes security, recovery, and end-to-end tests.
 
 ## Phase 8: Performance validation and release
 
-- [ ] **PERF-001** Build or acquire a documented representative 100,000-document corpus.
-- [ ] **PERF-002** Add JMH benchmarks for indexing, posting operations, ranking, Trie, and Levenshtein.
-- [ ] **PERF-003** Add reproducible API load tests for search and 100 concurrent uploads.
-- [ ] **PERF-004** Profile and optimize posting memory, allocation, locks, and hot query paths.
-- [ ] **PERF-005** Publish latency, throughput, cache-hit, concurrency, and memory results with environment details.
-- [ ] **REL-001** Verify every specification requirement and definition-of-done item.
+- [x] **PERF-001** Build or acquire a documented representative 100,000-document corpus.
+  - Added the versioned deterministic synthetic TXT generator, fixed seed, vocabulary, length distribution, query-count oracle, and full-corpus checksum. Scope is controlled short TXT workloads; natural-document and PDF representativeness remains outside these results. All three corpus sizes passed the pilot's correctness checks.
+- [x] **PERF-002** Add JMH benchmarks for indexing, posting operations, ranking, Trie, and Levenshtein.
+  - Added the optional Maven benchmark module and completed all 19 benchmark/parameter combinations with two forks, three warm-up iterations, five measurement iterations, and GC allocation profiling. A separate matched four-case comparison retains the original and optimized measurements, confidence errors, source hashes, and artifact hashes.
+- [x] **PERF-003** Add reproducible API load tests for search and 100 concurrent uploads.
+  - Completed 54 search trials / 397,674 requests with zero result errors and validated cache counters, across 1,000/10,000/100,000 documents, cold/warm/mixed caches, and 1/16 clients. Retained raw gzip samples and separate environment files for every stage.
+  - The real 1,000-document upload track observed 100 active requests and made 999 accepted documents searchable in 27.74 seconds; all 28 availability probes passed. Larger stages explicitly use token-projection fixtures rather than claiming large-scale ingestion.
+  - Rejected and retained a diagnostic for an expired warm-cache trial; the final 100,000-document rerun uses fresh phase-specific keys and passed all controls.
+- [x] **PERF-004** Profile and optimize posting memory, allocation, locks, and hot query paths.
+  - Completed JFR CPU/allocation/monitor profiling and 15 matched JMH cases per version, including incremental insert/replace/delete construction at 1,000/10,000/100,000 documents. Retained source/artifact hashes, confidence intervals, raw recordings, and a reversible algorithm patch in the [completion results](../benchmarks/results/2026-10-20/README.md).
+  - Shared untouched immutable posting lists; packed longer position lists while retaining compact single/pair storage; removed per-query authorization-map copies; cached corpus counts and vocabulary; bounded ranking to the requested page; and extracted outside the publication lock with version rechecks inside it.
+  - Observed 100,000-document ranking means of 108.7 → 32.5 ms, with allocation of 31.9 → 15.4 MB/op. The mixed 10,000-document profile reduced the post-GC heap reading from 29.7 to 19.0 MiB and shortened recorded long monitor waits, while writer throughput fell about 21%; the workload, uncertainty, and tradeoff are documented.
+  - Verified 106 Java tests plus focused short-position assertions and eight Python harness checks. Final optimized images passed 1,000 real uploads with 100 client workers and the authenticated cold/warm/mixed search regression with all result/cache controls passing. Generation publication remains serialized; whole-map copies, natural-document/PDF workloads, larger real-ingestion measurements, and specification/release exit gates remain separate acceptance work.
+- [x] **PERF-005** Publish latency, throughput, cache-hit, concurrency, and memory results with environment details.
+  - Published the [reference results](../benchmarks/results/2026-10-19/README.md), generated HTTP/JMH reports, raw request samples, corpus checksum, runtime/image/resource provenance, and reproduction commands. Observed 10,000-document JMH means improved from 1,705 to 26.2 ms for bulk generation construction and 204 to 5.09 ms for phrase evaluation; confidence intervals and limitations are retained.
+  - The uncached 100,000-document concurrent workload remains slow under the two-CPU budget; these local synthetic results do not close the specification's latency, production-hardening, or release exit gates.
+- [>] **REL-001** Verify every specification requirement and definition-of-done item.
+  - The audit found previously completed items with unwired runtime behavior: content replacement/version history, admin document access, synchronous deletion visibility, analyzed title/body retrieval, configured ranking boosts, and snippets. These are being reconciled before the release gate. Historical benchmark results are retained as historical evidence; they do not establish the final specification SLOs.
+  - Implemented, pending final verification: content replacement and checksum no-op detection, durable version history, admin reads/mutations/reindex, transactional deletion visibility with cache revisions, title/body analysis and ranking, persisted snippet content and enriched results, and atomic file writes/rollback compensation.
+  - Latest full test run failed in `QueryEvaluatorTest` because its fixture still used unary `AND NOT`, which conflicts with the binary-NOT specification. The fixture has since been corrected to `alpha NOT (beta OR gamma)`. Ranking expectations were also updated for logarithmic TF and the exact-term boost. These edits and the latest autocomplete/snippet patches have not been rerun; the interrupted targeted command did not start.
+  - Next: run the targeted command in [the handoff](./SESSION-HANDOFF.md), add release-feature/authorization/deletion tests, rerun full verification and packaged E2E, reconcile the specification/build checks, then assess the remaining release gates. REL-001 remains incomplete.
 - [ ] **REL-002** Complete clean-environment setup, full lifecycle, backup, and recovery rehearsal.
 - [ ] **REL-003** Publish version 1 release notes and record deferred stretch goals.
 
@@ -255,6 +287,10 @@ These are deliberately outside the required sequence and must not displace unfin
 
 | Date | Change |
 | --- | --- |
+| 2026-10-20 | Completed PROD-002 through PROD-006: deployed typed Redis caching, security hardening and refresh-race fixes, Prometheus/readiness, graceful workers/recovery, and real packaged-service PostgreSQL/Kafka/Redis E2E. Began REL-001, found previously unwired requirements, and started reconciling them. Paused at the user's request with 72 done, REL-001 in progress, and REL-002/003 pending; recorded exact verification boundaries and next steps in SESSION-HANDOFF.md. |
+| 2026-10-20 | Completed the two unfinished implementation efforts, PROD-001 and PERF-004: exact-offset document/outcome replay with live Kafka failure recovery; concurrency/failure regressions; primitive/shared posting optimizations; bounded ranking; matched JMH/JFR evidence; and a final 100-client upload/search regression. Recorded the mixed writer-throughput tradeoff. Progress is 67 done, no active tasks, and eight pending production/release tasks. |
+| 2026-10-19 | Prioritized the user's reproducible benchmarking request ahead of remaining production hardening. Completed the deterministic 100,000-document short-TXT corpus; added isolated upload and persisted-token fixture tracks, with their scope recorded separately. |
+| 2026-10-19 | Completed PERF-002/003/005: 397,674 validated HTTP search requests, 100 observed active upload clients, the 19-case JMH suite with allocation profiling, matched algorithm comparisons, and retained reports/raw provenance. Added scan elimination, binary posting lookup, and streaming recovery; broad profiling and specification exit gates remain open. Java verification passed 90 tests without failures/skips, and seven Python harness checks passed. |
 | 2026-07-14 | Created ordered implementation ledger from specification version 1.0.0. |
 | 2026-07-14 | Added FOUND-000 for Docker infrastructure; setup is complete but runtime validation is blocked until the Docker daemon is running. |
 | 2026-07-14 | Completed FOUND-001 with project metadata, explicit build requirements, dependency policy, and enforced convergence/version checks. |

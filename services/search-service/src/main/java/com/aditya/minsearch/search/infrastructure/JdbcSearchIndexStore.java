@@ -43,8 +43,12 @@ public class JdbcSearchIndexStore implements SearchIndexStore {
             (row, number) -> row.getLong("revision"),
             mutation.documentId(),
             mutation.version(),
-            mapper.writeValueAsString(mutation));
+            mapper.writeValueAsString(new Mutation(mutation.eventId(),mutation.documentId(),mutation.version(),mutation.deleted(),mutation.document(),mutation.tokens())));
     if (revisions.isEmpty()) return OptionalLong.empty();
+    if (mutation.text()!=null && !mutation.deleted()) jdbc.update(
+        "INSERT INTO search_index_content(document_id,document_version,body) VALUES (?,?,?) ON CONFLICT DO NOTHING",
+        mutation.documentId(),mutation.version(),mutation.text());
+    if (mutation.deleted()) jdbc.update("DELETE FROM search_index_content WHERE document_id=?",mutation.documentId());
     long revision = revisions.get(0);
     var outcome =
         new IndexOutcomePayload(
@@ -83,5 +87,26 @@ public class JdbcSearchIndexStore implements SearchIndexStore {
             new StoredMutation(
                 row.getLong("revision"),
                 mapper.readValue(row.getString("mutation"), Mutation.class)));
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public void forEach(java.util.function.Consumer<StoredMutation> consumer) {
+    // PostgreSQL cursors require a transaction and a positive fetch size. Keep decoded token
+    // mutations bounded instead of retaining the entire corpus alongside the reconstructed index.
+    jdbc.query(
+        connection -> {
+          var statement =
+              connection.prepareStatement(
+                  "SELECT revision, mutation FROM search_index_documents ORDER BY revision");
+          statement.setFetchSize(128);
+          return statement;
+        },
+        (org.springframework.jdbc.core.RowCallbackHandler)
+            row ->
+                consumer.accept(
+                    new StoredMutation(
+                        row.getLong("revision"),
+                        mapper.readValue(row.getString("mutation"), Mutation.class))));
   }
 }

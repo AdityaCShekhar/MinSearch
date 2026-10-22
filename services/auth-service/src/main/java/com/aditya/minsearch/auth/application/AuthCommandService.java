@@ -24,6 +24,9 @@ public class AuthCommandService {
 	private final PasswordEncoder passwordEncoder;
 	private final TokenService tokenService;
 	private final Clock clock;
+	private io.micrometer.core.instrument.MeterRegistry metrics = new io.micrometer.core.instrument.simple.SimpleMeterRegistry();
+	@org.springframework.beans.factory.annotation.Autowired
+	void metrics(io.micrometer.core.instrument.MeterRegistry metrics) { this.metrics=metrics; }
 
 	public AuthCommandService(
 			UserAccountRepository userAccountRepository,
@@ -44,14 +47,17 @@ public class AuthCommandService {
 		return issueTokens(userAccount, UUID.randomUUID());
 	}
 
-	@Transactional
+	@Transactional(noRollbackFor = InvalidCredentialsException.class)
 	public AuthTokens refresh(String refreshToken) {
-		TokenService.RefreshTokenClaims claims = tokenService.decodeRefreshToken(refreshToken);
+		TokenService.RefreshTokenClaims claims = refreshClaims(refreshToken);
+		refreshTokenRepository.lockFamily(claims.familyId());
 		RefreshToken storedRefreshToken =
 				refreshTokenRepository
 						.findById(claims.tokenId())
 						.orElseThrow(InvalidCredentialsException::new);
+		if (!passwordEncoder.matches(refreshToken, storedRefreshToken.tokenHash())) throw new InvalidCredentialsException();
 		if (storedRefreshToken.usedAt() != null || storedRefreshToken.revokedAt() != null) {
+			metrics.counter("minsearch.auth.refresh.reuse").increment();
 			revokeFamily(storedRefreshToken.familyId());
 			throw new InvalidCredentialsException();
 		}
@@ -67,7 +73,8 @@ public class AuthCommandService {
 
 	@Transactional
 	public void logout(String refreshToken) {
-		TokenService.RefreshTokenClaims claims = tokenService.decodeRefreshToken(refreshToken);
+		TokenService.RefreshTokenClaims claims = refreshClaims(refreshToken);
+		refreshTokenRepository.lockFamily(claims.familyId());
 		RefreshToken storedRefreshToken =
 				refreshTokenRepository
 						.findById(claims.tokenId())
@@ -77,14 +84,26 @@ public class AuthCommandService {
 	}
 
 	private UserAccount findAuthenticatedAccount(String email, String password) {
+		if (email == null || password == null || password.getBytes(java.nio.charset.StandardCharsets.UTF_8).length > 72)
+			throw new InvalidCredentialsException();
+		String normalizedEmail;
+		try { normalizedEmail = RegistrationService.normalizeEmail(email); }
+		catch (IllegalArgumentException invalid) { throw new InvalidCredentialsException(); }
 		UserAccount userAccount =
 				userAccountRepository
-						.findByNormalizedEmail(RegistrationService.normalizeEmail(email))
+						.findByNormalizedEmail(normalizedEmail)
 						.orElseThrow(InvalidCredentialsException::new);
 		if (!passwordEncoder.matches(password, userAccount.passwordHash())) {
 			throw new InvalidCredentialsException();
 		}
 		return userAccount;
+	}
+
+	private TokenService.RefreshTokenClaims refreshClaims(String token) {
+		try {
+			if (token == null || token.length() > 512) throw new IllegalArgumentException();
+			return tokenService.decodeRefreshToken(token);
+		} catch (IllegalArgumentException invalid) { throw new InvalidCredentialsException(); }
 	}
 
 	private AuthTokens issueTokens(UserAccount userAccount, UUID familyId) {

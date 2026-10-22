@@ -1,0 +1,235 @@
+[
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-auth-service-1",
+    "image_id": "sha256:975e9759541305c905ec8012c88fc73e398a4dc356d703cfadc6d9c98d027437",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 30348,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:40:33.099384842Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "host_config": {
+      "NanoCpus": 500000000,
+      "Memory": 536870912,
+      "MemorySwap": 1073741824
+    },
+    "jvm_options": "-Xms128m -Xmx256m -XX:+ExitOnOutOfMemoryError"
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-document-service-1",
+    "image_id": "sha256:e507d53caa1f6ce913b5e181ede229c1c50b8e0ae739c0ff787b98da8459844b",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 35054,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:40:44.251565347Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "host_config": {
+      "NanoCpus": 1000000000,
+      "Memory": 805306368,
+      "MemorySwap": 1610612736
+    },
+    "jvm_options": "-Xms128m -Xmx384m -XX:+ExitOnOutOfMemoryError"
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-kafka-1",
+    "image_id": "sha256:bff074a5d0051dbc0bbbcd25b045bb1fe84833ec0d3c7c965d1797dd289ec88f",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 44309,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:41:35.159118468Z",
+      "FinishedAt": "2026-10-19T18:41:28.421311423Z",
+      "Health": {
+        "Status": "starting",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-19T18:40:59.216101298Z",
+            "End": "2026-10-19T18:41:00.564412966Z",
+            "ExitCode": 0,
+            "Output": "__consumer_offsets\ndocument.deleted\ndocument.deleted.DLT\ndocument.updated\ndocument.updated.DLT\ndocument.uploaded\ndocument.uploaded.DLT\nindex.completed\nindex.completed.DLT\nindex.failed\nindex.failed.DLT\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:05.56530126Z",
+            "End": "2026-10-19T18:41:06.899109052Z",
+            "ExitCode": 0,
+            "Output": "__consumer_offsets\ndocument.deleted\ndocument.deleted.DLT\ndocument.updated\ndocument.updated.DLT\ndocument.uploaded\ndocument.uploaded.DLT\nindex.completed\nindex.completed.DLT\nindex.failed\nindex.failed.DLT\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:11.901778929Z",
+            "End": "2026-10-19T18:41:13.229739138Z",
+            "ExitCode": 0,
+            "Output": "__consumer_offsets\ndocument.deleted\ndocument.deleted.DLT\ndocument.updated\ndocument.updated.DLT\ndocument.uploaded\ndocument.uploaded.DLT\nindex.completed\nindex.completed.DLT\nindex.failed\nindex.failed.DLT\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:18.230095543Z",
+            "End": "2026-10-19T18:41:20.632661044Z",
+            "ExitCode": 0,
+            "Output": "__consumer_offsets\ndocument.deleted\ndocument.deleted.DLT\ndocument.updated\ndocument.updated.DLT\ndocument.uploaded\ndocument.uploaded.DLT\nindex.completed\nindex.completed.DLT\nindex.failed\nindex.failed.DLT\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:25.63315063Z",
+            "End": "2026-10-19T18:41:27.000129672Z",
+            "ExitCode": 0,
+            "Output": "__consumer_offsets\ndocument.deleted\ndocument.deleted.DLT\ndocument.updated\ndocument.updated.DLT\ndocument.uploaded\ndocument.uploaded.DLT\nindex.completed\nindex.completed.DLT\nindex.failed\nindex.failed.DLT\n"
+          }
+        ]
+      }
+    },
+    "host_config": {
+      "NanoCpus": 1000000000,
+      "Memory": 805306368,
+      "MemorySwap": 1610612736
+    },
+    "jvm_options": null
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-kafka-init-1",
+    "image_id": "sha256:bff074a5d0051dbc0bbbcd25b045bb1fe84833ec0d3c7c965d1797dd289ec88f",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:40:57.084325256Z",
+      "FinishedAt": "2026-10-19T18:41:05.905821468Z"
+    },
+    "host_config": {
+      "NanoCpus": 0,
+      "Memory": 0,
+      "MemorySwap": 0
+    },
+    "jvm_options": null
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-kafka-volume-init-1",
+    "image_id": "sha256:bff074a5d0051dbc0bbbcd25b045bb1fe84833ec0d3c7c965d1797dd289ec88f",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:41:34.564721801Z",
+      "FinishedAt": "2026-10-19T18:41:34.627850384Z"
+    },
+    "host_config": {
+      "NanoCpus": 0,
+      "Memory": 0,
+      "MemorySwap": 0
+    },
+    "jvm_options": null
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-postgres-1",
+    "image_id": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 29305,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:40:27.958555006Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "healthy",
+        "FailingStreak": 0,
+        "Log": [
+          {
+            "Start": "2026-10-19T18:41:18.36225121Z",
+            "End": "2026-10-19T18:41:18.390259585Z",
+            "ExitCode": 0,
+            "Output": "/var/run/postgresql:5432 - accepting connections\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:23.392527462Z",
+            "End": "2026-10-19T18:41:23.426736629Z",
+            "ExitCode": 0,
+            "Output": "/var/run/postgresql:5432 - accepting connections\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:28.427511298Z",
+            "End": "2026-10-19T18:41:28.462265965Z",
+            "ExitCode": 0,
+            "Output": "/var/run/postgresql:5432 - accepting connections\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:33.464426342Z",
+            "End": "2026-10-19T18:41:33.526133134Z",
+            "ExitCode": 0,
+            "Output": "/var/run/postgresql:5432 - accepting connections\n"
+          },
+          {
+            "Start": "2026-10-19T18:41:38.527552136Z",
+            "End": "2026-10-19T18:41:38.561179553Z",
+            "ExitCode": 0,
+            "Output": "/var/run/postgresql:5432 - accepting connections\n"
+          }
+        ]
+      }
+    },
+    "host_config": {
+      "NanoCpus": 1000000000,
+      "Memory": 536870912,
+      "MemorySwap": 1073741824
+    },
+    "jvm_options": null
+  },
+  {
+    "name": "/minsearch-bench-delivery-1cad4059-search-service-1",
+    "image_id": "sha256:dce3b0ad07747d7506f6fc5ea5991492a8a32cd07f7690d429459b7b912877db",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 40791,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-19T18:41:06.160243927Z",
+      "FinishedAt": "2026-10-19T18:40:55.483409796Z"
+    },
+    "host_config": {
+      "NanoCpus": 2000000000,
+      "Memory": 3221225472,
+      "MemorySwap": 6442450944
+    },
+    "jvm_options": "-Xms512m -Xmx2304m -XX:+ExitOnOutOfMemoryError"
+  }
+]

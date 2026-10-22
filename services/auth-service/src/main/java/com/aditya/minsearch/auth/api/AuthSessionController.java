@@ -47,7 +47,7 @@ public class AuthSessionController {
 				@ApiResponse(responseCode = "429", description = "Too many authentication attempts")
 			})
 	public ResponseEntity<AuthTokens> login(
-			@RequestBody LoginRequest request, HttpServletRequest httpServletRequest) {
+			@jakarta.validation.Valid @RequestBody LoginRequest request, HttpServletRequest httpServletRequest) {
 		rateLimiter.enforce("login:" + httpServletRequest.getRemoteAddr());
 		return ResponseEntity.ok(authCommandService.login(request.email(), request.password()));
 	}
@@ -64,7 +64,7 @@ public class AuthSessionController {
 				@ApiResponse(responseCode = "429", description = "Too many authentication attempts")
 			})
 	public ResponseEntity<AuthTokens> refresh(
-			@RequestBody RefreshRequest request, HttpServletRequest httpServletRequest) {
+			@jakarta.validation.Valid @RequestBody RefreshRequest request, HttpServletRequest httpServletRequest) {
 		rateLimiter.enforce("refresh:" + httpServletRequest.getRemoteAddr());
 		return ResponseEntity.ok(authCommandService.refresh(request.refreshToken()));
 	}
@@ -79,7 +79,7 @@ public class AuthSessionController {
 			})
 	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Void> logout(
-			@RequestBody RefreshRequest request, HttpServletRequest httpServletRequest) {
+			@jakarta.validation.Valid @RequestBody RefreshRequest request, HttpServletRequest httpServletRequest) {
 		rateLimiter.enforce("logout:" + httpServletRequest.getRemoteAddr());
 		authCommandService.logout(request.refreshToken());
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

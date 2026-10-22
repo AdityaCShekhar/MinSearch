@@ -37,7 +37,7 @@ public class CorrelationIdFilter extends OncePerRequestFilter {
   }
 
   private static String resolveCorrelationId(String headerValue) {
-    if (headerValue != null && !headerValue.isBlank()) {
+    if (headerValue != null && headerValue.matches("[A-Za-z0-9._-]{1,64}")) {
       return headerValue.trim();
     }
     return UUID.randomUUID().toString();

@@ -22,6 +22,9 @@ public class DocumentUploadService {
   private final Clock clock;
   private final long maxSize;
   private final DocumentOutboxService outbox;
+  private io.micrometer.core.instrument.MeterRegistry metrics = new io.micrometer.core.instrument.simple.SimpleMeterRegistry();
+  @org.springframework.beans.factory.annotation.Autowired
+  void metrics(io.micrometer.core.instrument.MeterRegistry metrics) { this.metrics=metrics; }
 
   public DocumentUploadService(DocumentPersistenceAdapter documents, DocumentStorage storage, Clock clock,
       DocumentOutboxService outbox, @Value("${minsearch.documents.max-size-bytes}") long maxSize) {
@@ -30,11 +33,25 @@ public class DocumentUploadService {
 
   @Transactional
   public Document upload(UUID ownerId, MultipartFile file, String title, String language) throws Exception {
+    var sample=io.micrometer.core.instrument.Timer.start(metrics);
+    String outcome="success";
+    try {
+      var result=uploadInternal(ownerId, file, title, language);
+      metrics.summary("minsearch.upload.bytes").record(result.sizeBytes());
+      return result;
+    } catch (Exception failure) { outcome="error"; throw failure; }
+    finally { sample.stop(metrics.timer("minsearch.upload.duration", "outcome", outcome)); }
+  }
+
+  private Document uploadInternal(UUID ownerId, MultipartFile file, String title, String language) throws Exception {
     String filename = DocumentUploadValidator.safeFilename(file.getOriginalFilename());
     FileType type = DocumentUploadValidator.validate(filename, file.getContentType(), file.getSize(), maxSize);
+    DocumentUploadValidator.metadata(title, language);
+    try (InputStream sample = file.getInputStream()) { DocumentUploadValidator.detectMediaType(sample, filename); }
     UUID id = UUID.randomUUID();
-    String key = "documents/" + id + "/1-" + filename;
+    String key = "documents/" + id + "/" + UUID.randomUUID() + ".bin";
     try (InputStream content = file.getInputStream()) { storage.store(key, content); }
+    StoredFileCompensation.onRollback(storage,key);
     try {
       Instant now = clock.instant();
       Document document = new Document(id, ownerId, title == null || title.isBlank() ? filename : title.trim(),
@@ -49,7 +66,11 @@ public class DocumentUploadService {
     }
   }
 
-  private static String checksum(MultipartFile file) throws Exception {
-    return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(file.getBytes()));
+  static String checksum(MultipartFile file) throws Exception {
+    var digest = MessageDigest.getInstance("SHA-256");
+    try (var input = new java.security.DigestInputStream(file.getInputStream(), digest)) {
+      input.transferTo(java.io.OutputStream.nullOutputStream());
+    }
+    return HexFormat.of().formatHex(digest.digest());
   }
 }

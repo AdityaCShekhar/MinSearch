@@ -8,6 +8,17 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 class RequestMetricsFilterTest {
+  @Test void unknownPathsAndDocumentIdsCannotCreateUnboundedLabels() throws Exception {
+    var registry = new SimpleMeterRegistry(); var filter = new RequestMetricsFilter(registry);
+    for (int i=0;i<100;i++) {
+      var request = new MockHttpServletRequest("GET", "/api/v1/documents/"+java.util.UUID.randomUUID());
+      request.setAttribute(org.springframework.web.servlet.HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE, "/api/v1/documents/{id}");
+      filter.doFilter(request, new MockHttpServletResponse(), (req,res)->{});
+      filter.doFilter(new MockHttpServletRequest("GET", "/missing/"+i), new MockHttpServletResponse(), (req,res)->{});
+    }
+    assertThat(registry.getMeters()).hasSize(4);
+    assertThat(registry.get("minsearch.http.request.count").tag("route", "/api/v1/documents/{id}").counter().count()).isEqualTo(100);
+  }
 
   @Test
   void recordsRequestCountAndLatency() throws Exception {

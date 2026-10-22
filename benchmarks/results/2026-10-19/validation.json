@@ -1,0 +1,326 @@
+{
+  "command": "./mvnw verify",
+  "totals": {
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.cache.infrastructure.CaffeineCacheStoreTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.metrics.MinsearchMetricsConfigurationTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.web.CorrelationIdFilterTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.web.RequestMetricsFilterTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.web.ObservabilityEndpointsTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.web.ApiExceptionHandlerTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.persistence.DatabaseMigrationTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.shared.infrastructure.event.InProcessDomainEventBusTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.ArchitectureTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.BuildVerificationIT"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.auth.api.AuthRegistrationControllerTest"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.auth.application.AuthCommandServiceTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.auth.application.RegistrationServiceTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.auth.infrastructure.persistence.AuthPersistenceTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentQueryServiceTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentUploadServiceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentUploadValidatorTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentOutboxProcessorTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentOutboxServiceTest"
+    },
+    {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentIndexOutcomeServiceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.application.DocumentLifecycleServiceTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.infrastructure.storage.LocalFilesystemDocumentStorageTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.document.infrastructure.messaging.KafkaOutcomeConfigurationTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.autocomplete.application.SpellingSuggestionServiceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.autocomplete.application.AutocompleteServiceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.QueryParserTest"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.DocumentIndexingServiceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.SnippetRendererTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.QueryLexerTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.QueryEvaluatorTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.application.SearchServiceTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.infrastructure.SearchMetricsConfigurationTest"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.infrastructure.JdbcSearchIndexStoreTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.infrastructure.KafkaIndexingConfigurationTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.search.infrastructure.IndexingFailureRecorderTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.PostingLookupTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.LanguageAwareTokenProcessorTest"
+    },
+    {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.BoundedTextExtractorTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.IndexPublicationTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.IndexWorkerTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.IndexGenerationTest"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.IndexSnapshotStoreTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.index.application.TextTokenizerTest"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.aditya.minsearch.analytics.application.SearchAnalyticsServiceTest"
+    }
+  ],
+  "python_harness": {
+    "command": "python3 -m unittest discover -s benchmarks -p test_benchmarks.py",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0
+  },
+  "note": "Totals are parsed from suites executed in the successful verification log, not stale target report files. Production Java sources were not changed after verification."
+}

@@ -1,0 +1,44 @@
+{
+  "git_commit": "261a18175aeaeef200bf62c7edddb20ac9022411",
+  "git_status": "M .dockerignore\n M .gitignore\n M Makefile\n M README.md\n M docs/BUILD.md\n M docs/DOCKER.md\n M docs/TASKS.md\n M pom.xml\n M services/search-service/Dockerfile\n M services/search-service/pom.xml\n M services/search-service/src/main/java/com/aditya/minsearch/autocomplete/application/AutocompleteService.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java\n M services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java\n M services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java\n M services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStoreTest.java\n?? benchmarks/\n?? services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfiguration.java\n?? services/search-service/src/test/java/com/aditya/minsearch/index/application/PostingLookupTest.java\n?? services/search-service/src/test/java/com/aditya/minsearch/search/infrastructure/SearchMetricsConfigurationTest.java",
+  "application_source_sha256": "c3694a0e14ec92f348e126691a11aab6c35434684339e8ee1c9cb023da373ab3",
+  "utc": "2026-10-18T20:13:30.190916+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "python": "3.9.6",
+  "client_logical_cpus": 14,
+  "docker": {
+    "ServerVersion": "28.5.2",
+    "NCPU": 14,
+    "MemTotal": 8216887296,
+    "Architecture": "aarch64",
+    "OperatingSystem": "Docker Desktop",
+    "KernelVersion": "6.12.54-linuxkit"
+  },
+  "compose": "2.40.3-desktop.1",
+  "arguments": {
+    "sizes": [
+      100000
+    ],
+    "upload_documents": 1000,
+    "upload_concurrency": 100,
+    "concurrency": [
+      1,
+      16
+    ],
+    "requests": 256,
+    "seconds": 5.0,
+    "repetitions": 3,
+    "warmup_rounds": 10,
+    "index_timeout": 1800,
+    "seed": 20261019,
+    "tokens": 64,
+    "output": "benchmarks/output/sustained-100k-2026-10-19",
+    "skip_build": true,
+    "keep_stack": false
+  },
+  "load_model": "closed-loop persistent HTTP/1.1 connections; two untimed requests per client before each phase",
+  "percentile_method": "nearest rank: sorted[ceil(p*n)-1], successful requests only; errors are counted separately",
+  "host_cpu_model": "Apple M4 Pro",
+  "host_memory_bytes": 25769803776
+}

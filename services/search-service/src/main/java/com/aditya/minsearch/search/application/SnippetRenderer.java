@@ -43,10 +43,10 @@ public final class SnippetRenderer {
 
   private List<Span> matches(String text, List<String> values, boolean phrase) {
     List<Span> result = new ArrayList<>();
-    for (String value : values) {
+    for (String value : new java.util.LinkedHashSet<>(values)) {
       if (value == null || value.isBlank()) continue;
-      Matcher matcher = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE).matcher(text);
-      while (matcher.find()) result.add(new Span(matcher.start(), matcher.end(), phrase));
+      Matcher matcher = Pattern.compile("(?<![\\p{L}\\p{N}\\p{M}])"+Pattern.quote(value)+"(?![\\p{L}\\p{N}\\p{M}])", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE).matcher(text);
+      while (result.size()<100_000 && matcher.find()) result.add(new Span(matcher.start(), matcher.end(), phrase));
     }
     return result;
   }
@@ -55,7 +55,7 @@ public final class SnippetRenderer {
     spans.sort(Comparator.comparingInt(Span::start).thenComparingInt(span -> span.phrase() ? 0 : 1));
     List<Span> distinct = new ArrayList<>();
     for (Span candidate : spans) {
-      if (distinct.stream().noneMatch(existing -> candidate.start() < existing.end() && existing.start() < candidate.end())) {
+      if (distinct.isEmpty() || candidate.start()>=distinct.get(distinct.size()-1).end()) {
         distinct.add(candidate);
       }
     }
@@ -63,11 +63,21 @@ public final class SnippetRenderer {
   }
 
   private Span bestAnchor(List<Span> spans, int length) {
-    return spans.stream().max(Comparator.comparingInt((Span anchor) -> {
-      int windowEnd = anchor.start() + length;
-      return (int) spans.stream().filter(span -> span.start() >= anchor.start() && span.end() <= windowEnd)
-          .mapToInt(span -> span.phrase() ? 100 : 1).sum();
-    }).thenComparingInt(Span::length).reversed()).orElse(spans.get(0));
+    int right=0, phraseCount=0, bestPhrases=-1, bestCount=-1;
+    Span best=spans.get(0);
+    for (int left=0;left<spans.size();left++) {
+      while (right<spans.size() && spans.get(right).end()<=spans.get(left).start()+length) {
+        if (spans.get(right).phrase()) phraseCount++; right++;
+      }
+      int count=right-left;
+      if (phraseCount>bestPhrases || (phraseCount==bestPhrases && count>bestCount)) {
+        bestPhrases=phraseCount; bestCount=count;
+        best=new Span(spans.get(left).start(),spans.get(Math.max(left,right-1)).end(),phraseCount>0);
+      }
+      if (right>left && spans.get(left).phrase()) phraseCount--;
+      if (right<=left) right=left+1;
+    }
+    return best;
   }
 
   private String escape(String value) {

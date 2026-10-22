@@ -38,6 +38,6 @@ class DocumentQueryServiceTest {
     assertThat(queries.status(id, owner).status()).isEqualTo(DocumentStatus.DELETED);
     assertThatThrownBy(() -> queries.status(id, UUID.randomUUID()))
         .isInstanceOf(IllegalArgumentException.class);
-    assertThatThrownBy(() -> queries.get(id)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> queries.get(id,owner,false)).isInstanceOf(IllegalArgumentException.class);
   }
 }

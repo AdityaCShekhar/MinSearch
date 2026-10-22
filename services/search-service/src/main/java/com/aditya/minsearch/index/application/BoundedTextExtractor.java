@@ -39,12 +39,15 @@ public final class BoundedTextExtractor implements TextExtractor {
   private String extractPlainText(InputStream content) throws IOException {
     StringBuilder text = new StringBuilder(Math.min(maximumCharacters, 8_192));
     char[] buffer = new char[8_192];
-    try (Reader reader = new InputStreamReader(content, StandardCharsets.UTF_8)) {
+    try (Reader reader = new InputStreamReader(content, StandardCharsets.UTF_8.newDecoder()
+        .onMalformedInput(java.nio.charset.CodingErrorAction.REPORT)
+        .onUnmappableCharacter(java.nio.charset.CodingErrorAction.REPORT))) {
       int read;
       while ((read = reader.read(buffer)) != -1) {
         if (read > maximumCharacters - text.length()) {
           throw limitExceeded();
         }
+        for (int i = 0; i < read; i++) if (buffer[i] == 0) throw new TextExtractionException("Binary content is not supported as text");
         text.append(buffer, 0, read);
       }
     }
@@ -52,21 +55,7 @@ public final class BoundedTextExtractor implements TextExtractor {
   }
 
   private String extractPdf(InputStream content) throws IOException {
-    try (PDDocument document = Loader.loadPDF(readPdfBytes(content))) {
-      if (document.isEncrypted()) {
-        throw new TextExtractionException("Encrypted PDFs are not supported");
-      }
-      if (document.getNumberOfPages() > maximumPdfPages) {
-        throw new TextExtractionException("PDF page limit exceeded");
-      }
-      PDFTextStripper stripper = new PDFTextStripper();
-      stripper.setSortByPosition(true);
-      String text = stripper.getText(document);
-      if (text.length() > maximumCharacters) {
-        throw limitExceeded();
-      }
-      return text;
-    }
+    return PdfExtractionWorker.extract(readPdfBytes(content), maximumCharacters, maximumPdfPages);
   }
 
   private byte[] readPdfBytes(InputStream content) throws IOException {

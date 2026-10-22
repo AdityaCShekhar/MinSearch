@@ -1,4 +1,4 @@
-.PHONY: help clean build test compile auth-run auth-package auth-docker up down compose-config
+.PHONY: help clean build test compile auth-run auth-package auth-docker up down compose-config bench-corpus bench-jmh-build bench-jmh bench-api
 
 help:
 	@echo "Available targets:"
@@ -12,6 +12,9 @@ help:
 	@echo "  make up             - start the docker compose stack"
 	@echo "  make down           - stop the docker compose stack"
 	@echo "  make compose-config - validate docker compose configuration"
+	@echo "  make bench-corpus   - generate the deterministic 100,000-document corpus"
+	@echo "  make bench-jmh      - build and run JMH with allocation profiling"
+	@echo "  make bench-api      - run isolated HTTP benchmarks at 1k/10k/100k documents"
 
 clean:
 	./mvnw clean
@@ -42,3 +45,16 @@ up:
 
 down:
 	docker compose --env-file .env -f infrastructure/docker/docker-compose.yml down
+
+bench-corpus:
+	python3 benchmarks/corpus.py
+
+bench-jmh-build:
+	./mvnw -Pbenchmarks -pl benchmarks/jmh -am -DskipTests package
+
+bench-jmh: bench-jmh-build
+	mkdir -p benchmarks/output
+	java -jar benchmarks/jmh/target/benchmarks.jar -prof gc -rf json -rff benchmarks/output/jmh.json
+
+bench-api:
+	python3 -u benchmarks/run.py

@@ -1,0 +1,123 @@
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java b/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java
+index f62c23a..3dac7c0 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/index/application/IndexGenerationBuilder.java
+@@ -21,7 +21,8 @@ public final class IndexGenerationBuilder {
+   }
+ 
+   public IndexGenerationBuilder replace(UUID id, long version, List<TextToken> tokens) {
+-    remove(id);
++    // New documents cannot have old postings. Avoid scanning the whole index during recovery.
++    if (documents.containsKey(id)) remove(id);
+     Map<String, List<Integer>> positions = new HashMap<>();
+     for (TextToken token : tokens) positions.computeIfAbsent(token.term(), ignored -> new ArrayList<>()).add(token.position());
+     positions.forEach((term, values) -> postings.computeIfAbsent(term, ignored -> new ArrayList<>())
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java b/services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java
+index 18c4eda..5d0be32 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/index/domain/PostingList.java
+@@ -23,6 +23,16 @@ public final class PostingList {
+   public List<Posting> postings() { return postings; }
+ 
+   public Posting forDocument(UUID id) {
+-    return postings.stream().filter(posting -> posting.documentId().equals(id)).findFirst().orElse(null);
++    if (id == null) return null;
++    int low = 0, high = postings.size() - 1;
++    while (low <= high) {
++      int middle = (low + high) >>> 1;
++      Posting posting = postings.get(middle);
++      int compared = posting.documentId().compareTo(id);
++      if (compared == 0) return posting;
++      if (compared < 0) low = middle + 1;
++      else high = middle - 1;
++    }
++    return null;
+   }
+ }
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java b/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java
+index 9bf26cf..acfa6ec 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/DocumentIndexingService.java
+@@ -46,17 +46,17 @@ public class DocumentIndexingService {
+   public synchronized void recover() {
+     IndexGenerationBuilder builder = new IndexGenerationBuilder(IndexGeneration.empty());
+     var documents = new HashMap<java.util.UUID, SearchDocument>();
+-    long revision = 0;
+-    for (SearchIndexStore.StoredMutation stored : store.load()) {
++    long[] revision = {0};
++    store.forEach(stored -> {
+       var mutation = stored.mutation();
+       if (mutation.deleted()) builder.delete(mutation.documentId(), mutation.version());
+       else {
+         builder.replace(mutation.documentId(), mutation.version(), mutation.tokens());
+         documents.put(mutation.documentId(), mutation.document());
+       }
+-      revision = Math.max(revision, stored.revision());
+-    }
+-    published.set(new SearchIndexSnapshot(builder.build(revision), documents));
++      revision[0] = Math.max(revision[0], stored.revision());
++    });
++    published.set(new SearchIndexSnapshot(builder.build(revision[0]), documents));
+   }
+ 
+   public SearchIndexSnapshot current() {
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java b/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java
+index 71e38f6..59ee6f4 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/QueryEvaluator.java
+@@ -87,8 +87,8 @@ public final class QueryEvaluator {
+     Set<UUID> result = new HashSet<>();
+     for (UUID id : candidates) {
+       boolean match = false;
+-      for (Posting first : generation.postingsFor(terms.get(0).term()).postings()) {
+-        if (!first.documentId().equals(id)) continue;
++      Posting first = generation.postingsFor(terms.get(0).term()).forDocument(id);
++      if (first != null) {
+         for (int start : first.positions()) {
+           match = true;
+           for (int index = 1; index < terms.size(); index++) {
+@@ -97,7 +97,6 @@ public final class QueryEvaluator {
+           }
+           if (match) break;
+         }
+-        if (match) break;
+       }
+       if (match) result.add(id);
+     }
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java b/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java
+index 4a0dd45..c78d5da 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/application/SearchIndexStore.java
+@@ -12,6 +12,10 @@ public interface SearchIndexStore {
+ 
+   List<StoredMutation> load();
+ 
++  default void forEach(java.util.function.Consumer<StoredMutation> consumer) {
++    load().forEach(consumer);
++  }
++
+   record Mutation(
+       UUID eventId,
+       UUID documentId,
+diff --git a/services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java b/services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java
+index c8461c6..9301394 100644
+--- a/services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java
++++ b/services/search-service/src/main/java/com/aditya/minsearch/search/infrastructure/JdbcSearchIndexStore.java
+@@ -84,4 +84,17 @@ public class JdbcSearchIndexStore implements SearchIndexStore {
+                 row.getLong("revision"),
+                 mapper.readValue(row.getString("mutation"), Mutation.class)));
+   }
++
++  @Override
++  @Transactional(readOnly = true)
++  public void forEach(java.util.function.Consumer<StoredMutation> consumer) {
++    // PostgreSQL cursors require a transaction and a positive fetch size. Keep decoded token
++    // mutations bounded instead of retaining the entire corpus alongside the reconstructed index.
++    jdbc.query(connection -> {
++      var statement = connection.prepareStatement("SELECT revision, mutation FROM search_index_documents ORDER BY revision");
++      statement.setFetchSize(128);
++      return statement;
++    }, (org.springframework.jdbc.core.RowCallbackHandler) row -> consumer.accept(new StoredMutation(
++        row.getLong("revision"), mapper.readValue(row.getString("mutation"), Mutation.class))));
++  }
+ }

@@ -12,17 +12,24 @@ import org.springframework.stereotype.Service;
 public final class AutocompleteService {
   private record PopularQuery(UUID owner, String query) {}
 
-  private final Map<PopularQuery, Long> queryPopularity =
-      new java.util.concurrent.ConcurrentHashMap<>();
+  private final java.util.concurrent.ConcurrentMap<PopularQuery, Long> queryPopularity =
+      com.github.benmanes.caffeine.cache.Caffeine.newBuilder().maximumSize(10_000)
+          .expireAfterAccess(Duration.ofHours(24)).<PopularQuery, Long>build().asMap();
   private final java.util.concurrent.atomic.AtomicLong popularityRevision =
       new java.util.concurrent.atomic.AtomicLong();
-  private final CacheStore cache = new CaffeineCacheStore();
+  private final CacheStore cache;
+
+  public AutocompleteService() { this(new CaffeineCacheStore()); }
+
+  @org.springframework.beans.factory.annotation.Autowired
+  public AutocompleteService(CacheStore cache) { this.cache = Objects.requireNonNull(cache); }
 
   public void recordQuery(String query) {
     recordQuery(query, null);
   }
 
   public void recordQuery(String query, UUID owner) {
+    if (query == null || query.length() > 2048) return;
     String normalized = normalize(query);
     if (!normalized.isBlank()) {
       queryPopularity.merge(new PopularQuery(owner, normalized), 1L, Long::sum);
@@ -34,7 +41,9 @@ public final class AutocompleteService {
     return complete(prefix, generation, limit, null);
   }
 
+  @SuppressWarnings("unchecked")
   public List<String> complete(String prefix, IndexGeneration generation, int limit, UUID owner) {
+    if (prefix != null && prefix.length() > 256) throw new IllegalArgumentException("Autocomplete prefix limit exceeded");
     String p = normalize(prefix);
     if (p.isBlank()) return List.of();
     String key =
@@ -50,7 +59,7 @@ public final class AutocompleteService {
             + limit;
     try {
       return cache.getOrCompute(
-          key, Duration.ofMinutes(5), () -> compute(p, generation, limit, owner));
+          key, List.class, Duration.ofMinutes(5), () -> compute(p, generation, limit, owner));
     } catch (RuntimeException cacheFailure) {
       return compute(p, generation, limit, owner);
     }
@@ -105,18 +114,16 @@ public final class AutocompleteService {
         if (n == null) return List.of();
       }
       List<String> out = new ArrayList<>();
-      collect(n, new StringBuilder(prefix), out);
+      record Entry(Node node, String word) {}
+      var pending = new ArrayDeque<Entry>();
+      pending.push(new Entry(n, prefix));
+      while (!pending.isEmpty()) {
+        var entry = pending.pop();
+        if (entry.node().terminal) out.add(entry.word());
+        entry.node().children.forEach((c, child) -> pending.push(new Entry(child, entry.word() + c)));
+      }
       return out;
     }
 
-    void collect(Node n, StringBuilder b, List<String> out) {
-      if (n.terminal) out.add(b.toString());
-      n.children.forEach(
-          (c, child) -> {
-            b.append(c);
-            collect(child, b, out);
-            b.setLength(b.length() - 1);
-          });
-    }
   }
 }
